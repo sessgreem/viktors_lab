@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "payments-test-c5f93": {
+      "hosting": {
+        "firechat": [
+          "payments-test-c5f93"
+        ]
+      }
+    }
+  }
+}
