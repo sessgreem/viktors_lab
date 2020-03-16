@@ -6,18 +6,13 @@ import {
   AngularFirestoreCollection
 } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { switchMap, map, first } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
 export class OrderService {
-  constructor(
-    private afs: AngularFirestore,
-    private auth: AuthService,
-    private router: Router
-  ) {}
+  constructor(private afs: AngularFirestore, private auth: AuthService) {}
 
   getUserOrders() {
     return this.auth.user$.pipe(
@@ -87,16 +82,13 @@ export class OrderService {
     return orderRef.set(data, { merge: true });
   }
 
-  getOrderUid(orderId) {
+  getOrder(orderId) {
     const orderRef: AngularFirestoreDocument<any> = this.afs
       .collection("orders")
       .doc(orderId);
 
     let orderObs = orderRef.valueChanges().pipe(
       map(order => {
-        // console.log(
-        //   "in getOrderUid - " + order + "returns - " + order.orderUid
-        // );
         return order;
       })
     );
@@ -105,16 +97,8 @@ export class OrderService {
 
   async updatePassword(orderId, password) {
     const { uid } = await this.auth.getUser();
-    const { orderUid } = await this.getOrderUid(orderId);
-    // const { orderPassword } = await this.getOrderUid(orderId);
-    // console.log(
-    //   "in updatePassword " +
-    //     orderUid +
-    //     " uid  -" +
-    //     uid +
-    //     " orderPassword " +
-    //     orderPassword
-    // );
+    const { orderUid } = await this.getOrder(orderId);
+
     const data = {
       orderPassword: password
     };
