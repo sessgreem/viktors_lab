@@ -16,8 +16,10 @@ import { HomeComponent } from './home/home.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { PanelComponent } from './panel/panel.component';
 import { OrderMenuComponent } from './order-menu/order-menu.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
-import { OrderChatComponent } from './order-chat/order-chat.component'
+import { OrderChatComponent } from './order-chat/order-chat.component';
+import { SignupComponent } from './staff/signup/signup.component';
+import { DashboardComponent } from './staff/dashboard/dashboard.component';
+import { LoginComponent } from './staff/login/login.component'
 // import { AuthGuard } from './core/auth.guard';
 
 @NgModule({
@@ -28,8 +30,10 @@ import { OrderChatComponent } from './order-chat/order-chat.component'
     UserFormComponent,
     PanelComponent,
     OrderMenuComponent,
-    OrderDetailsComponent,
-    OrderChatComponent
+    OrderChatComponent,
+    SignupComponent,
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

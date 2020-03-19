@@ -1,3 +1,4 @@
+import { StaffauthService } from "./core/services/staffauth.service";
 import { Observable, of } from "rxjs";
 import { AuthService } from "./auth.service";
 import {
@@ -12,8 +13,32 @@ import { switchMap, map, first } from "rxjs/operators";
   providedIn: "root"
 })
 export class OrderService {
-  constructor(private afs: AngularFirestore, private auth: AuthService) {}
+  constructor(
+    private afs: AngularFirestore,
+    private auth: AuthService,
+    private staffauth: StaffauthService
+  ) {}
 
+  getAssignedOrders() {
+    return this.staffauth.staff$.pipe(
+      switchMap(user => {
+        return this.afs
+          .collection("orders", ref =>
+            ref.where("orderAssigned", "==", user.uid)
+          )
+          .snapshotChanges()
+          .pipe(
+            map(actions => {
+              return actions.map(a => {
+                const data: Object = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                return { id, ...data };
+              });
+            })
+          );
+      })
+    );
+  }
   getUserOrders() {
     return this.auth.user$.pipe(
       switchMap(user => {
@@ -53,8 +78,10 @@ export class OrderService {
       orderPriority: object.priority,
       orderPrice: object.price,
       orderUsername: "",
-      orderPassword: ""
+      orderPassword: "",
+      orderAssigned: "unassigned"
     };
+
     return orderRef.set(data, { merge: true });
   }
   async setOrderV2(object) {
@@ -77,7 +104,8 @@ export class OrderService {
       orderPriority: object.priority,
       orderPrice: object.price,
       orderUsername: "",
-      orderPassword: ""
+      orderPassword: "",
+      orderAssigned: "unassigned"
     };
     return orderRef.set(data, { merge: true });
   }

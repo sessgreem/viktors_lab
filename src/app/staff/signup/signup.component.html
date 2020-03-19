@@ -1,0 +1,21 @@
+<ng-container *ngIf="(staffauth.staff$ | async) || {} as staff">
+  <form [formGroup]="signupForm" *ngIf="!staff.uid">
+    <h3>New Staff Signup</h3>
+    <label for="email">Email</label>
+    <input type="email" formControlName="email">
+        <div *ngIf="email.invalid && email.dirty">
+          Your email doesn't look quite right...
+        </div>
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" required>
+
+    <div *ngIf="password.invalid && password.touched">
+        Password must be above 6 chars and less than 20!
+    </div>
+    
+    <button type="submit" (click)="signup()" [disabled]="!signupForm.valid">Submit</button>
+  </form>
+  <p *ngIf="staff.password">
+    You have completed the form.
+  </p>
+  </ng-container>

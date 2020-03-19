@@ -1,0 +1,22 @@
+<ng-container *ngIf="staff$ | async as staff">
+  <h3>Staff Dashboard</h3>
+  <label for="email">Your email is</label>
+  <div> {{ staff.email }}</div>
+  <br>
+  <label for="displayName">Your display name is</label>
+  <div> {{ staff.displayName }}</div>
+  <Br>
+  <label for="displayName">Enter new Display Name</label>
+  <br>
+  <input type="text" name="displayName" id="" [(ngModel)]="displayName">
+  <button (click)="changeDisplayName()">Change</button>
+</ng-container>
+<ng-container *ngIf="orders$ | async as order">
+  <h2>Assigned Orders</h2>
+  <div class="assignedOrders">
+    <div *ngFor="let o of order" class="order">
+      <a [routerLink]="'/orders/'+ o.id">Order: {{o.id}} - From {{ o.orderCurrentRank }} - To {{ o.orderDesiredRank}} -
+        Username: {{ o.orderUsername }}</a>
+    </div>
+  </div>
+</ng-container>

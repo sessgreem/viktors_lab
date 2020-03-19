@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -11,7 +12,7 @@ export class UserFormComponent implements OnInit {
 
   signupForm: FormGroup;
   
-  constructor(public fb: FormBuilder, public auth: AuthService) { }
+  constructor(public fb: FormBuilder, public auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -30,7 +31,10 @@ export class UserFormComponent implements OnInit {
   get password() { return this.signupForm.get('password') };
 
   signup() {
-    return this.auth.emailSignUp(this.email.value, this.password.value);
+    return this.auth.emailSignUp(this.email.value, this.password.value).then(res => {
+      console.log("Staff sign up successful - redirecting to login...");
+      this.router.navigate(["staff/login"]);
+    });
   }
 
 }

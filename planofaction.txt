@@ -1,0 +1,31 @@
+--order service--
+DONE make it so that only the og-user can change password
+DONE set data function to be adding assignedSID
+    user also needs to be able to mark the order as completed
+    user needs to be able to pause the order
+
+--adjust the authguard--
+DONE - make it so that only the og-user can enter the order details 
+DONE or if the user is a booster
+    make it so that /orders/ is unaccessible
+DONE staff can enter assigned orders 
+
+--overall project--
+restructure directories
+
+--staff--
+DONE created staffauth.service with email/pass functions
+DONE sign up
+DONE make the booster be able to update displayName 
+DONE login
+DONE dashboard  
+DONE see assigned orders
+    to be able to see all available orders
+DONE and to be able to join orders and see messages 
+    able to change the status to completed
+
+--chat service-- 
+DONE figure out why it doesnt create new chat with new order
+DONE make is so that assigned staff and og-user can chat
+DONE    staff needs to be able to chat with user - fix chat.service.ts joinUsers 
+     fix icons to show. or make distinct user and staff
