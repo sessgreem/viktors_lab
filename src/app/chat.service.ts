@@ -69,41 +69,40 @@ export class ChatService {
     );
   }
   // Awaits the authenticated users uid and adds new data doc /- navigates to the that new chats/docId | used in create new chat button
-  async create() {
-    const { uid } = await this.auth.getUser();
+  // async create() {
+  //   const { uid } = await this.auth.getUser();
 
-    const data = {
-      uid,
-      createdAt: Date.now(),
-      count: 0,
-      messages: []
-    };
+  //   const data = {
+  //     uid,
+  //     createdAt: Date.now(),
+  //     count: 0,
+  //     messages: []
+  //   };
 
-    const docRef = await this.afs.collection("chats").add(data);
+  //   const docRef = await this.afs.collection("chats").add(data);
 
-    return this.router.navigate(["chats", docRef.id]);
-  }
+  //   return this.router.navigate(["chats", docRef.id]);
+  // }
 
-  async createV2(id) {
+  async create(id) {
     const uid = await this.auth.getUser().then(res => {
       if (res) return res.uid;
       else return res;
-    }); // can i implement this better? try await().uid
-    const staffuid = await this.staffauth.getStaff().then(res => {
-      if (res) return res.uid;
-      else return res;
-    });
+    }); // can i implement this better?
+    let staffuid;
+    if (!uid) {
+      staffuid = await this.staffauth.getStaff().then(res => {
+        if (res) return res.uid;
+        else return res;
+      });
+    }
     const chatDocRef = this.afs.collection("chats").doc(id);
-    // let chat = await this.getChat(id).then(res => {
-    //   if (res) {
-    //     console.log(res);
-    //     return res;
-    //   } else {
-    //     console.log(res);
-    //     return res;
-    //   }
-    // });
-    const chat = await this.getChat(id);
+    const chat = await this.getChat(id)
+      .then(res => {
+        console.log("successfuly got chat ");
+        return res;
+      })
+      .catch(err => console.log("unsuccessfuly got chat " + err));
     if (chat) {
       console.log("in chatrefdoc if ");
       return chatDocRef;
@@ -118,7 +117,8 @@ export class ChatService {
         };
         return chatDocRef
           .set(data, { merge: true })
-          .then(res => console.log("set chat successfully UID " + uid));
+          .then(res => console.log("set chat successfully UID " + uid))
+          .catch(err => console.log(err));
       } else {
         const data = {
           uid: staffuid,
@@ -134,16 +134,19 @@ export class ChatService {
       }
     }
   }
-  // aits the authenticated users uid / check if it exists and calls update method of the document to the message property and adds the message
+  // awaits the authenticated users uid / check if it exists and calls update method of the document to the message property and adds the message
   async sendMessage(chatId, content) {
     const uid = await this.auth.getUser().then(res => {
       if (res) return res.uid;
       else return res;
     });
-    const staffuid = await this.staffauth.getStaff().then(res => {
-      if (res) return res.uid;
-      else return res;
-    });
+    let staffuid;
+    if (uid) {
+      staffuid = await this.staffauth.getStaff().then(res => {
+        if (res) return res.uid;
+        else return res;
+      });
+    }
     let data = {};
     if (uid) {
       data = {
@@ -186,10 +189,10 @@ export class ChatService {
         const staffDocs = uids.map(u =>
           this.afs.doc(`staff/${u}`).valueChanges()
         );
-        return userDocs.length ? combineLatest(staffDocs, userDocs) : of([]);
+        return userDocs.length ? combineLatest(staffDocs, userDocs) : of([]); // ne moga da polzvam posle async pipe-ove
       }),
       map(arr => {
-        arr.forEach(v => (joinKeys[(<any>v).uid] = v)); // ne moje da nameri uid shtot e undefined
+        arr.forEach(v => (joinKeys[(<any>v).uid] = v));
         chat.messages = chat.messages.map(v => {
           return { ...v, user: joinKeys[v.uid] };
         });

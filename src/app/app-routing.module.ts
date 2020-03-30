@@ -1,3 +1,4 @@
+import { FireguardGuard } from "./core/fireguard.guard";
 import { LoginComponent } from "./staff/login/login.component";
 import { DashboardComponent } from "./staff/dashboard/dashboard.component";
 import { SignupComponent } from "./staff/signup/signup.component";
@@ -17,30 +18,21 @@ import {
 } from "@angular/fire/auth-guard";
 import { map } from "rxjs/operators";
 
-const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(["/"]);
-// const onlyAllowSelf = next =>
-// map(user => !!user && next.param.uid === user.uid);
-// const redirectToProfileEditOrLogin = () => map(user => user ? ['profiles', user.uid, 'edit'] : ['login']);
-const redirectToHome = () => redirectLoggedInTo(["/"]);
+// const redirectToHome = () => redirectLoggedInTo(["/"]);
+
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "chats/:id", component: ChatComponent },
+  {
+    path: "chats/:id",
+    component: ChatComponent,
+    canActivate: [FireguardGuard]
+  },
   { path: "login", component: UserFormComponent },
   {
     path: "orders/:id",
-    component: OrderChatComponent
-    // canActivate: [AuthGuard]
+    component: OrderChatComponent,
+    canActivate: [AuthGuard]
   },
-  {
-    path: "orders",
-    component: HomeComponent,
-    ...canActivate(redirectToHome)
-  },
-  // {
-  //   path: "orders",
-  //   component: HomeComponent,
-  //   ...canActivate(redirectUnauthorizedToHome)
-  // }
   {
     path: "staff/signup",
     component: SignupComponent
@@ -54,6 +46,10 @@ const routes: Routes = [
   {
     path: "staff/login",
     component: LoginComponent
+  },
+  {
+    path: "**",
+    redirectTo: "/" // create a 404 page with timeout redirect
   }
 ];
 

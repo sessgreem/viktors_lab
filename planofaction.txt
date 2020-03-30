@@ -6,9 +6,13 @@ DONE set data function to be adding assignedSID
 
 --adjust the authguard--
 DONE - make it so that only the og-user can enter the order details 
-DONE or if the user is a booster
-    make it so that /orders/ is unaccessible
-DONE staff can enter assigned orders 
+DONE or if the user is staff
+     make it so that /orders/ is unaccessible
+DONE staff can enter assigned orders
+
+-- routing --
+DONE make unmatched routes home 
+    unmatched to a 404 page
 
 --overall project--
 restructure directories
@@ -27,5 +31,11 @@ DONE and to be able to join orders and see messages
 --chat service-- 
 DONE figure out why it doesnt create new chat with new order
 DONE make is so that assigned staff and og-user can chat
-DONE    staff needs to be able to chat with user - fix chat.service.ts joinUsers 
-     fix icons to show. or make distinct user and staff
+DONE needs to be able to chat with user 
+    fix icons to show. or make distinct user and staff
+
+-- firebase rules --
+DONE created basic firebase rules
+
+-- DRY -- 
+implement a better uid and staffuid awaits - create a global function?

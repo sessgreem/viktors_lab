@@ -84,31 +84,6 @@ export class OrderService {
 
     return orderRef.set(data, { merge: true });
   }
-  async setOrderV2(object) {
-    const id = this.afs.createId();
-    const orderRef: AngularFirestoreDocument<any> = this.afs
-      .collection("orders")
-      .doc(id);
-    const { uid } = await this.auth.getUser();
-    const status = "Waiting for booster";
-    const boostedRank = object.currentRank;
-    const data = {
-      orderUid: uid,
-      orderStatus: status,
-      orderServiceType: object.serviceType,
-      orderCurrentRank: object.currentRank,
-      orderCurrentDivision: object.currentDivision,
-      orderDesiredRank: object.desiredRank,
-      orderBoostedRank: boostedRank,
-      orderServer: object.server,
-      orderPriority: object.priority,
-      orderPrice: object.price,
-      orderUsername: "",
-      orderPassword: "",
-      orderAssigned: "unassigned"
-    };
-    return orderRef.set(data, { merge: true });
-  }
 
   getOrder(orderId) {
     const orderRef: AngularFirestoreDocument<any> = this.afs

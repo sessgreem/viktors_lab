@@ -23,38 +23,34 @@ export class AuthGuard implements CanActivate {
   ) {}
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let orderId = next.params.id;
-    let staffuid = await this.staffauth.getStaff().then(res => {
+    const uid = await this.auth.getUser().then(res => {
       if (res) return res.uid;
-      else res;
+      else return res;
     });
-    let uid = await this.auth.getUser().then(res => {
-      if (res) {
-        return res.uid;
-      } else {
-        return res;
-      }
-    });
-    console.log("staffuid is " + staffuid);
-    if (uid || staffuid) {
-      let order = await this.orderService.getOrder(orderId).then(res => {
-        if (res) {
-          return res;
-          // return res.orderUid;
-        } else {
-          return res;
-        }
+    let staffuid;
+    if (!uid) {
+      staffuid = await this.staffauth.getStaff().then(res => {
+        if (res) return res.uid;
+        else return res;
       });
-      console.log(
-        order.orderUid +
-          " is the order.orderUid and " +
-          order.orderAssigned +
-          " is the order.orderAssigned"
-      );
-      if (uid === order.orderUid) {
-        return true;
-      } else if (staffuid === order.orderAssigned) {
+    }
+    if (uid || staffuid) {
+      let order = await this.orderService
+        .getOrder(orderId)
+        .then(res => {
+          return res;
+        })
+        .catch(err => {
+          console.log("Did not not get order " + err);
+        });
+      if (!order) {
+        this.router.navigate(["/"]);
+        return false;
+      }
+      if (uid === order.orderUid || staffuid === order.orderAssigned) {
         return true;
       } else {
+        console.log("Unassigned staff or unauthorized user.");
         this.router.navigate(["/"]);
         return false;
       }

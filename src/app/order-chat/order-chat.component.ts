@@ -27,18 +27,10 @@ export class OrderChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.docId = this.route.snapshot.paramMap.get("id");
-    // this.orderId = chatId;
-    // console.log(this.docId);
-    this.cs.createV2(this.docId).then(res => {
+    this.cs.create(this.docId).then(res => {
       const source = this.cs.get(this.docId);
       this.chat$ = this.cs.joinUsers(source);
-      // console.log(this.docId + " " + res);
     });
-    // this.cs.createV2(this.docId).then(res => {
-    //   const source = this.cs.get(this.docId);
-    //   this.chat$ = this.cs.joinUsers(source);
-    //   // console.log(this.docId + " " + res);
-    // });
   }
   // submit uses two-way data binding for the msg and needs the chatid from async chat$ observable
   submit(chatId) {

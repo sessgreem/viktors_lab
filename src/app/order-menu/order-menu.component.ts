@@ -39,7 +39,7 @@ export class OrderMenuComponent implements OnInit {
   priority = false;
 
   render(event) {
-    console.log(this.totalDivisions);
+    // console.log(this.totalDivisions); // returned undefined
     if (
       this.desiredRank < this.currentRank ||
       (this.desiredRank == this.currentRank &&
