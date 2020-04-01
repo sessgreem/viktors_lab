@@ -20,3 +20,12 @@
     </div>
   </div>
 </ng-container>
+<ng-container *ngIf="availableOrders$ | async as avOrders">
+  <h2>Available Orders</h2>
+  <div *ngFor="let aorder of avOrders">
+    <div><a [routerLink]="'/orders/' + aorder.id">Order ID - {{ aorder.id }}: - From {{ aorder.orderCurrentRank }}
+        To
+        {{ aorder.orderDesiredRank}} Status - {{ aorder.orderStatus }} Cost - {{ aorder.orderPrice }}</a>
+      <button (click)="assignStaff(aorder.id)">Take Job</button></div>
+  </div>
+</ng-container>

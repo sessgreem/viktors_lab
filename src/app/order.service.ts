@@ -8,6 +8,7 @@ import {
 } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
 import { switchMap, map, first } from "rxjs/operators";
+import { firestore } from "firebase";
 
 @Injectable({
   providedIn: "root"
@@ -19,12 +20,32 @@ export class OrderService {
     private staffauth: StaffauthService
   ) {}
 
+  getAvailableOrders() {
+    return this.afs
+      .collection("orders", ref =>
+        ref.where("orderAssigned", "==", "unassigned")
+      )
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data: Object = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return {
+              id,
+              ...data
+            };
+          });
+        })
+      );
+  }
+
   getAssignedOrders() {
     return this.staffauth.staff$.pipe(
       switchMap(user => {
         return this.afs
           .collection("orders", ref =>
-            ref.where("orderAssigned", "==", user.uid)
+            ref.where("orderAssigned", "array-contains", user.uid)
           )
           .snapshotChanges()
           .pipe(
@@ -32,7 +53,10 @@ export class OrderService {
               return actions.map(a => {
                 const data: Object = a.payload.doc.data();
                 const id = a.payload.doc.id;
-                return { id, ...data };
+                return {
+                  id,
+                  ...data
+                };
               });
             })
           );
@@ -50,7 +74,10 @@ export class OrderService {
               return actions.map(a => {
                 const data: Object = a.payload.doc.data();
                 const id = a.payload.doc.id;
-                return { id, ...data };
+                return {
+                  id,
+                  ...data
+                };
               });
             })
           );
@@ -82,7 +109,9 @@ export class OrderService {
       orderAssigned: "unassigned"
     };
 
-    return orderRef.set(data, { merge: true });
+    return orderRef.set(data, {
+      merge: true
+    });
   }
 
   getOrder(orderId) {
@@ -117,5 +146,15 @@ export class OrderService {
     } else {
       console.log("Did not update password - " + orderUid);
     }
+  }
+  async assignStaff(orderId) {
+    const { uid } = await this.staffauth.getStaff();
+    console.log(uid + " test");
+    const orderRef: AngularFirestoreDocument<any> = this.afs
+      .collection("orders")
+      .doc(orderId);
+    return orderRef.update({
+      orderAssigned: firestore.FieldValue.arrayUnion(uid)
+    });
   }
 }

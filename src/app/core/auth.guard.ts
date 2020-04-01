@@ -47,7 +47,7 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(["/"]);
         return false;
       }
-      if (uid === order.orderUid || staffuid === order.orderAssigned) {
+      if (uid === order.orderUid || order.orderAssigned.includes(staffuid)) {
         return true;
       } else {
         console.log("Unassigned staff or unauthorized user.");

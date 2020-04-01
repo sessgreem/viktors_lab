@@ -1,3 +1,4 @@
+import { StaffauthService } from "./../core/services/staffauth.service";
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { ChatService } from "../chat.service";
@@ -22,7 +23,8 @@ export class OrderChatComponent implements OnInit {
     public cs: ChatService,
     private route: ActivatedRoute,
     public auth: AuthService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    public staffauth: StaffauthService
   ) {}
 
   ngOnInit(): void {

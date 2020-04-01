@@ -24,18 +24,27 @@ DONE make the booster be able to update displayName
 DONE login
 DONE dashboard  
 DONE see assigned orders
-    to be able to see all available orders
+DONE to be able to see all available orders
 DONE and to be able to join orders and see messages 
-    able to change the status to completed
+DONE to be able to self-assign
+    be able to complete a job ( adding to completeOrders )
+    reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
 
 --chat service-- 
 DONE figure out why it doesnt create new chat with new order
 DONE make is so that assigned staff and og-user can chat
 DONE needs to be able to chat with user 
     fix icons to show. or make distinct user and staff
+    fix joinusers function
 
 -- firebase rules --
 DONE created basic firebase rules
+    problem with persistance when user refreshes order (permissions) (auth.guard.ts:44) - isOrdererOrStaff function (maybe should be left like that for security)
 
 -- DRY -- 
 implement a better uid and staffuid awaits - create a global function?
+
+-- style --
+    style login
+    style dashboard
+    style order

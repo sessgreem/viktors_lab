@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   staff$: Observable<any>;
   displayName: string;
   orders$: Observable<any>;
-
+  availableOrders$: Observable<any>;
   constructor(
     public auth: StaffauthService,
     private orderService: OrderService
@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.orders$ = this.orderService.getAssignedOrders();
+    this.availableOrders$ = this.orderService.getAvailableOrders();
   }
 
   changeDisplayName() {
@@ -34,5 +35,10 @@ export class DashboardComponent implements OnInit {
         })
         .catch(error => console.log("password didnt not update " + error));
     else console.log("displayName is empty or undefined " + this.displayName);
+  }
+  assignStaff(orderId) {
+    return this.orderService.assignStaff(orderId).then(res => {
+      console.log("Successfuly assigned " + res);
+    });
   }
 }

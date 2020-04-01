@@ -141,7 +141,7 @@ export class ChatService {
       else return res;
     });
     let staffuid;
-    if (uid) {
+    if (!uid) {
       staffuid = await this.staffauth.getStaff().then(res => {
         if (res) return res.uid;
         else return res;
@@ -161,7 +161,6 @@ export class ChatService {
         createdAt: Date.now()
       };
     }
-
     if (uid || staffuid) {
       const ref = this.afs.collection("chats").doc(chatId);
       return ref.update({
