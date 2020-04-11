@@ -5,7 +5,7 @@ import { auth } from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
 } from "@angular/fire/firestore";
 import { switchMap, first, map } from "rxjs/operators";
 
@@ -15,7 +15,7 @@ interface User {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthService {
   user$: Observable<any>;
@@ -26,7 +26,7 @@ export class AuthService {
     private router: Router
   ) {
     this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         if (user) {
           return this.afs.doc<any>(`users/${user.uid}`).valueChanges();
         } else {
@@ -43,10 +43,10 @@ export class AuthService {
   emailSignUp(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then(credential => {
+      .then((credential) => {
         return this.setUserDoc(credential.user); // create initial user document
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -54,7 +54,7 @@ export class AuthService {
   emailSignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }
 
   facebookSignIn() {
@@ -78,7 +78,7 @@ export class AuthService {
       uid,
       email,
       displayName,
-      photoURL
+      photoURL,
     };
 
     return userRef.set(data, { merge: true });
@@ -95,7 +95,7 @@ export class AuthService {
     console.log(user);
     const data = {
       uid: user.uid,
-      email: user.email
+      email: user.email,
     };
 
     return userRef.set(data, { merge: true });

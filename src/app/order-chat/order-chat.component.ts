@@ -1,5 +1,5 @@
 import { StaffauthService } from "./../core/services/staffauth.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Observable } from "rxjs";
 import { ChatService } from "../chat.service";
 import { ActivatedRoute } from "@angular/router";
@@ -9,15 +9,15 @@ import { OrderService } from "../order.service";
 @Component({
   selector: "app-order-chat",
   templateUrl: "./order-chat.component.html",
-  styleUrls: ["./order-chat.component.css"]
+  styleUrls: ["./order-chat.component.css"],
 })
-export class OrderChatComponent implements OnInit {
+export class OrderChatComponent implements OnInit, OnDestroy {
   chat$: Observable<any>;
   newMsg: string;
-
+  order$: Observable<any>;
   accPassword: string = "viktor";
-  boostStatus: string = "";
-  docId: string;
+  orderId: string;
+  // Status;
 
   constructor(
     public cs: ChatService,
@@ -28,11 +28,18 @@ export class OrderChatComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.docId = this.route.snapshot.paramMap.get("id");
-    this.cs.create(this.docId).then(res => {
-      const source = this.cs.get(this.docId);
+    this.orderId = this.route.snapshot.paramMap.get("id");
+    this.cs.create(this.orderId).then((res) => {
+      const source = this.cs.get(this.orderId);
       this.chat$ = this.cs.joinUsers(source);
     });
+    this.order$ = this.orderService.getCurrentOrder(this.orderId);
+    // this.order$.subscribe((s) => {
+    //   this.Status = s.orderStatus;
+    // });
+  }
+  ngOnDestroy(): void {
+    // this.order$.;
   }
   // submit uses two-way data binding for the msg and needs the chatid from async chat$ observable
   submit(chatId) {
@@ -45,7 +52,20 @@ export class OrderChatComponent implements OnInit {
   }
 
   updateAccPassword() {
-    console.log(this.docId + " " + this.accPassword);
-    this.orderService.updatePassword(this.docId, this.accPassword);
+    console.log(this.orderId + " " + this.accPassword);
+    this.orderService.updatePassword(this.orderId, this.accPassword);
+  }
+
+  togglePauseOrder(status) {
+    // this.orderService.toggleOrderPauseStatus(this.orderId, this.Status);
+    this.orderService.toggleOrderPauseStatus(this.orderId, status);
+  }
+
+  confirmCompletion(status) {
+    this.orderService.confirmCompletion(this.orderId, status);
+  }
+
+  markAsCompleted() {
+    this.orderService.markAsCompleted(this.orderId);
   }
 }

@@ -8,7 +8,7 @@ import { firestore } from "firebase";
 import { Observable, combineLatest, of } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ChatService {
   constructor(
@@ -25,10 +25,10 @@ export class ChatService {
       .doc(chatId)
       .snapshotChanges()
       .pipe(
-        map(doc => {
+        map((doc) => {
           return {
             id: doc.payload.id,
-            ...(doc.payload.data() as {})
+            ...(doc.payload.data() as {}),
           };
         })
       );
@@ -39,27 +39,25 @@ export class ChatService {
       .doc(chatId)
       .valueChanges()
       .pipe(
-        map(doc => {
+        map((doc) => {
           return doc;
         })
       );
   }
   getChat(chatId) {
-    return this.getChatDoc(chatId)
-      .pipe(first())
-      .toPromise();
+    return this.getChatDoc(chatId).pipe(first()).toPromise();
   }
   // Returns the current authenticated users chat - its id and data inside as object
   getUserChats() {
     return this.auth.user$.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         return this.afs
-          .collection("chats", ref => ref.where("uid", "==", user.uid))
+          .collection("chats", (ref) => ref.where("uid", "==", user.uid))
           .snapshotChanges()
           .pipe(
-            map(actions => {
-              return actions.map(a => {
-                const data: Object = a.payload.doc.data();
+            map((actions) => {
+              return actions.map((a) => {
+                const data: Object = a.payload.doc.data(); // create interface
                 const id = a.payload.doc.id;
                 return { id, ...data };
               });
@@ -85,26 +83,25 @@ export class ChatService {
   // }
 
   async create(id) {
-    const uid = await this.auth.getUser().then(res => {
+    const uid = await this.auth.getUser().then((res) => {
       if (res) return res.uid;
       else return res;
     }); // can i implement this better?
     let staffuid;
     if (!uid) {
-      staffuid = await this.staffauth.getStaff().then(res => {
+      staffuid = await this.staffauth.getStaff().then((res) => {
         if (res) return res.uid;
         else return res;
       });
     }
     const chatDocRef = this.afs.collection("chats").doc(id);
     const chat = await this.getChat(id)
-      .then(res => {
+      .then((res) => {
         console.log("successfuly got chat ");
         return res;
       })
-      .catch(err => console.log("unsuccessfuly got chat " + err));
+      .catch((err) => console.log("unsuccessfuly got chat " + err));
     if (chat) {
-      console.log("in chatrefdoc if ");
       return chatDocRef;
     } else {
       console.log("ENTERED ELSE CHATDOCREF");
@@ -113,36 +110,36 @@ export class ChatService {
           uid,
           createdAt: Date.now(),
           count: 0,
-          messages: []
+          messages: [],
         };
         return chatDocRef
           .set(data, { merge: true })
-          .then(res => console.log("set chat successfully UID " + uid))
-          .catch(err => console.log(err));
+          .then(() => console.log("set chat successfully UID " + uid))
+          .catch((err) => console.log(err));
       } else {
         const data = {
           uid: staffuid,
           createdAt: Date.now(),
           count: 0,
-          messages: []
+          messages: [],
         };
         return chatDocRef
           .set(data, { merge: true })
-          .then(res =>
+          .then(() =>
             console.log("set chat successfully staffUID " + staffuid)
           );
       }
     }
   }
-  // awaits the authenticated users uid / check if it exists and calls update method of the document to the message property and adds the message
+
   async sendMessage(chatId, content) {
-    const uid = await this.auth.getUser().then(res => {
+    const uid = await this.auth.getUser().then((res) => {
       if (res) return res.uid;
       else return res;
     });
     let staffuid;
     if (!uid) {
-      staffuid = await this.staffauth.getStaff().then(res => {
+      staffuid = await this.staffauth.getStaff().then((res) => {
         if (res) return res.uid;
         else return res;
       });
@@ -152,19 +149,19 @@ export class ChatService {
       data = {
         uid,
         content,
-        createdAt: Date.now()
+        createdAt: Date.now(),
       };
     } else {
       data = {
         uid: staffuid,
         content,
-        createdAt: Date.now()
+        createdAt: Date.now(),
       };
     }
     if (uid || staffuid) {
       const ref = this.afs.collection("chats").doc(chatId);
       return ref.update({
-        messages: firestore.FieldValue.arrayUnion(data)
+        messages: firestore.FieldValue.arrayUnion(data),
       });
     }
   }
@@ -174,7 +171,7 @@ export class ChatService {
     const joinKeys = {};
 
     return chat$.pipe(
-      switchMap(c => {
+      switchMap((c) => {
         chat = c;
         const uids = Array.from(
           new Set(c.messages.map((v: { uid: any }) => v.uid))
@@ -182,17 +179,17 @@ export class ChatService {
         console.log(uids);
 
         const userDocs = uids.map(
-          u => this.afs.doc(`users/${u}`).valueChanges()
+          (u) => this.afs.doc(`users/${u}`).valueChanges()
           // vrushta undefined ako suzdatelqt e staff
         );
-        const staffDocs = uids.map(u =>
+        const staffDocs = uids.map((u) =>
           this.afs.doc(`staff/${u}`).valueChanges()
         );
         return userDocs.length ? combineLatest(staffDocs, userDocs) : of([]); // ne moga da polzvam posle async pipe-ove
       }),
-      map(arr => {
-        arr.forEach(v => (joinKeys[(<any>v).uid] = v));
-        chat.messages = chat.messages.map(v => {
+      map((arr) => {
+        arr.forEach((v) => (joinKeys[(<any>v).uid] = v));
+        chat.messages = chat.messages.map((v) => {
           return { ...v, user: joinKeys[v.uid] };
         });
         return chat;

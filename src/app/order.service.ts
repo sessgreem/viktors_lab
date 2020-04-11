@@ -4,36 +4,40 @@ import { AuthService } from "./auth.service";
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-  AngularFirestoreCollection
 } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
-import { switchMap, map, first } from "rxjs/operators";
+import { switchMap, map, first, take } from "rxjs/operators";
 import { firestore } from "firebase";
+import { AngularFireFunctions } from "@angular/fire/functions";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class OrderService {
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
-    private staffauth: StaffauthService
+    private staffauth: StaffauthService,
+    private fns: AngularFireFunctions
   ) {}
 
+  getCurrentOrder(orderid) {
+    return this.afs.collection("orders").doc(orderid).valueChanges();
+  }
   getAvailableOrders() {
     return this.afs
-      .collection("orders", ref =>
+      .collection("orders", (ref) =>
         ref.where("orderAssigned", "==", "unassigned")
       )
       .snapshotChanges()
       .pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data: Object = a.payload.doc.data();
+        map((actions) => {
+          return actions.map((a) => {
+            const data: Object = a.payload.doc.data(); // create interface for the data - dont use Object
             const id = a.payload.doc.id;
             return {
               id,
-              ...data
+              ...data,
             };
           });
         })
@@ -42,20 +46,21 @@ export class OrderService {
 
   getAssignedOrders() {
     return this.staffauth.staff$.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         return this.afs
-          .collection("orders", ref =>
-            ref.where("orderAssigned", "array-contains", user.uid)
+          .collection(
+            "orders",
+            (ref) => ref.where("orderAssigned", "array-contains", user.uid) // add another query if the order isnt completed
           )
           .snapshotChanges()
           .pipe(
-            map(actions => {
-              return actions.map(a => {
-                const data: Object = a.payload.doc.data();
+            map((actions) => {
+              return actions.map((a) => {
+                const data: Object = a.payload.doc.data(); // create interface for the data
                 const id = a.payload.doc.id;
                 return {
                   id,
-                  ...data
+                  ...data,
                 };
               });
             })
@@ -65,18 +70,18 @@ export class OrderService {
   }
   getUserOrders() {
     return this.auth.user$.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         return this.afs
-          .collection("orders", ref => ref.where("orderUid", "==", user.uid))
+          .collection("orders", (ref) => ref.where("orderUid", "==", user.uid))
           .snapshotChanges()
           .pipe(
-            map(actions => {
-              return actions.map(a => {
-                const data: Object = a.payload.doc.data();
+            map((actions) => {
+              return actions.map((a) => {
+                const data: Object = a.payload.doc.data(); // create interface
                 const id = a.payload.doc.id;
                 return {
                   id,
-                  ...data
+                  ...data,
                 };
               });
             })
@@ -86,6 +91,7 @@ export class OrderService {
   }
 
   async setOrder(object) {
+    // make this idempotent
     const id = this.afs.createId();
     const orderRef: AngularFirestoreDocument<any> = this.afs
       .collection("orders")
@@ -106,11 +112,11 @@ export class OrderService {
       orderPrice: object.price,
       orderUsername: "",
       orderPassword: "",
-      orderAssigned: "unassigned"
+      orderAssigned: "unassigned",
     };
 
     return orderRef.set(data, {
-      merge: true
+      merge: true,
     });
   }
 
@@ -119,8 +125,8 @@ export class OrderService {
       .collection("orders")
       .doc(orderId);
 
-    let orderObs = orderRef.valueChanges().pipe(
-      map(order => {
+    const orderObs = orderRef.valueChanges().pipe(
+      map((order) => {
         return order;
       })
     );
@@ -132,7 +138,7 @@ export class OrderService {
     const { orderUid } = await this.getOrder(orderId);
 
     const data = {
-      orderPassword: password
+      orderPassword: password,
     };
 
     const orderRef: AngularFirestoreDocument<any> = this.afs
@@ -142,7 +148,7 @@ export class OrderService {
     if (uid === orderUid) {
       return orderRef
         .update(data)
-        .then(res => console.log("Password Update Successful"));
+        .then(() => console.log("Password Update Successful"));
     } else {
       console.log("Did not update password - " + orderUid);
     }
@@ -154,7 +160,46 @@ export class OrderService {
       .collection("orders")
       .doc(orderId);
     return orderRef.update({
-      orderAssigned: firestore.FieldValue.arrayUnion(uid)
+      orderAssigned: firestore.FieldValue.arrayUnion(uid),
+    });
+  }
+  async toggleOrderPauseStatus(orderId, status) {
+    const orderRef: AngularFirestoreDocument = this.afs
+      .collection("orders")
+      .doc(orderId);
+    // const { orderStatus } = await this.getOrder(orderId).catch((err) =>
+    //   console.log(err)
+    // );
+    if (status === "Paused") {
+      return orderRef.update({
+        orderStatus: "Active",
+      });
+    } else if (status === "Active") {
+      return orderRef.update({
+        orderStatus: "Paused",
+      });
+    } else {
+      return "orderStatus is unchanged. Status: " + status;
+    }
+  }
+  confirmCompletion(orderId, status) {
+    // const orderRef: AngularFirestoreDocument = this.afs
+    //   .collection("orders")
+    //   .doc(orderId);
+    if (status === "Marked as Completed") {
+      const callable = this.fns.httpsCallable("completeOrder");
+      callable({ orderStatus: status, orderId: orderId })
+        .pipe(take(1))
+        .subscribe((res) => console.log("from subscribe " + res));
+    }
+  }
+  markAsCompleted(orderId) {
+    const orderRef: AngularFirestoreDocument = this.afs
+      .collection("orders")
+      .doc(orderId);
+    // ? if progress == 100
+    orderRef.update({
+      orderStatus: "Marked as Completed",
     });
   }
 }

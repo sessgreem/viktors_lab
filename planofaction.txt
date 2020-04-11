@@ -1,48 +1,60 @@
---order service--
+-- order service --
 DONE make it so that only the og-user can change password
 DONE set data function to be adding assignedSID
-    user also needs to be able to mark the order as completed
-    user needs to be able to pause the order
-
---adjust the authguard--
-DONE - make it so that only the og-user can enter the order details 
+DONE user needs to be able to pause the order
+    when a booster is assigned the orderStatus needs to change
+-- adjust the authguard --
+DONE - make it so that only the og-user can enter the order details
 DONE or if the user is staff
-     make it so that /orders/ is unaccessible
 DONE staff can enter assigned orders
 
 -- routing --
-DONE make unmatched routes home 
+DONE make unmatched routes home
     unmatched to a 404 page
+    make it so that /orders/ is unaccessible
 
---overall project--
-restructure directories
-
---staff--
-DONE created staffauth.service with email/pass functions
-DONE sign up
-DONE make the booster be able to update displayName 
-DONE login
-DONE dashboard  
-DONE see assigned orders
-DONE to be able to see all available orders
-DONE and to be able to join orders and see messages 
-DONE to be able to self-assign
-    be able to complete a job ( adding to completeOrders )
+-- overall project --
+    restructure directories
     reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
 
---chat service-- 
+-- staff --
+DONE created staffauth.service with email/pass functions
+DONE sign up
+DONE make the booster be able to update displayName
+DONE login
+DONE dashboard
+DONE see assigned orders
+DONE to be able to see all available orders
+DONE and to be able to join orders and see messages
+DONE to be able to self-assign
+    mark a job as completed
+    update current rank
+
+-- user --
+DONE complete order
+    and provide feedback
+
+-- chat service --
 DONE figure out why it doesnt create new chat with new order
 DONE make is so that assigned staff and og-user can chat
-DONE needs to be able to chat with user 
-    fix icons to show. or make distinct user and staff
+DONE needs to be able to chat with user
+    fix icons to show; make distinct user and staff
     fix joinusers function
 
 -- firebase rules --
 DONE created basic firebase rules
     problem with persistance when user refreshes order (permissions) (auth.guard.ts:44) - isOrdererOrStaff function (maybe should be left like that for security)
+    full firebase rules revisit
 
--- DRY -- 
-implement a better uid and staffuid awaits - create a global function?
+-- firebase cloud functions --
+DONE setup cloud functions in project
+    fix the region of the cloud function
+    check why is it starting twice
+
+-- DRY --
+    implement a better uid and staffuid awaits - create a global function?
+    add order status interface (active, paused)
+    make a  function to set/update orderRef
 
 -- style --
     style login
