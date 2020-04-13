@@ -3,6 +3,7 @@ DONE make it so that only the og-user can change password
 DONE set data function to be adding assignedSID
 DONE user needs to be able to pause the order
     when a booster is assigned the orderStatus needs to change
+
 -- adjust the authguard --
 DONE - make it so that only the og-user can enter the order details
 DONE or if the user is staff
@@ -27,7 +28,7 @@ DONE see assigned orders
 DONE to be able to see all available orders
 DONE and to be able to join orders and see messages
 DONE to be able to self-assign
-    mark a job as completed
+DONE mark a job as completed
     update current rank
 
 -- user --
@@ -48,13 +49,13 @@ DONE created basic firebase rules
 
 -- firebase cloud functions --
 DONE setup cloud functions in project
-    fix the region of the cloud function
-    check why is it starting twice
+DONE fix the region of the cloud function
+DONE check why is it starting twice - [its normal because the browser and some CORS options configuration]
 
 -- DRY --
     implement a better uid and staffuid awaits - create a global function?
     add order status interface (active, paused)
-    make a  function to set/update orderRef
+    make a function to set/update orderRef
 
 -- style --
     style login

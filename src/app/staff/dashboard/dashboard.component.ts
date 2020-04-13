@@ -6,18 +6,20 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"]
+  styleUrls: ["./dashboard.component.css"],
 })
 export class DashboardComponent implements OnInit {
   staff$: Observable<any>;
-  displayName: string;
   orders$: Observable<any>;
   availableOrders$: Observable<any>;
+
+  displayName: string;
+
   constructor(
-    public auth: StaffauthService,
+    public staffauth: StaffauthService,
     private orderService: OrderService
   ) {
-    this.staff$ = this.auth.staff$;
+    this.staff$ = this.staffauth.staff$;
   }
 
   ngOnInit(): void {
@@ -27,17 +29,17 @@ export class DashboardComponent implements OnInit {
 
   changeDisplayName() {
     if (this.displayName)
-      this.auth
+      this.staffauth
         .updateDisplayName(this.displayName)
-        .then(res => {
+        .then((res) => {
           console.log("password update successfully");
           this.displayName = "";
         })
-        .catch(error => console.log("password didnt not update " + error));
+        .catch((error) => console.log("password didnt not update " + error));
     else console.log("displayName is empty or undefined " + this.displayName);
   }
   assignStaff(orderId) {
-    return this.orderService.assignStaff(orderId).then(res => {
+    return this.orderService.assignStaff(orderId).then((res) => {
       console.log("Successfuly assigned " + res);
     });
   }

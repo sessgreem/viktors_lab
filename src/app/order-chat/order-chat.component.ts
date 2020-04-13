@@ -1,3 +1,4 @@
+import { FeedbackService } from "./../core/services/feedback.service";
 import { StaffauthService } from "./../core/services/staffauth.service";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Observable } from "rxjs";
@@ -5,26 +6,32 @@ import { ChatService } from "../chat.service";
 import { ActivatedRoute } from "@angular/router";
 import { AuthService } from "../auth.service";
 import { OrderService } from "../order.service";
+import { StarRatingComponent } from "ng-starrating";
 
 @Component({
   selector: "app-order-chat",
   templateUrl: "./order-chat.component.html",
   styleUrls: ["./order-chat.component.css"],
 })
-export class OrderChatComponent implements OnInit, OnDestroy {
+export class OrderChatComponent implements OnInit {
   chat$: Observable<any>;
-  newMsg: string;
   order$: Observable<any>;
-  accPassword: string = "viktor";
+
   orderId: string;
-  // Status;
+  accPassword: string = "viktor";
+  newMsg: string;
+
+  rating: number;
+  text: string;
+  // feedbackSent: boolean = false;
 
   constructor(
     public cs: ChatService,
     private route: ActivatedRoute,
     public auth: AuthService,
     private orderService: OrderService,
-    public staffauth: StaffauthService
+    public staffauth: StaffauthService,
+    private feedback: FeedbackService
   ) {}
 
   ngOnInit(): void {
@@ -34,13 +41,8 @@ export class OrderChatComponent implements OnInit, OnDestroy {
       this.chat$ = this.cs.joinUsers(source);
     });
     this.order$ = this.orderService.getCurrentOrder(this.orderId);
-    // this.order$.subscribe((s) => {
-    //   this.Status = s.orderStatus;
-    // });
   }
-  ngOnDestroy(): void {
-    // this.order$.;
-  }
+
   // submit uses two-way data binding for the msg and needs the chatid from async chat$ observable
   submit(chatId) {
     this.cs.sendMessage(chatId, this.newMsg);
@@ -57,7 +59,6 @@ export class OrderChatComponent implements OnInit, OnDestroy {
   }
 
   togglePauseOrder(status) {
-    // this.orderService.toggleOrderPauseStatus(this.orderId, this.Status);
     this.orderService.toggleOrderPauseStatus(this.orderId, status);
   }
 
@@ -67,5 +68,26 @@ export class OrderChatComponent implements OnInit, OnDestroy {
 
   markAsCompleted() {
     this.orderService.markAsCompleted(this.orderId);
+  }
+
+  onRate($event: {
+    oldValue: number;
+    newValue: number;
+    starRating: StarRatingComponent;
+  }) {
+    alert(`Old Value:${$event.oldValue},
+      New Value: ${$event.newValue},
+      Checked Color: ${$event.starRating.checkedcolor},
+      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+  }
+
+  sendFeedback() {
+    this.feedback
+      .createFeedback(this.orderId, this.rating, this.text)
+      .then(() => {
+        console.log("Feedback received");
+        this.text = "";
+        // this.feedbackSent = true;
+      });
   }
 }

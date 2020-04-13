@@ -1,5 +1,5 @@
 import { StaffauthService } from "./core/services/staffauth.service";
-import { Observable, of } from "rxjs";
+// import { Observable, of } from "rxjs";
 import { AuthService } from "./auth.service";
 import {
   AngularFirestore,
@@ -7,7 +7,7 @@ import {
 } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
 import { switchMap, map, first, take } from "rxjs/operators";
-import { firestore } from "firebase";
+import { firestore } from "firebase"; // ? check why is that here
 import { AngularFireFunctions } from "@angular/fire/functions";
 
 @Injectable({
@@ -113,6 +113,7 @@ export class OrderService {
       orderUsername: "",
       orderPassword: "",
       orderAssigned: "unassigned",
+      orderFeedback: false,
     };
 
     return orderRef.set(data, {
@@ -155,13 +156,19 @@ export class OrderService {
   }
   async assignStaff(orderId) {
     const { uid } = await this.staffauth.getStaff();
-    console.log(uid + " test");
+    // console.log(uid + " test");
     const orderRef: AngularFirestoreDocument<any> = this.afs
       .collection("orders")
       .doc(orderId);
-    return orderRef.update({
-      orderAssigned: firestore.FieldValue.arrayUnion(uid),
-    });
+    return orderRef
+      .update({
+        orderAssigned: firestore.FieldValue.arrayUnion(uid),
+      })
+      .then(() => {
+        return orderRef.update({
+          orderStatus: "Booster assigned",
+        });
+      });
   }
   async toggleOrderPauseStatus(orderId, status) {
     const orderRef: AngularFirestoreDocument = this.afs
@@ -200,6 +207,12 @@ export class OrderService {
     // ? if progress == 100
     orderRef.update({
       orderStatus: "Marked as Completed",
+    });
+  }
+  setFeedback(orderId) {
+    const orderRef = this.afs.doc(`orders/${orderId}`);
+    return orderRef.update({
+      orderFeedback: true,
     });
   }
 }

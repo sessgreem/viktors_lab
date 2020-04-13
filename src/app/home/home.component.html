@@ -1,5 +1,4 @@
 <h1>Welcome to WildBoost Lab</h1>
-
 <app-order-menu></app-order-menu>
 <hr />
 <app-panel></app-panel>
@@ -12,13 +11,10 @@
       <span class="tag is-dark">{{ user.displayName }} </span>
       <span class="tag is-light">{{ user.uid }}</span>
     </p>
-    <hr />
-    <button class="create-order" (click)="createOrder()">Create Order</button>
     <!-- <button class="button is-info" (click)="cs.create()">
       Create New Chat
     </button> -->
     <button class="button is-small" (click)="auth.signOut()">Sign Out</button>
-    <hr />
     <div style="display:flex">
       <div class="chats">
         <h3>My Chats</h3>
@@ -40,6 +36,8 @@
         </ul>
       </div>
     </div>
+    <br>
+    <app-latest-feedback></app-latest-feedback>
   </ng-container>
 
   <ng-template #login>

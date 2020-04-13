@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-order-menu",
   templateUrl: "./order-menu.component.html",
-  styleUrls: ["./order-menu.component.css"]
+  styleUrls: ["./order-menu.component.css"],
 })
 export class OrderMenuComponent implements OnInit {
   constructor(private orderService: OrderService) {}
@@ -18,13 +18,13 @@ export class OrderMenuComponent implements OnInit {
     { id: 2, name: "Silver" },
     { id: 3, name: "Gold" },
     { id: 4, name: "Platinium" },
-    { id: 5, name: "Diamond" }
+    { id: 5, name: "Diamond" },
   ];
   divisions: any[] = [
     { id: 0, name: "IV" },
     { id: 1, name: "III" },
     { id: 2, name: "II" },
-    { id: 3, name: "I" }
+    { id: 3, name: "I" },
   ];
 
   desiredRank: number = 4;
@@ -70,11 +70,11 @@ export class OrderMenuComponent implements OnInit {
       serviceType: this.serviceType,
       priority: this.priority,
       price: this.chargeAmount,
-      server: this.server
+      server: this.server,
     };
     this.orderService
       .setOrder(this.object)
-      .then(succ => console.log("successfully created order"))
-      .catch(err => console.log(err));
+      .then(() => console.log("successfully created order"))
+      .catch((err) => console.log(err));
   }
 }

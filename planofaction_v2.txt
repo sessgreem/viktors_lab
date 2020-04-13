@@ -1,0 +1,39 @@
+-- order service --
+DONE when a booster is assigned the orderStatus needs to change
+    confirmCompletion is too slow, need to revisit logic
+
+-- chat service --
+    fix icons to show; make distinct user and staff
+    fix joinusers function
+    make it so that when chat is created the uid is either only the user or an array for both users participated in chat
+
+-- routing --
+    unmatched to a 404 page
+    make it so that /orders/ is unaccessible
+
+-- overall project --
+    restructure directories
+    reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
+
+-- staff --
+    update current rank
+
+-- user --
+ DONE be able to provide feedback
+ DONE make a check if a feedback is already sent
+
+-- firebase rules --
+    problem with persistance when user refreshes order (permissions) (auth.guard.ts:44) - isOrdererOrStaff function (maybe should be left like that for security)
+    full firebase rules revisit
+
+-- DRY --
+    implement a better uid and staffuid awaits - create a global function?
+    add order status interface (active, paused)
+    make a function to set/update orderRef
+
+-- style --
+
+-- order-chat html --
+    a problem with the current way of selecting is making the option into a string and the query might fail
+-- homepage --
+DONE add reviews real time

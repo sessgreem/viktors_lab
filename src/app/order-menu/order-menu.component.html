@@ -1,33 +1,33 @@
 <div class="order-menu">
-<!-- <h3></h3> -->
-    <h4>Current rank*</h4>
-   <select [(ngModel)]="currentRank" (ngModelChange)="render($event)">  
-       <option *ngFor="let league of leagues" [value]="league.id">{{ league.name }}</option>
-   </select>
-   
-   <select name="divisions" id="divisions" [(ngModel)]="currentDiv" (ngModelChange)="render($event)">
-    <option *ngFor="let division of divisions"[value]="division.id"> {{ division.name }}</option>
-</select>
-</div> 
+  <!-- <h3></h3> -->
+  <h4>Current rank*</h4>
+  <select [(ngModel)]="currentRank" (ngModelChange)="render($event)">
+    <option *ngFor="let league of leagues" [value]="league.id">{{ league.name }}</option>
+  </select>
+
+  <select name="divisions" id="divisions" [(ngModel)]="currentDiv" (ngModelChange)="render($event)">
+    <option *ngFor="let division of divisions" [value]="division.id"> {{ division.name }}</option>
+  </select>
+</div>
 
 <div>
-    <h4>Desired rank*</h4>
-   <select [(ngModel)]="desiredRank" (ngModelChange)="render($event)">  
-       <option *ngFor="let league of leagues" [value]="league.id">{{ league.name }}</option>
-   </select>
-   
-   <select name="divisions" id="divisions" [(ngModel)]="desiredDiv" (ngModelChange)="render($event)">
-    <option *ngFor="let division of divisions"[value]="division.id"> {{ division.name }}</option>
-</select>
+  <h4>Desired rank*</h4>
+  <select [(ngModel)]="desiredRank" (ngModelChange)="render($event)">
+    <option *ngFor="let league of leagues" [value]="league.id">{{ league.name }}</option>
+  </select>
 
-</div> 
+  <select name="divisions" id="divisions" [(ngModel)]="desiredDiv" (ngModelChange)="render($event)">
+    <option *ngFor="let division of divisions" [value]="division.id"> {{ division.name }}</option>
+  </select>
+
+</div>
 <br>
-<div >
-    Total Divisions:
-        {{ totalDivisions }}
-        <br>
-    Total Price: 
-    {{ chargeAmount }}
+<div>
+  Total Divisions:
+  {{ totalDivisions }}
+  <br>
+  Total Price:
+  {{ chargeAmount }}
 </div>
 
 <button (click)="createOrder()">Create Order Real</button>

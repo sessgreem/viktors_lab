@@ -20,11 +20,35 @@
     <button>
       <a routerLink="/">Navigate Back</a>
     </button>
+    <!-- add loading to confirm completion -->
     <ng-container *ngIf="o.orderStatus == 'Marked as Completed'">
       <button (click)="confirmCompletion(o.orderStatus)">Confirm Completion</button>
     </ng-container>
+    <br>
+    <div>{{o.orderFeed}}</div>
+    <!-- <ng-container *ngIf="o.orderStatus == 'Completed' && !feedbackSent; else thankYou"> -->
+    <ng-container *ngIf="o.orderStatus == 'Completed'">
+      <ng-container *ngIf="o.orderFeedback == false; else thankYou">
+        <select name="starsrating" [(ngModel)]="rating">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+        </select>
+        <br>
+        <textarea style="width:200px; height:50px;" rows="2" cols="2" [(ngModel)]="text"
+          placeholder="Write a review. Remember that it can be shown to other users to see..."></textarea>
+        <button (click)="sendFeedback()">Send Feedback</button>
+      </ng-container>
+    </ng-container>
+    <ng-template #thankYou>
+      <p style="background-color: green; color:white ">Feedback Received! Thanks for your time! :)</p>
+    </ng-template>
 
   </ng-container>
+  <star-rating value="0" totalstars="5" checkedcolor="yellow" uncheckedcolor="black" size="24px" readonly="false"
+    (rate)="onRate($event)"></star-rating>
   <ng-template #staff>
     <div *ngIf="staffauth.staff$ | async as staff">
       <button><a style="text-decoration: none;" routerLink="/staff/dashboard/">Navigate Back</a></button>
