@@ -27,7 +27,9 @@ export class OrderService {
   getAvailableOrders() {
     return this.afs
       .collection("orders", (ref) =>
-        ref.where("orderAssigned", "==", "unassigned")
+        ref
+          .where("orderAssigned", "==", "unassigned")
+          .where("orderCompleted", "==", false)
       )
       .snapshotChanges()
       .pipe(
@@ -48,9 +50,10 @@ export class OrderService {
     return this.staffauth.staff$.pipe(
       switchMap((user) => {
         return this.afs
-          .collection(
-            "orders",
-            (ref) => ref.where("orderAssigned", "array-contains", user.uid) // add another query if the order isnt completed
+          .collection("orders", (ref) =>
+            ref
+              .where("orderAssigned", "array-contains", user.uid)
+              .where("orderCompleted", "==", false)
           )
           .snapshotChanges()
           .pipe(
@@ -114,6 +117,7 @@ export class OrderService {
       orderPassword: "",
       orderAssigned: "unassigned",
       orderFeedback: false,
+      orderCompleted: false,
     };
 
     return orderRef.set(data, {
@@ -166,17 +170,14 @@ export class OrderService {
       })
       .then(() => {
         return orderRef.update({
-          orderStatus: "Booster assigned",
+          orderStatus: "Active",
         });
       });
   }
-  async toggleOrderPauseStatus(orderId, status) {
+  async toggleOrderPause(orderId, status) {
     const orderRef: AngularFirestoreDocument = this.afs
       .collection("orders")
       .doc(orderId);
-    // const { orderStatus } = await this.getOrder(orderId).catch((err) =>
-    //   console.log(err)
-    // );
     if (status === "Paused") {
       return orderRef.update({
         orderStatus: "Active",
@@ -189,15 +190,18 @@ export class OrderService {
       return "orderStatus is unchanged. Status: " + status;
     }
   }
-  confirmCompletion(orderId, status) {
+  confirmCompletion(orderid, status, iscompleted) {
     // const orderRef: AngularFirestoreDocument = this.afs
     //   .collection("orders")
     //   .doc(orderId);
-    if (status === "Marked as Completed") {
+    if (status === "Marked as Completed" && iscompleted) {
       const callable = this.fns.httpsCallable("completeOrder");
-      callable({ orderStatus: status, orderId: orderId })
+      callable({
+        orderId: orderid,
+        orderStatus: status,
+      })
         .pipe(take(1))
-        .subscribe((res) => console.log("from subscribe " + res));
+        .subscribe(() => console.log("Completion finished."));
     }
   }
   markAsCompleted(orderId) {
@@ -207,6 +211,7 @@ export class OrderService {
     // ? if progress == 100
     orderRef.update({
       orderStatus: "Marked as Completed",
+      orderCompleted: true,
     });
   }
   setFeedback(orderId) {

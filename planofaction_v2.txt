@@ -1,11 +1,10 @@
 -- order service --
-DONE when a booster is assigned the orderStatus needs to change
-    confirmCompletion is too slow, need to revisit logic
+ DONE when a booster is assigned the orderStatus needs to change
 
 -- chat service --
-    fix icons to show; make distinct user and staff
-    fix joinusers function
-    make it so that when chat is created the uid is either only the user or an array for both users participated in chat
+ NEXT fix icons to show; make distinct user and staff
+ NEXT fix joinusers function
+ DONE revisited chat creation logic
 
 -- routing --
     unmatched to a 404 page
@@ -35,5 +34,6 @@ DONE when a booster is assigned the orderStatus needs to change
 
 -- order-chat html --
     a problem with the current way of selecting is making the option into a string and the query might fail
+
 -- homepage --
 DONE add reviews real time

@@ -22,7 +22,7 @@
     </button>
     <!-- add loading to confirm completion -->
     <ng-container *ngIf="o.orderStatus == 'Marked as Completed'">
-      <button (click)="confirmCompletion(o.orderStatus)">Confirm Completion</button>
+      <button (click)="confirmCompletion(o.orderStatus, o.orderCompleted)">Confirm Completion</button>
     </ng-container>
     <br>
     <div>{{o.orderFeed}}</div>

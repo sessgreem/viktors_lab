@@ -1,3 +1,5 @@
+import { OrderService } from "./order.service";
+import { AngularFirestoreDocument } from "@angular/fire/firestore/public_api";
 import { StaffauthService } from "./core/services/staffauth.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
@@ -15,7 +17,8 @@ export class ChatService {
     private afs: AngularFirestore,
     private auth: AuthService,
     private router: Router,
-    private staffauth: StaffauthService
+    private staffauth: StaffauthService,
+    private orderService: OrderService
   ) {}
 
   // Returns the documents: the chatid - all the data inside as object
@@ -82,56 +85,82 @@ export class ChatService {
   //   return this.router.navigate(["chats", docRef.id]);
   // }
 
-  async create(id) {
-    const uid = await this.auth.getUser().then((res) => {
-      if (res) return res.uid;
-      else return res;
-    }); // can i implement this better?
-    let staffuid;
-    if (!uid) {
-      staffuid = await this.staffauth.getStaff().then((res) => {
-        if (res) return res.uid;
-        else return res;
-      });
-    }
-    const chatDocRef = this.afs.collection("chats").doc(id);
-    const chat = await this.getChat(id)
+  // async create(id) {
+  //   const uid = await this.auth.getUser().then((res) => {
+  //     if (res) return res.uid;
+  //     else return res;
+  //   }); // can i implement this better?
+  //   let staffuid;
+  //   if (!uid) {
+  //     staffuid = await this.staffauth.getStaff().then((res) => {
+  //       if (res) return res.uid;
+  //       else return res;
+  //     });
+  //   }
+  //   const chatDocRef = this.afs.collection("chats").doc(id);
+  //   const chat = await this.getChat(id)
+  //     .then((res) => {
+  //       console.log("Successfuly got chat ");
+  //       return res;
+  //     })
+  //     .catch((err) => console.log("Unsuccessfuly got chat " + err));
+  //   if (chat) {
+  //     return chatDocRef;
+  //   } else {
+  //     if (uid) {
+  //       const data = {
+  //         uid,
+  //         createdAt: Date.now(),
+  //         count: 0,
+  //         messages: [],
+  //       };
+  //       return chatDocRef
+  //         .set(data, { merge: true })
+  //         .then(() => console.log("set chat successfully UID " + uid))
+  //         .catch((err) => console.log(err));
+  //     } else {
+  //       const data = {
+  //         uid: staffuid,
+  //         createdAt: Date.now(),
+  //         count: 0,
+  //         messages: [],
+  //       };
+  //       return chatDocRef
+  //         .set(data, { merge: true })
+  //         .then(() =>
+  //           console.log("set chat successfully staffUID " + staffuid)
+  //         );
+  //     }
+  //   }
+  // }
+  async create(docId) {
+    const chatDocRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `chats/${docId}`
+    );
+    const chat = await this.getChat(docId)
       .then((res) => {
-        console.log("successfuly got chat ");
         return res;
       })
-      .catch((err) => console.log("unsuccessfuly got chat " + err));
+      .catch((err) => console.log("Unsuccessfuly got chat " + err));
     if (chat) {
       return chatDocRef;
     } else {
-      console.log("ENTERED ELSE CHATDOCREF");
-      if (uid) {
+      const { orderUid } = await this.orderService.getOrder(docId);
+      if (orderUid) {
         const data = {
-          uid,
+          uid: orderUid,
           createdAt: Date.now(),
-          count: 0,
+          count: 0, // ?
           messages: [],
         };
         return chatDocRef
           .set(data, { merge: true })
-          .then(() => console.log("set chat successfully UID " + uid))
-          .catch((err) => console.log(err));
+          .then(() => console.log("Successfuly set chat"));
       } else {
-        const data = {
-          uid: staffuid,
-          createdAt: Date.now(),
-          count: 0,
-          messages: [],
-        };
-        return chatDocRef
-          .set(data, { merge: true })
-          .then(() =>
-            console.log("set chat successfully staffUID " + staffuid)
-          );
+        console.log(`Couldnt get orderUid ${orderUid}`);
       }
     }
   }
-
   async sendMessage(chatId, content) {
     const uid = await this.auth.getUser().then((res) => {
       if (res) return res.uid;

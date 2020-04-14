@@ -39,8 +39,8 @@ export class DashboardComponent implements OnInit {
     else console.log("displayName is empty or undefined " + this.displayName);
   }
   assignStaff(orderId) {
-    return this.orderService.assignStaff(orderId).then((res) => {
-      console.log("Successfuly assigned " + res);
+    return this.orderService.assignStaff(orderId).then(() => {
+      console.log("Successfuly assigned");
     });
   }
 }

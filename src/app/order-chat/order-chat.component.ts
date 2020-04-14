@@ -59,11 +59,11 @@ export class OrderChatComponent implements OnInit {
   }
 
   togglePauseOrder(status) {
-    this.orderService.toggleOrderPauseStatus(this.orderId, status);
+    this.orderService.toggleOrderPause(this.orderId, status);
   }
 
-  confirmCompletion(status) {
-    this.orderService.confirmCompletion(this.orderId, status);
+  confirmCompletion(status, iscompleted) {
+    this.orderService.confirmCompletion(this.orderId, status, iscompleted);
   }
 
   markAsCompleted() {
