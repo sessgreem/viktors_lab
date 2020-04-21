@@ -1,8 +1,8 @@
-import { OrderService } from "./../../order.service";
+import { OrderService } from "./order.service";
 import { AngularFirestoreDocument } from "@angular/fire/firestore/public_api";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
-import { AuthService } from "src/app/auth.service";
+import { AuthService } from "./auth.service";
 import { map } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
@@ -21,7 +21,7 @@ export class FeedbackService {
       .pipe(
         map((actions) => {
           return actions.map((a) => {
-            const data: Object = a.payload.doc.data();
+            const data: any = a.payload.doc.data();
             const id: string = a.payload.doc.id;
             return { ...data, id };
           });
@@ -34,10 +34,10 @@ export class FeedbackService {
       `feedback/${orderId}`
     );
     const data = {
-      rating: rating,
-      text: text,
+      rating,
+      text,
       time: Date.now(),
-      uid: uid,
+      uid,
     };
     return feedbackRef
       .set(data, { merge: true })

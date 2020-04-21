@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 
 import { environment } from "./../environments/environment";
 import { AngularFireModule } from "@angular/fire";
-import { ChatComponent } from "./chat/chat.component";
+// import { ChatComponent } from "./chat/chat.component";
 
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -14,7 +14,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HomeComponent } from "./home/home.component";
 import { UserFormComponent } from "./user-form/user-form.component";
-import { PanelComponent } from "./panel/panel.component";
+// import { PanelComponent } from "./panel/panel.component";
 import { OrderMenuComponent } from "./order-menu/order-menu.component";
 import { OrderChatComponent } from "./order-chat/order-chat.component";
 import { SignupComponent } from "./staff/signup/signup.component";
@@ -23,15 +23,15 @@ import { LoginComponent } from "./staff/login/login.component";
 // import { AuthGuard } from './core/auth.guard';
 import { REGION } from "@angular/fire/functions";
 import { RatingModule } from "ng-starrating";
-import { LatestFeedbackComponent } from './latest-feedback/latest-feedback.component';
+import { LatestFeedbackComponent } from "./latest-feedback/latest-feedback.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent,
+    // ChatComponent,
     HomeComponent,
     UserFormComponent,
-    PanelComponent,
+    // PanelComponent,
     OrderMenuComponent,
     OrderChatComponent,
     SignupComponent,

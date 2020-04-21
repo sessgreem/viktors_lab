@@ -12,7 +12,7 @@
     make it so that /orders/ is unaccessible
 
 -- overall project --
-    restructure directories
+DONE restructure directories
     reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
     implement payment system
 
@@ -28,7 +28,7 @@
     full firebase rules revisit
 
 -- DRY --
-    implement a better uid and staffuid awaits - create a global function?
+    implement a better uid and staffId awaits - create a global function?
     add order status interface (active, paused) // ?
 DONE make a function to set/update orderRef
 
@@ -45,4 +45,4 @@ DONE fix the staffuid stuff
 
 -- cloud functions --
     fix cloud function not to update the orderStatus
-    create a createOrder functions
+    create a createOrder function

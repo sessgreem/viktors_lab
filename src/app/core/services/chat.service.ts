@@ -1,6 +1,6 @@
 import { OrderService } from "./order.service";
 import { AngularFirestoreDocument } from "@angular/fire/firestore/public_api";
-import { StaffauthService } from "./core/services/staffauth.service";
+import { StaffauthService } from "./staffauth.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";

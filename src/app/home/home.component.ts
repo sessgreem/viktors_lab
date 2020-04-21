@@ -1,8 +1,8 @@
 import { FeedbackService } from "./../core/services/feedback.service";
-import { OrderService } from "./../order.service";
+import { OrderService } from "../core/services/order.service";
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../auth.service";
-import { ChatService } from "../chat.service";
+import { AuthService } from "../core/services/auth.service";
+import { ChatService } from "../core/services/chat.service";
 
 @Component({
   selector: "app-home",
@@ -12,16 +12,16 @@ import { ChatService } from "../chat.service";
 export class HomeComponent implements OnInit {
   userChats$;
   userOrders$;
-  email: string = "sess_greem@abv.bg";
-  password: string = "viktor";
+  email = "sess_greem@abv.bg";
+  password = "viktor";
   constructor(
     public auth: AuthService,
     public cs: ChatService,
-    public OrderService: OrderService
+    public orderService: OrderService
   ) {}
 
   ngOnInit() {
     this.userChats$ = this.cs.getUserChats();
-    this.userOrders$ = this.OrderService.getUserOrders();
+    this.userOrders$ = this.orderService.getUserOrders();
   }
 }

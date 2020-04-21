@@ -1,4 +1,4 @@
-import { StaffauthService } from "./core/services/staffauth.service";
+import { StaffauthService } from "./staffauth.service";
 import { AuthService } from "./auth.service";
 import {
   AngularFirestore,

@@ -1,4 +1,4 @@
-import { OrderService } from "./../../order.service";
+import { OrderService } from "../../core/services/order.service";
 import { Observable } from "rxjs";
 import { StaffauthService } from "./../../core/services/staffauth.service";
 import { Component, OnInit } from "@angular/core";
@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   }
 
   changeDisplayName() {
-    if (this.displayName)
+    if (this.displayName) {
       this.staffauth
         .updateDisplayName(this.displayName)
         .then((res) => {
@@ -36,7 +36,9 @@ export class DashboardComponent implements OnInit {
           this.displayName = "";
         })
         .catch((error) => console.log("password didnt not update " + error));
-    else console.log("displayName is empty or undefined " + this.displayName);
+    } else {
+      console.log("displayName is empty or undefined " + this.displayName);
+    }
   }
   assignStaff(orderId) {
     return this.orderService.assignStaff(orderId).then(() => {

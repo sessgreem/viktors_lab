@@ -1,4 +1,4 @@
-import { OrderService } from "./../order.service";
+import { OrderService } from "../core/services/order.service";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -7,11 +7,6 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./order-menu.component.css"],
 })
 export class OrderMenuComponent implements OnInit {
-  constructor(private orderService: OrderService) {}
-
-  ngOnInit(): void {
-    this.render("init");
-  }
   leagues: any[] = [
     { id: 0, name: "Iron", value: 9 },
     { id: 1, name: "Bronze" },
@@ -27,22 +22,30 @@ export class OrderMenuComponent implements OnInit {
     { id: 3, name: "I" },
   ];
 
-  desiredRank: number = 4;
-  desiredDiv: number = 0;
-  currentRank: number = 0;
-  currentDiv: number = 1;
+  desiredRank = 4;
+  desiredDiv = 0;
+  currentRank = 0;
+  currentDiv = 1;
   totalDivisions: number;
-  chargeAmount: number = 10;
+  chargeAmount = 10;
 
   serviceType = "SoloQ";
   server = "EUW";
   priority = false;
 
+  object = {};
+
+  constructor(private orderService: OrderService) {}
+
+  ngOnInit(): void {
+    this.render("init");
+  }
+
   render(event) {
     // console.log(this.totalDivisions); // returned undefined
     if (
       this.desiredRank < this.currentRank ||
-      (this.desiredRank == this.currentRank &&
+      (this.desiredRank === this.currentRank &&
         this.desiredDiv <= this.currentDiv)
     ) {
       // if(this.desiredRank == this.currentRank)
@@ -57,8 +60,6 @@ export class OrderMenuComponent implements OnInit {
       this.chargeAmount = this.totalDivisions * 8.9;
     }
   }
-
-  object = {};
 
   createOrder() {
     //  console.log(this.chargeAmount);

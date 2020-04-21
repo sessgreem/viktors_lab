@@ -2,10 +2,10 @@ import { FeedbackService } from "./../core/services/feedback.service";
 import { StaffauthService } from "./../core/services/staffauth.service";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Observable } from "rxjs";
-import { ChatService } from "../chat.service";
+import { ChatService } from "../core/services/chat.service";
 import { ActivatedRoute } from "@angular/router";
-import { AuthService } from "../auth.service";
-import { OrderService } from "../order.service";
+import { AuthService } from "../core/services/auth.service";
+import { OrderService } from "../core/services/order.service";
 import { StarRatingComponent } from "ng-starrating";
 
 @Component({
