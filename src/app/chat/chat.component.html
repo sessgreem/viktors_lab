@@ -6,8 +6,10 @@
   <div class="chat">
     <div class="msg" *ngFor="let msg of chat.messages; trackBy: trackByCreated">
       <div class="user">
-        <img [src]="msg.user?.photoURL" alt="user photo" style="max-width: 100px;">
+        <img [src]="msg.user?.photoURL" alt="" style="max-width: 100px;">
         <div><span>{{ msg.user?.displayName}}</span></div>
+        <img [src]="msg.staff.photoURL" alt="" style="max-width: 100px;">
+        <div><span>{{ msg.staff.displayName}}</span></div>
       </div>
       <p>{{ msg.content }}</p>
     </div>

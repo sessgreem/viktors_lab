@@ -2,8 +2,9 @@
  DONE when a booster is assigned the orderStatus needs to change
 
 -- chat service --
- NEXT fix icons to show; make distinct user and staff
- NEXT fix joinusers function
+ DONE fix icons to show;
+ DONE make distinct user and staff
+ DONE fix joinusers function
  DONE revisited chat creation logic
 
 -- routing --
@@ -13,6 +14,7 @@
 -- overall project --
     restructure directories
     reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
+    implement payment system
 
 -- staff --
     update current rank
@@ -27,8 +29,8 @@
 
 -- DRY --
     implement a better uid and staffuid awaits - create a global function?
-    add order status interface (active, paused)
-    make a function to set/update orderRef
+    add order status interface (active, paused) // ?
+DONE make a function to set/update orderRef
 
 -- style --
 
@@ -37,3 +39,10 @@
 
 -- homepage --
 DONE add reviews real time
+
+-- chat service --
+DONE fix the staffuid stuff
+
+-- cloud functions --
+    fix cloud function not to update the orderStatus
+    create a createOrder functions

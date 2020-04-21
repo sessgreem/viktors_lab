@@ -21,7 +21,6 @@ export class ChatService {
     private orderService: OrderService
   ) {}
 
-  // Returns the documents: the chatid - all the data inside as object
   get(chatId) {
     return this.afs
       .collection<any>("chats")
@@ -36,20 +35,15 @@ export class ChatService {
         })
       );
   }
+
   getChatDoc(chatId) {
-    return this.afs
-      .collection<any>("chats")
-      .doc(chatId)
-      .valueChanges()
-      .pipe(
-        map((doc) => {
-          return doc;
-        })
-      );
+    return this.afs.collection<any>("chats").doc(chatId).valueChanges();
   }
+
   getChat(chatId) {
     return this.getChatDoc(chatId).pipe(first()).toPromise();
   }
+
   // Returns the current authenticated users chat - its id and data inside as object
   getUserChats() {
     return this.auth.user$.pipe(
@@ -60,7 +54,7 @@ export class ChatService {
           .pipe(
             map((actions) => {
               return actions.map((a) => {
-                const data: Object = a.payload.doc.data(); // create interface
+                const data: any = a.payload.doc.data(); // create interface
                 const id = a.payload.doc.id;
                 return { id, ...data };
               });
@@ -69,70 +63,6 @@ export class ChatService {
       })
     );
   }
-  // Awaits the authenticated users uid and adds new data doc /- navigates to the that new chats/docId | used in create new chat button
-  // async create() {
-  //   const { uid } = await this.auth.getUser();
-
-  //   const data = {
-  //     uid,
-  //     createdAt: Date.now(),
-  //     count: 0,
-  //     messages: []
-  //   };
-
-  //   const docRef = await this.afs.collection("chats").add(data);
-
-  //   return this.router.navigate(["chats", docRef.id]);
-  // }
-
-  // async create(id) {
-  //   const uid = await this.auth.getUser().then((res) => {
-  //     if (res) return res.uid;
-  //     else return res;
-  //   }); // can i implement this better?
-  //   let staffuid;
-  //   if (!uid) {
-  //     staffuid = await this.staffauth.getStaff().then((res) => {
-  //       if (res) return res.uid;
-  //       else return res;
-  //     });
-  //   }
-  //   const chatDocRef = this.afs.collection("chats").doc(id);
-  //   const chat = await this.getChat(id)
-  //     .then((res) => {
-  //       console.log("Successfuly got chat ");
-  //       return res;
-  //     })
-  //     .catch((err) => console.log("Unsuccessfuly got chat " + err));
-  //   if (chat) {
-  //     return chatDocRef;
-  //   } else {
-  //     if (uid) {
-  //       const data = {
-  //         uid,
-  //         createdAt: Date.now(),
-  //         count: 0,
-  //         messages: [],
-  //       };
-  //       return chatDocRef
-  //         .set(data, { merge: true })
-  //         .then(() => console.log("set chat successfully UID " + uid))
-  //         .catch((err) => console.log(err));
-  //     } else {
-  //       const data = {
-  //         uid: staffuid,
-  //         createdAt: Date.now(),
-  //         count: 0,
-  //         messages: [],
-  //       };
-  //       return chatDocRef
-  //         .set(data, { merge: true })
-  //         .then(() =>
-  //           console.log("set chat successfully staffUID " + staffuid)
-  //         );
-  //     }
-  //   }
-  // }
   async create(docId) {
     const chatDocRef: AngularFirestoreDocument<any> = this.afs.doc(
       `chats/${docId}`
@@ -157,7 +87,7 @@ export class ChatService {
           .set(data, { merge: true })
           .then(() => console.log("Successfuly set chat"));
       } else {
-        console.log(`Couldnt get orderUid ${orderUid}`);
+        console.log(`Could not get orderUid ${orderUid}`);
       }
     }
   }
@@ -166,10 +96,10 @@ export class ChatService {
       if (res) return res.uid;
       else return res;
     });
-    let staffuid;
+    let staffId;
     if (!uid) {
-      staffuid = await this.staffauth.getStaff().then((res) => {
-        if (res) return res.uid;
+      staffId = await this.staffauth.getStaff().then((res) => {
+        if (res) return res.staffId;
         else return res;
       });
     }
@@ -182,12 +112,12 @@ export class ChatService {
       };
     } else {
       data = {
-        uid: staffuid,
+        staffId,
         content,
         createdAt: Date.now(),
       };
     }
-    if (uid || staffuid) {
+    if (uid || staffId) {
       const ref = this.afs.collection("chats").doc(chatId);
       return ref.update({
         messages: firestore.FieldValue.arrayUnion(data),
@@ -203,23 +133,37 @@ export class ChatService {
       switchMap((c) => {
         chat = c;
         const uids = Array.from(
-          new Set(c.messages.map((v: { uid: any }) => v.uid))
+          new Set(
+            c.messages.filter((v) => v.uid !== undefined).map((v) => v.uid)
+          )
         );
-        console.log(uids);
-
-        const userDocs = uids.map(
-          (u) => this.afs.doc(`users/${u}`).valueChanges()
-          // vrushta undefined ako suzdatelqt e staff
+        const staffIds = Array.from(
+          new Set(
+            c.messages
+              .filter((v) => v.staffId !== undefined)
+              .map((v) => v.staffId)
+          )
         );
-        const staffDocs = uids.map((u) =>
-          this.afs.doc(`staff/${u}`).valueChanges()
+        // console.log(uids + " StaffID: " + staffIds);
+        const userDocs = uids.map((uid) =>
+          this.afs.doc(`users/${uid}`).valueChanges()
         );
-        return userDocs.length ? combineLatest(staffDocs, userDocs) : of([]); // ne moga da polzvam posle async pipe-ove
+        const staffDocs = staffIds.map((staffId) =>
+          this.afs.doc(`staff/${staffId}`).valueChanges()
+        );
+        const allDocs = userDocs.concat(staffDocs);
+        // console.log("ALL DOCS: " + allDocs);
+        return allDocs.length ? combineLatest(allDocs) : of([]);
       }),
       map((arr) => {
-        arr.forEach((v) => (joinKeys[(<any>v).uid] = v));
+        console.log(arr);
+        arr.forEach((v) => {
+          if ((<any>v).uid) joinKeys[(<any>v).uid] = v;
+          else if ((<any>v).staffId) joinKeys[(<any>v).staffId] = v;
+        });
+        console.log(joinKeys);
         chat.messages = chat.messages.map((v) => {
-          return { ...v, user: joinKeys[v.uid] };
+          return { ...v, user: joinKeys[v.uid], staff: joinKeys[v.staffId] };
         });
         return chat;
       })

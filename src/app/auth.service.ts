@@ -44,7 +44,7 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((credential) => {
-        return this.setUserDoc(credential.user); // create initial user document
+        return this.setUserDoc(credential.user);
       })
       .catch((error) => {
         console.log(error);

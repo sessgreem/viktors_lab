@@ -7,15 +7,16 @@ import { Router } from "@angular/router";
 import { AngularFirestoreDocument } from "@angular/fire/firestore/public_api";
 
 interface Staff {
-  uid: string;
+  staffId: string;
   email: string;
   completedOrders: Array<string>;
   displayName: string;
-  position: Array<string>;
+  position: string;
+  photoURL: string;
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class StaffauthService {
   staff$: Observable<any>;
@@ -25,7 +26,7 @@ export class StaffauthService {
     private router: Router
   ) {
     this.staff$ = this.afAuth.authState.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         if (user) {
           return this.afs.doc<any>(`staff/${user.uid}`).valueChanges();
         } else {
@@ -41,10 +42,10 @@ export class StaffauthService {
   emailSignUp(email: string, password: string) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then(credential => {
+      .then((credential) => {
         return this.setStaffDoc(credential.user);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -52,12 +53,14 @@ export class StaffauthService {
     const staffRef: AngularFirestoreDocument<any> = this.afs.doc(
       `staff/${user.uid}`
     );
+
     const data = {
-      uid: user.uid,
+      staffId: user.uid,
       email: user.email,
       displayName: "Staff",
       completedOrders: [],
-      position: "unassigned"
+      position: "unassigned",
+      photoURL: "",
     };
 
     return staffRef.set(data, { merge: true });
@@ -66,28 +69,26 @@ export class StaffauthService {
   emailSignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
 
   private updateUser(user: Staff, data: any) {
-    return this.afs.doc(`staff/${user.uid}`).update(data);
+    return this.afs.doc(`staff/${user.staffId}`).update(data);
   }
 
   async updateDisplayName(name: string) {
-    let { uid } = await this.getStaff();
-    // let  uid  = this.staff$.subscribe(data => {
-    //   return data;
-    // }); // maybe .then can work but no point
-    if (uid) {
-      let docRef: AngularFirestoreDocument = this.afs.doc(`staff/${uid}`);
+    const { staffId } = await this.getStaff();
+    if (staffId) {
+      const docRef: AngularFirestoreDocument = this.afs.doc(`staff/${staffId}`);
       const data = {
-        displayName: name
+        displayName: name,
       };
       return docRef.update(data);
     } else {
-      return console.log("couldnt updateDisplayName " + name);
+      console.log("Could not update displayName - did not get staff id");
+      return;
     }
   }
 

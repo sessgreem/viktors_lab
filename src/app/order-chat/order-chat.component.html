@@ -2,58 +2,66 @@
   <div>Username - {{ o.orderUsername }}</div>
   <div>Type - {{ o.orderServiceType }}</div>
   <div>Server - {{ o.orderServer }}</div>
-  <div>Status - {{  o.orderStatus }}</div>
+  <div>Status - {{ o.orderStatus }}</div>
   <div>Started Rank - {{ o.orderCurrentRank }}</div>
-  <div>Current Rank - {{  o.orderBoostedRank }}</div>
-  <div>Desired Rank - {{  o.orderDesiredRank }}</div>
+  <div>Current Rank - {{ o.orderBoostedRank }}</div>
+  <div>Desired Rank - {{ o.orderDesiredRank }}</div>
   <ng-container *ngIf="auth.user$ | async as user; else staff">
     <h3></h3>
-    <input [(ngModel)]="accPassword">
+    <input [(ngModel)]="accPassword" />
     <button (click)="updateAccPassword()">Save</button>
     <!-- <ng-container *ngIf="Status == 'Active'; else unPausedTemplate"> -->
     <ng-container *ngIf="o.orderStatus == 'Active'; else unPausedTemplate">
-      <button (click)="togglePauseOrder(o.orderStatus)">Pause Order</button>
+      <button (click)="toggleOrderPause(o.orderStatus)">Pause Order</button>
     </ng-container>
     <ng-template #unPausedTemplate>
-      <button (click)="togglePauseOrder(o.orderStatus)">Continue Order</button>
+      <button (click)="toggleOrderPause(o.orderStatus)">Continue Order</button>
     </ng-template>
     <button>
       <a routerLink="/">Navigate Back</a>
     </button>
     <!-- add loading to confirm completion -->
     <ng-container *ngIf="o.orderStatus == 'Marked as Completed'">
-      <button (click)="confirmCompletion(o.orderStatus, o.orderCompleted)">Confirm Completion</button>
+      <button (click)="confirmCompletion(o.orderStatus, o.orderCompleted)">
+        Confirm Completion
+      </button>
     </ng-container>
-    <br>
-    <div>{{o.orderFeed}}</div>
+    <br />
+    <div>{{ o.orderFeed }}</div>
     <!-- <ng-container *ngIf="o.orderStatus == 'Completed' && !feedbackSent; else thankYou"> -->
     <ng-container *ngIf="o.orderStatus == 'Completed'">
       <ng-container *ngIf="o.orderFeedback == false; else thankYou">
         <select name="starsrating" [(ngModel)]="rating">
-          <option value=1>1</option>
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
-          <option value=5>5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
-        <br>
-        <textarea style="width:200px; height:50px;" rows="2" cols="2" [(ngModel)]="text"
+        <br />
+        <textarea style="width: 200px; height: 50px;" rows="2" cols="2" [(ngModel)]="text"
           placeholder="Write a review. Remember that it can be shown to other users to see..."></textarea>
         <button (click)="sendFeedback()">Send Feedback</button>
       </ng-container>
     </ng-container>
     <ng-template #thankYou>
-      <p style="background-color: green; color:white ">Feedback Received! Thanks for your time! :)</p>
+      <p style="background-color: green; color: white;">
+        Feedback Received! Thanks for your time! :)
+      </p>
     </ng-template>
-
   </ng-container>
   <star-rating value="0" totalstars="5" checkedcolor="yellow" uncheckedcolor="black" size="24px" readonly="false"
     (rate)="onRate($event)"></star-rating>
   <ng-template #staff>
     <div *ngIf="staffauth.staff$ | async as staff">
-      <button><a style="text-decoration: none;" routerLink="/staff/dashboard/">Navigate Back</a></button>
-      <button *ngIf="o.orderStatus != 'Marked as Completed' && o.orderStatus != 'Completed'"
-        (click)="markAsCompleted()">Mark as Completed</button>
+      <button>
+        <a style="text-decoration: none;" routerLink="/staff/dashboard/">Navigate Back</a>
+      </button>
+      <button *ngIf="
+          o.orderStatus != 'Marked as Completed' && o.orderStatus != 'Completed'
+        " (click)="markAsCompleted()">
+        Mark as Completed
+      </button>
     </div>
   </ng-template>
 </ng-container>
@@ -65,15 +73,28 @@
   </div>
   <div class="chat">
     <div class="msg" *ngFor="let msg of chat.messages; trackBy: trackByCreated">
-      <div class="user">
-        <img [src]="msg.user?.photoURL" alt="" style="max-width: 100px;">
-        <div><span>{{ msg.user?.displayName}}</span></div>
-      </div>
-      <p>{{ msg.content }}</p>
+      <ng-container *ngIf="msg.user; else staff">
+        <div class="user">
+          <img [src]="msg.user?.photoURL" alt="" style="max-width: 100px;" />
+          <div>
+            <span>{{ msg.user?.displayName }}</span>
+          </div>
+        </div>
+        <p>{{ msg.content }}</p>
+      </ng-container>
+      <ng-template #staff>
+        <div class="staff">
+          <img [src]="msg.staff?.photoURL" alt="" style="max-width: 100px;" />
+          <div>
+            <span>{{ msg.staff?.displayName }}</span>
+          </div>
+        </div>
+        <p style="background-color: rgba(0, 255, 0, 0.349);">{{ msg.content }}</p>
+      </ng-template>
     </div>
   </div>
   <div class="form">
-    <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)">
-    <button (click)="submit(chat.id)"> Send </button>
+    <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" />
+    <button (click)="submit(chat.id)">Send</button>
   </div>
 </ng-container>

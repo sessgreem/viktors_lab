@@ -5,14 +5,14 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
+  Router,
 } from "@angular/router";
 import { tap, map, take, first } from "rxjs/operators";
 import { AuthService } from "../auth.service";
 import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthGuard implements CanActivate {
   constructor(
@@ -23,31 +23,31 @@ export class AuthGuard implements CanActivate {
   ) {}
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let orderId = next.params.id;
-    const uid = await this.auth.getUser().then(res => {
+    const uid = await this.auth.getUser().then((res) => {
       if (res) return res.uid;
       else return res;
     });
-    let staffuid;
+    let staffId;
     if (!uid) {
-      staffuid = await this.staffauth.getStaff().then(res => {
-        if (res) return res.uid;
+      staffId = await this.staffauth.getStaff().then((res) => {
+        if (res) return res.staffId;
         else return res;
       });
     }
-    if (uid || staffuid) {
+    if (uid || staffId) {
       let order = await this.orderService
         .getOrder(orderId)
-        .then(res => {
+        .then((res) => {
           return res;
         })
-        .catch(err => {
+        .catch((err) => {
           console.log("Did not not get order " + err);
         });
       if (!order) {
         this.router.navigate(["/"]);
         return false;
       }
-      if (uid === order.orderUid || order.orderAssigned.includes(staffuid)) {
+      if (uid === order.orderUid || order.orderAssigned.includes(staffId)) {
         return true;
       } else {
         console.log("Unassigned staff or unauthorized user.");
@@ -60,13 +60,3 @@ export class AuthGuard implements CanActivate {
     }
   }
 }
-// return this.auth.user$.pipe(
-//   take(1),
-//   map(user => {
-//     if (user) {
-//       return true;
-//     } else {
-//       this.router.navigate(["/"]);
-//       return false;
-//     }
-//   })

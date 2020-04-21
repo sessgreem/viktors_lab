@@ -18,12 +18,11 @@ export class OrderChatComponent implements OnInit {
   order$: Observable<any>;
 
   orderId: string;
-  accPassword: string = "viktor";
+  accPassword = "viktor";
   newMsg: string;
 
   rating: number;
   text: string;
-  // feedbackSent: boolean = false;
 
   constructor(
     public cs: ChatService,
@@ -36,18 +35,18 @@ export class OrderChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderId = this.route.snapshot.paramMap.get("id");
-    this.cs.create(this.orderId).then((res) => {
+    this.cs.create(this.orderId).then(() => {
       const source = this.cs.get(this.orderId);
       this.chat$ = this.cs.joinUsers(source);
     });
     this.order$ = this.orderService.getCurrentOrder(this.orderId);
   }
 
-  // submit uses two-way data binding for the msg and needs the chatid from async chat$ observable
   submit(chatId) {
     this.cs.sendMessage(chatId, this.newMsg);
     this.newMsg = "";
   }
+
   // When looping over real-time array in Angular - trackBy method is needed - tells Angular to only re-render items that have changed
   trackByCreated(i, msg) {
     return msg.createdAt;
@@ -58,7 +57,7 @@ export class OrderChatComponent implements OnInit {
     this.orderService.updatePassword(this.orderId, this.accPassword);
   }
 
-  togglePauseOrder(status) {
+  toggleOrderPause(status) {
     this.orderService.toggleOrderPause(this.orderId, status);
   }
 
