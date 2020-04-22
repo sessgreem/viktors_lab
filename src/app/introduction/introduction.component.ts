@@ -24,16 +24,16 @@ export class IntroductionComponent implements OnInit {
       toolDesc: "Cloud Functions",
     },
     {
-      toolUrl: "../../assets/nodejs.svg",
-      toolDesc: "Node.js",
-    },
-    {
       toolUrl: "../../assets/HTML5_logo_and_wordmark.svg",
       toolDesc: "HTML",
     },
     {
       toolUrl: "../../assets/CSS.3.svg",
       toolDesc: "CSS",
+    },
+    {
+      toolUrl: "../../assets/nodejs.svg",
+      toolDesc: "Node.js",
     },
     {
       toolUrl: "../../assets/Visual_Studio_Code_1.35_icon.svg",

@@ -3,4 +3,24 @@ body {
   background-color: #141917;
   color: white;
   font-family: 'Segoe UI', Montserrat, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  margin: 0;
+}
+
+.primaryButton {
+  background-color: #00AF69;
+  border-radius: 0.8rem;
+  border-style: none;
+  width: 15rem;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+}
+
+button {
+  font-family: Montserrat;
 }

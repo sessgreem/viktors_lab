@@ -48,10 +48,10 @@ const routes: Routes = [
     path: "staff/login",
     component: LoginComponent,
   },
-  {
-    path: "**",
-    redirectTo: "/", // create a 404 page with timeout redirect
-  },
+  // {
+  //   path: "**",
+  //   redirectTo: "/", // create a 404 page with timeout redirect
+  // },
   {
     path: "introduction",
     component: IntroductionComponent,

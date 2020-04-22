@@ -1,43 +1,54 @@
-@media only screen and (max-width: 599px) {
-  .wrapper {
-    padding: 0 30px 10px;
-  }
-
-  .header {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-
-  .logo {
-    max-width: 80vw;
-  }
-
-  .content h3 {
-    /* font-weight: bold; */
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-
-  .content p {
-    font-size: 16px;
-
-  }
-
-  .primaryButton {
-    margin-bottom: 30px;
-    margin-top: 30px;
-  }
-
-  .content h4 {
-    margin-bottom: 20px;
-  }
-
-  .toolLogo {
-    max-width: 40px;
-    max-height: 40px;
-  }
-
-  .toolDecs {
-    font-size: 10px;
-  }
+/* @media only screen and (max-width: 599px) { */
+.wrapper {
+  padding: 0 1.8rem 0.8rem;
 }
+
+.header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  max-width: 80vw;
+}
+
+.content h3 {
+  /* font-weight: bold; */
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.content p {
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.primaryButton {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.content h4 {
+  margin-bottom: 1.2rem;
+}
+
+.toolLogo {
+  max-width: 4rem;
+  max-height: 3rem;
+}
+
+.toolDesc {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+
+.tool {
+  width: 50%;
+}
+
+.tool:nth-child(n+3) {
+  margin-top: 1rem;
+}
+
+/* } */
