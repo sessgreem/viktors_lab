@@ -1,3 +1,4 @@
+import { IntroductionComponent } from "./introduction/introduction.component";
 // import { FireguardGuard } from "./core/guards/fireguard.guard";
 import { LoginComponent } from "./staff/login/login.component";
 import { DashboardComponent } from "./staff/dashboard/dashboard.component";
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: "**",
     redirectTo: "/", // create a 404 page with timeout redirect
+  },
+  {
+    path: "introduction",
+    component: IntroductionComponent,
   },
 ];
 

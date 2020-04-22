@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="header" fxLayoutAlign="center">
+    <img src="../../assets/viktorslab_3D.png" class="logo" />
+  </div>
+  <div class="content">
+    <h3>About Project</h3>
+    <p>
+      This is my prototype for a future project and a business idea. My goal as
+      a software developer is to find solutions to real world problems and
+      create new business ventures.<br />My goal with this project is to expand
+      my knowledge in Web Development and implement the core features of the
+      project.
+    </p>
+    <button class="primaryButton" fxLayoutAlign="center">
+      Continue to Application
+    </button>
+    <h4>Tools used...</h4>
+    <div
+      *ngFor="let t of tools"
+      class="tools"
+      fxLayout.xs="row wrap"
+      fxLayoutGap.xs="5x"
+      fxFlex.xs="20"
+    >
+      <div class="tool">
+        <img [src]="t.toolLogoUrl" alt="toolLogo" class="toolLogo" />
+        <span class="toolDesc">{{ t.toolDesc }}</span>
+      </div>
+    </div>
+  </div>
+</div>

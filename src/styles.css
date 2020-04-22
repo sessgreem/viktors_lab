@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #141917;
+  color: white;
+  font-family: 'Segoe UI', Montserrat, Geneva, Verdana, sans-serif;
+}

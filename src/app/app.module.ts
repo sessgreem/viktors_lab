@@ -24,7 +24,8 @@ import { LoginComponent } from "./staff/login/login.component";
 import { REGION } from "@angular/fire/functions";
 import { RatingModule } from "ng-starrating";
 import { LatestFeedbackComponent } from "./latest-feedback/latest-feedback.component";
-
+import { IntroductionComponent } from "./introduction/introduction.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { LatestFeedbackComponent } from "./latest-feedback/latest-feedback.compo
     DashboardComponent,
     LoginComponent,
     LatestFeedbackComponent,
+    IntroductionComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { LatestFeedbackComponent } from "./latest-feedback/latest-feedback.compo
     FormsModule,
     ReactiveFormsModule,
     RatingModule,
+    FlexLayoutModule,
   ],
   providers: [{ provide: REGION, useValue: "europe-west1" }],
   bootstrap: [AppComponent],
