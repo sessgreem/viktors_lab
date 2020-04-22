@@ -1,6 +1,7 @@
-/* @media only screen and (max-width: 599px) { */
 .wrapper {
   padding: 0 1.8rem 0.8rem;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .header {
@@ -13,7 +14,6 @@
 }
 
 .content h3 {
-  /* font-weight: bold; */
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -28,10 +28,6 @@
   margin-top: 2rem;
 }
 
-.content h4 {
-  margin-bottom: 1.2rem;
-}
-
 .toolLogo {
   max-width: 4rem;
   max-height: 3rem;
@@ -42,13 +38,54 @@
   margin-top: 0.5rem;
 }
 
-
-.tool {
-  width: 50%;
-}
-
 .tool:nth-child(n+3) {
   margin-top: 1rem;
 }
 
-/* } */
+.tool {
+  width: 25%;
+}
+
+@media only screen and (max-width: 599px) {
+  .tool {
+    width: 50%;
+  }
+}
+
+
+@media only screen and (min-width: 960px) {
+
+  .content h3 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+
+  .toolLogo {
+    max-width: 5rem;
+    max-height: 4rem;
+  }
+
+  .toolDesc {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .primaryButton {
+    width: 25rem;
+    font-size: 1.5rem;
+  }
+
+  .primaryButton {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+
+  .header {
+    margin: 0;
+  }
+
+}

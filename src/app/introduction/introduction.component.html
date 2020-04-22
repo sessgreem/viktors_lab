@@ -17,12 +17,12 @@
       </button>
     </div>
     <h3>Tools used...</h3>
-    <div class="tools" fxLayout.xs="row wrap">
+    <div class="tools" fxLayout="row wrap">
       <div
         *ngFor="let t of tools"
         class="tool"
-        fxLayoutAlign.xs="center center"
-        fxLayout.xs="column"
+        fxLayoutAlign="center center"
+        fxLayout="column"
       >
         <img [src]="t.toolUrl" alt="toolLogo" class="toolLogo" />
         <span class="toolDesc">{{ t.toolDesc }}</span>
