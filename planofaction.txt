@@ -3,7 +3,6 @@
     make it so that /orders/ is unaccessible
 
 -- overall project --
-DONE restructure directories
     reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
     implement payment system
 
@@ -19,25 +18,26 @@ DONE restructure directories
     add order status interface (active, paused) // ?
 DONE make a function to set/update orderRef
 
--- order-chat html --
-    a problem with the current way of selecting is making the option into a string and the query might fail
-
 -- Cloud Functions --
     fix cloud function not to update the orderStatus
     create a createOrder function
 
+-- General --
+    navigation is broken
+    staff login - tries to go to dashboard in even if log in details not correct
+
 -- Styling --
 DONE create introduction page
-     create navigation component
-     track order page (order details, boost progress, tip, extend, )
-     need help component
-     chat in a different component
+     create navigation component\\
+     track order page (order details, boost progress, tip, extend)
+     need help component\\
+     chat in a different component\\
      footer component
-     staff dashboard page
+     staff dashboard page\\
      login form component
-     payment providers component
-     feedback component -- owl carousel
+     payment providers component\\
+     feedback component -- owl carousel?\\
      checkout component ?
      order scrollbar component ? ng-perfect-scrollbar / particles-js
-     lol-boost component / lol-duo-boost component  with if statements on scrollbar chosen
+     lol-boost component / lol-duo-boost component with if statements on scrollbar chosen(routing?) // order-menu?\\
      checkout component -- ngx-smart-modal

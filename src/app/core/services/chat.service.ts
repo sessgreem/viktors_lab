@@ -158,8 +158,8 @@ export class ChatService {
       map((arr) => {
         console.log(arr);
         arr.forEach((v) => {
-          if ((<any>v).uid) joinKeys[(<any>v).uid] = v;
-          else if ((<any>v).staffId) joinKeys[(<any>v).staffId] = v;
+          if ((v as any).uid) joinKeys[(v as any).uid] = v;
+          else if ((v as any).staffId) joinKeys[(v as any).staffId] = v;
         });
         console.log(joinKeys);
         chat.messages = chat.messages.map((v) => {

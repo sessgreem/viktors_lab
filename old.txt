@@ -2,7 +2,7 @@
 DONE make it so that only the og-user can change password
 DONE set data function to be adding assignedSID
 DONE user needs to be able to pause the order
-    when a booster is assigned the orderStatus needs to change
+DONE when a booster is assigned the orderStatus needs to change
 
 -- adjust the authguard --
 DONE - make it so that only the og-user can enter the order details
@@ -11,12 +11,10 @@ DONE staff can enter assigned orders
 
 -- routing --
 DONE make unmatched routes home
-    unmatched to a 404 page
-    make it so that /orders/ is unaccessible
 
 -- overall project --
-    restructure directories
-    reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
+DONE restructure directories
+     reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
 
 -- staff --
 DONE created staffauth.service with email/pass functions
@@ -33,14 +31,14 @@ DONE mark a job as completed
 
 -- user --
 DONE complete order
-    and provide feedback
+DONE and provide feedback
 
 -- chat service --
 DONE figure out why it doesnt create new chat with new order
 DONE make is so that assigned staff and og-user can chat
 DONE needs to be able to chat with user
-    fix icons to show; make distinct user and staff
-    fix joinusers function
+DONE fix icons to show; make distinct user and staff
+DONE fix joinusers function
 
 -- firebase rules --
 DONE created basic firebase rules
@@ -56,8 +54,3 @@ DONE check why is it starting twice - [its normal because the browser and some C
     implement a better uid and staffuid awaits - create a global function?
     add order status interface (active, paused)
     make a function to set/update orderRef
-
--- style --
-    style login
-    style dashboard
-    style order

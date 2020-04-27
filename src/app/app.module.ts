@@ -26,6 +26,11 @@ import { RatingModule } from "ng-starrating";
 import { LatestFeedbackComponent } from "./latest-feedback/latest-feedback.component";
 import { IntroductionComponent } from "./introduction/introduction.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { NavigationComponent } from "./navigation/navigation.component";
+import { HelpContactComponent } from "./help-contact/help-contact.component";
+import { ChatComponent } from "./chat/chat.component";
+import { OrderDetailsComponent } from "./order-details/order-details.component";
+import { SendFeedbackComponent } from "./send-feedback/send-feedback.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +45,11 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     LoginComponent,
     LatestFeedbackComponent,
     IntroductionComponent,
+    NavigationComponent,
+    HelpContactComponent,
+    ChatComponent,
+    OrderDetailsComponent,
+    SendFeedbackComponent,
   ],
   imports: [
     BrowserModule,

@@ -38,17 +38,22 @@
   margin-top: 0.5rem;
 }
 
-.tool:nth-child(n+3) {
+.tool:nth-child(n+5) {
   margin-top: 1rem;
 }
 
 .tool {
   width: 25%;
+  text-align: center;
 }
 
 @media only screen and (max-width: 599px) {
   .tool {
     width: 50%;
+  }
+
+  .tool:nth-child(n+3) {
+    margin-top: 1rem;
   }
 }
 
@@ -77,9 +82,6 @@
   .primaryButton {
     width: 25rem;
     font-size: 1.5rem;
-  }
-
-  .primaryButton {
     margin-bottom: 3rem;
     margin-top: 3rem;
   }

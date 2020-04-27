@@ -22,7 +22,7 @@ import { AuthGuard } from "./core/guards/auth.guard";
 // const redirectToHome = () => redirectLoggedInTo(["/"]);
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "lol-boost", component: HomeComponent },
   // {
   //   path: "chats/:id",
   //   component: ChatComponent,
@@ -53,7 +53,7 @@ const routes: Routes = [
   //   redirectTo: "/", // create a 404 page with timeout redirect
   // },
   {
-    path: "introduction",
+    path: "",
     component: IntroductionComponent,
   },
 ];

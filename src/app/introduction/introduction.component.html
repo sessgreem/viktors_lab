@@ -1,8 +1,8 @@
-<div class="wrapper">
-  <div class="header" fxLayoutAlign="center">
+<ng-container class="wrapper">
+  <section class="header" fxLayoutAlign="center">
     <img src="../../assets/viktorslab_3D.png" class="logo" />
-  </div>
-  <div class="content" fxLayout="column">
+  </section>
+  <section class="content" fxLayout="column">
     <h3>About Project</h3>
     <p>
       This is my prototype for a future project and a business idea. My goal as
@@ -12,21 +12,16 @@
       project.
     </p>
     <div fxLayoutAlign="center">
-      <button class="primaryButton">
+      <button [routerLink]="'lol-boost'" class="primaryButton">
         Continue to Application
       </button>
     </div>
     <h3>Tools used...</h3>
     <div class="tools" fxLayout="row wrap">
-      <div
-        *ngFor="let t of tools"
-        class="tool"
-        fxLayoutAlign="center center"
-        fxLayout="column"
-      >
+      <div *ngFor="let t of tools" class="tool" fxLayoutAlign="center center" fxLayout="column">
         <img [src]="t.toolUrl" alt="toolLogo" class="toolLogo" />
         <span class="toolDesc">{{ t.toolDesc }}</span>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+</ng-container>
