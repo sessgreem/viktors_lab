@@ -1,1 +1,12 @@
 <app-navigation></app-navigation>
+<section class="header">
+  <h2>Track Your Order</h2>
+  <p>
+    Here you can track your order and chat with the booster. Check the other
+    options below.
+  </p>
+</section>
+<ng-container *ngIf="order$ | async as o; else Loading"> </ng-container>
+<ng-template #Loading>
+  <!-- insert loading -->
+</ng-template>
