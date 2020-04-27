@@ -27,4 +27,17 @@ DONE make a function to set/update orderRef
     create a createOrder function
 
 -- Styling --
-    create introduction page
+DONE create introduction page
+     create navigation component
+     track order page (order details, boost progress, tip, extend, )
+     need help component
+     chat in a different component
+     footer component
+     staff dashboard page
+     login form component
+     payment providers component
+     feedback component -- owl carousel
+     checkout component ?
+     order scrollbar component ? ng-perfect-scrollbar / particles-js
+     lol-boost component / lol-duo-boost component  with if statements on scrollbar chosen
+     checkout component -- ngx-smart-modal
