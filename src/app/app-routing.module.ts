@@ -1,3 +1,4 @@
+import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { IntroductionComponent } from "./introduction/introduction.component";
 // import { FireguardGuard } from "./core/guards/fireguard.guard";
 import { LoginComponent } from "./staff/login/login.component";
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: "",
     component: IntroductionComponent,
+  },
+  {
+    path: "orderv2/:id",
+    component: OrderDetailsComponent,
   },
 ];
 

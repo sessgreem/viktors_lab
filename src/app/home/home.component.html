@@ -25,7 +25,7 @@
         <h3>My Orders</h3>
         <ul>
           <li *ngFor="let order of userOrders$ | async">
-            <a style="color: yellow" [routerLink]="'/orders/' + order.id">Order Details - {{ order.id }} -
+            <a style="color: yellow" [routerLink]="'/orderv2/' + order.id">Order Details - {{ order.id }} -
               {{ order.orderPassword }}
             </a>
           </li>

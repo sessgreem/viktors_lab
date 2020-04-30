@@ -16,9 +16,6 @@ export class OrderChatComponent implements OnInit {
   orderId: string;
   accPassword = "viktor";
 
-  rating: number;
-  text: string;
-
   constructor(
     public auth: AuthService,
     public staffauth: StaffauthService,

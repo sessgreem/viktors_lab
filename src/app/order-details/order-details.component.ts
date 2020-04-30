@@ -1,3 +1,5 @@
+import { OrderService } from "./../core/services/order.service";
+import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -7,11 +9,29 @@ import { Observable } from "rxjs";
   styleUrls: ["./order-details.component.css"],
 })
 export class OrderDetailsComponent implements OnInit {
-  order$: Observable<any>;
+  orders$: Observable<any>;
   orderId: string;
   accPassword = "viktor";
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.orderId = this.route.snapshot.paramMap.get("id");
+    this.orders$ = this.orderService.getCurrentOrder(this.orderId);
+  }
+
+  toggleOrderPause(status) {
+    this.orderService.toggleOrderPause(this.orderId, status);
+  }
+
+  confirmCompletion(status, iscompleted) {
+    this.orderService.confirmCompletion(this.orderId, status, iscompleted);
+  }
+
+  markAsCompleted() {
+    this.orderService.markAsCompleted(this.orderId);
+  }
 }

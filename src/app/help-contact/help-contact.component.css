@@ -1,0 +1,22 @@
+.help-contact {
+  background-color: green;
+  padding: 1rem;
+  text-align: center;
+}
+
+.help-contact h2 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.help-contact p {
+  margin: .5rem auto 1rem;
+  max-width: 250px;
+}
+
+.help-contact button {
+  background-color: #100E1D;
+  font-size: 1rem;
+  margin: 0 auto;
+  width: 150px;
+}

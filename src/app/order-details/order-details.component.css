@@ -1,0 +1,33 @@
+.order-status span {
+  color: rgb(0, 255, 0);
+  font-weight: 500;
+}
+
+.order-rank img {
+  max-width: 90px;
+  /* max-height: 100px; */
+}
+
+.order-rank {
+  align-items: center;
+}
+
+.bar-progress {
+  margin-top: .5rem;
+}
+
+.pauseButton {
+  padding: 1rem;
+}
+
+.content-tip button {
+  padding: 0.5rem;
+  width: 100px;
+}
+
+.content-extend button {
+  background-color: blue;
+  /* padding: .5rem; */
+  width: 150px;
+  margin-bottom: 2rem;
+}

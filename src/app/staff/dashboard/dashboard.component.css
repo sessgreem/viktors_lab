@@ -1,0 +1,57 @@
+/* .order-box {
+background-color: ;
+} */
+.username {
+  background-color: rgb(0, 0, 255);
+}
+
+.order-details {
+  padding: .5rem;
+  background-color: rgb(17, 17, 17);
+  border-color: rgb(59, 59, 59);
+  border-style: solid;
+  border-radius: 1px;
+}
+
+.detail h5 {
+  display: inline;
+}
+
+.detail span {
+  float: right;
+}
+
+.order-status {
+  background-color: rgb(0, 190, 0);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.order-box:nth-child(n+2) {
+  margin-top: 1rem;
+}
+
+.order-box a {
+  color: white;
+  text-transform: capitalize;
+}
+
+.order-box> :last-child {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+
+}
+
+.order-join-chat {
+  background-color: #6E6E6E;
+}
+
+.order-take-job {
+  background-color: rgb(0, 212, 28);
+}
+
+.available {
+  background-color: #006092;
+}
