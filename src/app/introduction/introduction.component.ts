@@ -8,43 +8,43 @@ import { Component, OnInit } from "@angular/core";
 export class IntroductionComponent implements OnInit {
   tools = [
     {
-      toolUrl: "../../assets/angular.svg",
+      toolUrl: "../../assets/tools/angular.svg",
       toolDesc: "Angular",
     },
     {
-      toolUrl: "../../assets/typescript_community.svg",
+      toolUrl: "../../assets/tools/typescript_community.svg",
       toolDesc: "TypeScript",
     },
     {
-      toolUrl: "../../assets/firebase-logo.svg",
+      toolUrl: "../../assets/tools/firebase-logo.svg",
       toolDesc: "Firebase",
     },
     {
-      toolUrl: "../../assets/google-cloud-functions-seeklogo.com.svg",
+      toolUrl: "../../assets/tools/google-cloud-functions-seeklogo.com.svg",
       toolDesc: "Cloud Functions",
     },
     {
-      toolUrl: "../../assets/HTML5_logo_and_wordmark.svg",
+      toolUrl: "../../assets/tools/HTML5_logo_and_wordmark.svg",
       toolDesc: "HTML",
     },
     {
-      toolUrl: "../../assets/CSS.3.svg",
+      toolUrl: "../../assets/tools/CSS.3.svg",
       toolDesc: "CSS",
     },
     {
-      toolUrl: "../../assets/nodejs.svg",
+      toolUrl: "../../assets/tools/nodejs.svg",
       toolDesc: "Node.js",
     },
     {
-      toolUrl: "../../assets/Visual_Studio_Code_1.35_icon.svg",
+      toolUrl: "../../assets/tools/Visual_Studio_Code_1.35_icon.svg",
       toolDesc: "VS Code",
     },
     {
-      toolUrl: "../../assets/Adobe_XD_CC_icon.svg",
+      toolUrl: "../../assets/tools/Adobe_XD_CC_icon.svg",
       toolDesc: "Experience Design",
     },
     {
-      toolUrl: "../../assets/Adobe_Photoshop_CC_icon.svg",
+      toolUrl: "../../assets/tools/Adobe_Photoshop_CC_icon.svg",
       toolDesc: "Photoshop",
     },
   ];

@@ -5,7 +5,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-latest-feedback",
   templateUrl: "./latest-feedback.component.html",
-  styleUrls: ["./latest-feedback.component.css"],
+  styleUrls: ["./latest-feedback.component.scss"],
 })
 export class LatestFeedbackComponent implements OnInit {
   feedback$: Observable<any>;

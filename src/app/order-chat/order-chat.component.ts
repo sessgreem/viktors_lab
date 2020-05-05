@@ -8,7 +8,7 @@ import { OrderService } from "../core/services/order.service";
 @Component({
   selector: "app-order-chat",
   templateUrl: "./order-chat.component.html",
-  styleUrls: ["./order-chat.component.css"],
+  styleUrls: ["./order-chat.component.scss"],
 })
 export class OrderChatComponent implements OnInit {
   order$: Observable<any>;

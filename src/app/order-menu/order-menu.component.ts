@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "app-order-menu",
   templateUrl: "./order-menu.component.html",
-  styleUrls: ["./order-menu.component.css"],
+  styleUrls: ["./order-menu.component.scss"],
 })
 export class OrderMenuComponent implements OnInit {
   leagues: any[] = [

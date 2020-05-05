@@ -1,33 +1,145 @@
-<div class="order-menu">
-  <!-- <h3></h3> -->
-  <h4>Current rank*</h4>
-  <select [(ngModel)]="currentRank" (ngModelChange)="render($event)">
-    <option *ngFor="let league of leagues" [value]="league.id">{{ league.name }}</option>
-  </select>
+<section class="header">
+  <app-navigation></app-navigation>
+  <h2>Play with a Pro</h2>
+  <h3>League Boosting</h3>
+  <p>
+    Let a professional player play on your account to quickly get to your
+    desired division!
+  </p>
+</section>
+<section class="content">
+  <h3 class="content-heading">Your Current Rank<span> *</span></h3>
+  <p>Select your Current Rank below.</p>
+  <div class="order-menu" fxLayout="row">
+    <div
+      class="order-selections"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutAlign="space-between"
+    >
+      <div class="select-box">
+        <h6>Current Tier</h6>
+        <select [(ngModel)]="currentRank" (ngModelChange)="render($event)">
+          <option *ngFor="let league of leagues" [value]="league.id">{{
+            league.name
+          }}</option>
+        </select>
+      </div>
+      <div class="select-box">
+        <h6>Current Division</h6>
+        <select
+          name="divisions"
+          id="divisions"
+          [(ngModel)]="currentDiv"
+          (ngModelChange)="render($event)"
+        >
+          <option *ngFor="let division of divisions" [value]="division.id">
+            {{ division.name }}</option
+          >
+        </select>
+      </div>
+      <div class="select-box">
+        <h6>Current LP</h6>
+        <select
+          name="divisions"
+          id="divisions"
+          [(ngModel)]="currentDiv"
+          (ngModelChange)="render($event)"
+        >
+          <option *ngFor="let division of divisions" [value]="division.id">
+            {{ division.name }}</option
+          >
+        </select>
+      </div>
+    </div>
+    <div
+      class="order-rank-img"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutAlign="end center"
+    >
+      <img src="../../assets/rank-images/gold_4.png" alt="" />
+      <span>Gold IV</span>
+    </div>
+  </div>
 
-  <select name="divisions" id="divisions" [(ngModel)]="currentDiv" (ngModelChange)="render($event)">
-    <option *ngFor="let division of divisions" [value]="division.id"> {{ division.name }}</option>
-  </select>
-</div>
+  <h3 class="content-heading">Desired Rank<span> *</span></h3>
+  <p>Select your Desired Rank below.</p>
+  <div class="order-menu" fxLayout="row">
+    <div
+      class="order-selections"
+      fxFlex="55"
+      fxLayout="column"
+      fxLayoutAlign="space-between"
+    >
+      <div class="select-box">
+        <h6>Desired Tier</h6>
+        <select [(ngModel)]="desiredRank" (ngModelChange)="render($event)">
+          <option *ngFor="let league of leagues" [value]="league.id">{{
+            league.name
+          }}</option>
+        </select>
+      </div>
+      <div class="select-box">
+        <h6>Desired Division</h6>
+        <select
+          name="divisions"
+          id="divisions"
+          [(ngModel)]="desiredDiv"
+          (ngModelChange)="render($event)"
+        >
+          <option *ngFor="let division of divisions" [value]="division.id">
+            {{ division.name }}</option
+          >
+        </select>
+      </div>
+      <div class="half" fxLayout="row" fxLayoutAlign="space-between start">
+        <div class="select-box" fxFlex="45">
+          <h6>Server</h6>
+          <select
+            name="divisions"
+            id="divisions"
+            [(ngModel)]="currentDiv"
+            (ngModelChange)="render($event)"
+          >
+            <option *ngFor="let division of divisions" [value]="division.id">
+              {{ division.name }}</option
+            >
+          </select>
+        </div>
+        <div class="select-box" fxFlex="50">
+          <h6>Queue</h6>
+          <select
+            name="divisions"
+            id="divisions"
+            [(ngModel)]="currentDiv"
+            (ngModelChange)="render($event)"
+          >
+            <option *ngFor="let division of divisions" [value]="division.id">
+              {{ division.name }}</option
+            >
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      class="order-rank-img"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutAlign="end center"
+    >
+      <img src="../../assets/rank-images/platinum_4.png" alt="" />
+      <span>Platinum IV</span>
+    </div>
+  </div>
+</section>
 
-<div>
-  <h4>Desired rank*</h4>
-  <select [(ngModel)]="desiredRank" (ngModelChange)="render($event)">
-    <option *ngFor="let league of leagues" [value]="league.id">{{ league.name }}</option>
-  </select>
-
-  <select name="divisions" id="divisions" [(ngModel)]="desiredDiv" (ngModelChange)="render($event)">
-    <option *ngFor="let division of divisions" [value]="division.id"> {{ division.name }}</option>
-  </select>
-
-</div>
-<br>
+<!-- <button (click)="createOrder()">Create Order Real</button> -->
+<!-- <br />
 <div>
   Total Divisions:
   {{ totalDivisions }}
-  <br>
+  <br />
   Total Price:
   {{ chargeAmount }}
-</div>
-
-<button (click)="createOrder()">Create Order Real</button>
+</div> -->

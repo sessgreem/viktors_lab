@@ -4,7 +4,7 @@ import { FeedbackService } from "../core/services/feedback.service";
 @Component({
   selector: "app-send-feedback",
   templateUrl: "./send-feedback.component.html",
-  styleUrls: ["./send-feedback.component.css"],
+  styleUrls: ["./send-feedback.component.scss"],
 })
 export class SendFeedbackComponent implements OnInit {
   @Input() orderId: string;

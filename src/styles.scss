@@ -2,7 +2,6 @@ $background-color: #141917;
 
 body {
   background-color: $background-color;
-  color: white;
   font-family: 'Segoe UI', Montserrat, Geneva, Verdana, sans-serif;
   margin: 0;
 }
@@ -11,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #fff;
 }
 
 .primaryButton {
@@ -65,6 +65,12 @@ a {
 .header h2 {
   padding-top: 5rem;
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h3 {
+  text-align: center;
+  padding-bottom: .5rem;
 }
 
 .header p {
@@ -77,9 +83,9 @@ a {
 }
 
 .content {
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 .content-heading {
-  margin: 1rem 0 .5rem 0
+  margin: 2rem 0 .5rem 0
 }
