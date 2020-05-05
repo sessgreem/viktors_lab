@@ -16,8 +16,7 @@
         <h3>My Chats</h3>
         <ul>
           <li *ngFor="let chat of userChats$ | async">
-            <a [routerLink]="'chats/' + chat.id"
-              >{{ chat.id }} - {{ chat.messages.length }} Messages
+            <a [routerLink]="'chats/' + chat.id">{{ chat.id }} - {{ chat.messages.length }} Messages
             </a>
           </li>
         </ul>
@@ -26,8 +25,7 @@
         <h3>My Orders</h3>
         <ul>
           <li *ngFor="let order of userOrders$ | async">
-            <a style="color: yellow;" [routerLink]="'/orderv2/' + order.id"
-              >Order Details - {{ order.id }} -
+            <a style="color: yellow;" [routerLink]="'/orderv2/' + order.id">Order Details - {{ order.id }} -
               {{ order.orderPassword }}
             </a>
           </li>
@@ -37,7 +35,7 @@
     <br />
     <app-latest-feedback></app-latest-feedback>
   </ng-container>
-  <!-- <ng-template #login>
+  <ng-template #login>
     <button class="button" (click)="auth.googleSignIn()">
       Login with Google
     </button>
@@ -48,5 +46,5 @@
     <input type="text" [(ngModel)]="email" placeholder="Email" />
     <input type="text" [(ngModel)]="password" placeholder="Password" />
     <button (click)="auth.emailSignIn(email, password)">Sing in</button>
-  </ng-template> -->
+  </ng-template>
 </div>

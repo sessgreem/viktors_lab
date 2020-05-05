@@ -28,16 +28,25 @@ DONE make a function to set/update orderRef
 
 -- Styling --
 DONE create introduction page
-     create navigation component\\
-     track order page (order details, boost progress, tip, extend)
-     need help component\\
-     chat in a different component\\
+     create navigation component
+DONE track order page (order details, boost progress, tip, extend)
+DONE need help component mobile
+DONE chat in a different component
      footer component
-     staff dashboard page\\
+DONE staff dashboard page mobile
      login form component
-     payment providers component\\
-     feedback component -- owl carousel?\\
+     payment providers component
+     feedback component -- owl carousel?
      checkout component ?
-     order scrollbar component ? ng-perfect-scrollbar / particles-js
-     lol-boost component / lol-duo-boost component with if statements on scrollbar chosen(routing?) // order-menu?\\
-     checkout component -- ngx-smart-modal
+     order scrollbar component ? ng-perfect-scrollbar
+     checkout component -- and ngx-smart-modal
+DONE ordermenu mobile - league boosting
+80%  ordermenu mobile - play with a pro
+     loading template component
+     SCSS global colors vars and mixins?
+
+-- Experience Design --
+DONE Redesign chat
+DONE Redesign latest feedback
+DONE Redesign checkout component
+DONE Redesign scrollbar component

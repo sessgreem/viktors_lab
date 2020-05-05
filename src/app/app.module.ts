@@ -31,6 +31,7 @@ import { HelpContactComponent } from "./help-contact/help-contact.component";
 import { ChatComponent } from "./chat/chat.component";
 import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { SendFeedbackComponent } from "./send-feedback/send-feedback.component";
+import { DuoBoostComponent } from './duo-boost/duo-boost.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { SendFeedbackComponent } from "./send-feedback/send-feedback.component";
     ChatComponent,
     OrderDetailsComponent,
     SendFeedbackComponent,
+    DuoBoostComponent,
   ],
   imports: [
     BrowserModule,

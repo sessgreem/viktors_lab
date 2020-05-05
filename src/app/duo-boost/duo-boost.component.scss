@@ -1,0 +1,31 @@
+.content-heading {
+  margin-bottom: .2rem;
+
+  span {
+    color: red;
+  }
+}
+
+.content {
+  p {
+    opacity: .7;
+    max-width: 55%;
+    font-size: .85rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.order-games-amount {
+  div:nth-child(2) {
+    h3 {
+      font-size: 5rem;
+      font-weight: 400;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 400;
+
+    }
+  }
+}

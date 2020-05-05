@@ -3,7 +3,6 @@ $background-color: #141917;
 body {
   background-color: $background-color;
   font-family: 'Segoe UI', Montserrat, Geneva, Verdana, sans-serif;
-  margin: 0;
 }
 
 * {
@@ -88,4 +87,50 @@ a {
 
 .content-heading {
   margin: 2rem 0 .5rem 0
+}
+
+
+// Order Menu
+.order-menu {
+  margin-top: .5rem;
+}
+
+.order-menu {
+  .order-selections {
+    .select-box {
+      select {
+        width: 100%;
+        height: 40px;
+        background-color: #131313;
+        border-style: solid;
+        border-width: 1px;
+        // border-color: $border-color;
+        border-color: grey;
+        padding: .5rem;
+      }
+
+      margin-bottom: .5rem;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      h6 {
+        margin-bottom: .2rem;
+      }
+    }
+
+    .half {
+      .select-box {
+        margin: 0;
+      }
+    }
+  }
+
+  .order-rank-img {
+    img {
+      max-width: 150px;
+      width: 100%;
+    }
+  }
 }

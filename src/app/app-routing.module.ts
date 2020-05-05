@@ -1,3 +1,4 @@
+import { DuoBoostComponent } from "./duo-boost/duo-boost.component";
 import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { IntroductionComponent } from "./introduction/introduction.component";
 // import { FireguardGuard } from "./core/guards/fireguard.guard";
@@ -24,6 +25,7 @@ import { AuthGuard } from "./core/guards/auth.guard";
 
 const routes: Routes = [
   { path: "lol-boost", component: HomeComponent },
+  { path: "duo-boost", component: DuoBoostComponent },
   // {
   //   path: "chats/:id",
   //   component: ChatComponent,
