@@ -46,7 +46,9 @@ DONE ordermenu mobile - league boosting
      SCSS global colors vars and mixins?
 
 -- Experience Design --
-DONE Redesign chat
-DONE Redesign latest feedback
-DONE Redesign checkout component
-DONE Redesign scrollbar component
+DONE Redesigned chat
+DONE Improved latest feedback
+DONE Redesigned scrollbar component
+DONE Redesigned checkout component
+NEXT design user controls
+
