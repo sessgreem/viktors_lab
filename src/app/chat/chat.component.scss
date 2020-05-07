@@ -1,0 +1,90 @@
+$chat-top-color: #1E42A9;
+$display-name-fweight: 500;
+$chat-user-color: #0A8700;
+$box-color: #1F2023;
+
+.chat {
+  .top {
+    padding: 1rem;
+    background-color: $chat-top-color;
+
+    h4 {
+      display: inline;
+    }
+
+    span {
+      float: right;
+      font-weight: 500;
+    }
+  }
+
+  .messages {
+    padding: 1rem;
+    background-color: $box-color;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 500px;
+    width: 100%;
+
+    .msg {
+      margin-bottom: 1rem;
+
+      .user {
+        .display-name {
+          font-weight: $display-name-fweight;
+          margin-bottom: .2rem;
+        }
+
+        .message-content {
+          background-color: $chat-user-color;
+          padding: .6rem 1.2rem .6rem .6rem;
+          text-align: left;
+          max-width: 80%;
+        }
+
+        .message-timestamp {
+          float: left;
+          opacity: .7;
+        }
+      }
+
+      .staff {
+        .display-name {
+          font-weight: $display-name-fweight;
+          margin-bottom: .2rem;
+        }
+
+        .message-content {
+          background-color: $chat-top-color;
+          padding: .6rem .6rem .6rem 1.2rem;
+          max-width: 80%;
+          text-align: left;
+        }
+
+        .message-timestamp {
+          float: right;
+          opacity: .7;
+        }
+      }
+    }
+  }
+
+  .msg-form {
+    input {
+      background-color: #1F2023;
+      height: 3rem;
+      color: white;
+      border: none;
+      border-top: 1px solid #3e3e3e;
+      padding: 1rem;
+      width: 80%;
+      font-size: 1rem;
+    }
+
+    button {
+      height: 3rem;
+      background-color: $chat-user-color;
+      width: 20%;
+    }
+  }
+}
