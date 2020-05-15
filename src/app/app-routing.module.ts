@@ -1,3 +1,4 @@
+import { OrderMenuV2Component } from "./order-menu-v2/order-menu-v2.component";
 import { DuoBoostComponent } from "./duo-boost/duo-boost.component";
 import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { IntroductionComponent } from "./introduction/introduction.component";
@@ -24,7 +25,7 @@ import { AuthGuard } from "./core/guards/auth.guard";
 // const redirectToHome = () => redirectLoggedInTo(["/"]);
 
 const routes: Routes = [
-  { path: "lol-boost", component: HomeComponent },
+  { path: "lol-boost", component: OrderMenuV2Component },
   { path: "duo-boost", component: DuoBoostComponent },
   // {
   //   path: "chats/:id",

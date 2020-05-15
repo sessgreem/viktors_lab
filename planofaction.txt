@@ -1,54 +1,35 @@
--- routing --
+-- Routing --
     unmatched to a 404 page
     make it so that /orders/ is unaccessible
 
--- overall project --
-    reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
+-- Overall Project --
     implement payment system
 
--- staff --
-    update current rank
-
--- firebase rules --
+-- Firebase Security --
     problem with persistance when user refreshes order (permissions) (auth.guard.ts:44) - isOrdererOrStaff function (maybe should be left like that for security)
     full firebase rules revisit
 
 -- DRY --
-    implement a better uid and staffId awaits - create a global function?
     add order status interface (active, paused) // ?
-DONE make a function to set/update orderRef
 
 -- Cloud Functions --
     fix cloud function not to update the orderStatus
     create a createOrder function
 
--- General --
+-- Problems --
     navigation is broken
     staff login - tries to go to dashboard in even if log in details not correct
 
--- Styling --
-DONE create introduction page
-     create navigation component
-DONE track order page (order details, boost progress, tip, extend)
-DONE need help component mobile
-DONE chat in a different component
-     footer component
-DONE staff dashboard page mobile
-     login form component
-     payment providers component
-     feedback component -- owl carousel?
-     checkout component ?
-     order scrollbar component ? ng-perfect-scrollbar
-     checkout component -- and ngx-smart-modal
-DONE ordermenu mobile - league boosting
-80%  ordermenu mobile - play with a pro
-     loading template component
-     SCSS global colors vars and mixins?
+-- Logic --
+     rethink order id
+     implement a better uid and staffId awaits - change logic completely make it so that staff affects orders in a different component
+
+-- Global Styling --
+    create buttons
+    create colors
 
 -- Experience Design --
-DONE Redesigned chat
-DONE Improved latest feedback
-DONE Redesigned scrollbar component
-DONE Redesigned checkout component
-NEXT design user controls
-
+     desing footer
+DONE Redesigned order menu for mobile and desktop
+     Redesigned staff available orders
+     Initial design for user controls in track order

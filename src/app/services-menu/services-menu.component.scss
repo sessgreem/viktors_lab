@@ -1,0 +1,54 @@
+.services {
+  background-color: rgba(0, 0, 0, 0.40);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  a {
+    img {
+      // width: 80%;
+      max-width: 85px;
+    }
+
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.5rem 0 1.5rem;
+    text-align: center;
+
+    &:hover {
+      background-color: rgba(0, 252, 0, 0.15);
+    }
+
+    &:hover::before {
+      background-color: greenyellow;
+    }
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      transform: rotate(45deg);
+      position: absolute;
+      bottom: -10px;
+      transition-duration: .3s;
+    }
+
+    &:hover::after {
+      width: 50%;
+      background-color: greenyellow;
+    }
+
+    &::after {
+      content: "";
+      height: 4px;
+      width: 5%;
+      position: absolute;
+      bottom: 0;
+      // transition-property: width;
+      // transition-duration: 0.4s;
+      // transition-timing-function: ease;
+      transition: width .4s ease;
+    }
+
+  }
+}

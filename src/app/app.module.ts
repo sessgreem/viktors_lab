@@ -32,6 +32,9 @@ import { ChatComponent } from "./chat/chat.component";
 import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { SendFeedbackComponent } from "./send-feedback/send-feedback.component";
 import { DuoBoostComponent } from './duo-boost/duo-boost.component';
+import { ServicesMenuComponent } from './services-menu/services-menu.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { OrderMenuV2Component } from './order-menu-v2/order-menu-v2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +55,9 @@ import { DuoBoostComponent } from './duo-boost/duo-boost.component';
     OrderDetailsComponent,
     SendFeedbackComponent,
     DuoBoostComponent,
+    ServicesMenuComponent,
+    OrderSummaryComponent,
+    OrderMenuV2Component,
   ],
   imports: [
     BrowserModule,
