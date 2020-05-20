@@ -1,7 +1,7 @@
 <section class="header">
   <app-navigation></app-navigation>
   <div class="header-content">
-    <h1>Get your <br>Desired Rank</h1>
+    <h1>Get your <br />Desired Rank</h1>
     <p>
       Let a professional player play on your account to quickly get to your
       desired division!
@@ -16,10 +16,10 @@
         <h2>1. Current Rank<span class="red"> *</span></h2>
         <p>Select your Current Rank below.</p>
         <!--  -->
-        <img src="../../assets/rank-images/gold_4.png" alt="">
+        <img src="../../assets/rank-images/gold_4.png" alt="" />
       </div>
-      <div class="controls">
-        <div class="rank-controls">
+      <div class="controls" fxLayout="column" fxLayoutGap="1.5rem">
+        <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
           <button class="controls-btn">
             <i class="material-icons">
               keyboard_arrow_down
@@ -28,7 +28,7 @@
           <div class="rank">
             <!-- {{}} -->
             <span>Gold</span>
-            <ul>
+            <ul class="dropdown-menu">
               <li>Iron</li>
               <li>Bronze</li>
               <li>Silver</li>
@@ -38,117 +38,217 @@
               <li>Master</li>
             </ul>
           </div>
+          <button class="controls-btn">
+            <i class="material-icons">
+              keyboard_arrow_up
+            </i>
+          </button>
         </div>
-        <button class="controls-btn">
-          <i class="material-icons">
-            keyboard_arrow_up
-          </i>
-        </button>
-      </div>
-      <div class="division-controls">
-        <button class="controls-btn">IV</button>
-        <button class="controls-btn">III</button>
-        <button class="controls-btn">II</button>
-        <button class="controls-btn">I</button>
-      </div>
-      <div class="leaguepoints-controls">
-        <button class="controls-btn">0 - 29 LP</button>
-        <button class="controls-btn">30 - 59 LP</button>
-        <button class="controls-btn">60 - 100 LP</button>
-      </div>
-    </div>
-  </div>
-  <div class="menu-item">
-    <div class="display">
-      <h2>2. Desired Rank<span class="red"> *</span></h2>
-      <p>Select your Desired Rank below.</p>
-      <!--  -->
-      <img src="../../assets/rank-images/platinum_4.png" alt="">
-    </div>
-    <div class="controls">
-      <div class="rank-controls">
-        <button class="controls-btn">
-          <i class="material-icons">
-            keyboard_arrow_down
-          </i>
-        </button>
-        <div class="rank">
-          <span>Platinum</span>
-          <ul>
-            <li>Iron</li>
-            <li>Bronze</li>
-            <li>Silver</li>
-            <li>Gold</li>
-            <li>Platinum</li>
-            <li>Diamond</li>
-            <li>Master</li>
-            <li>Grandmaster</li>
-          </ul>
+        <div class="division-controls" fxLayout="row wrap">
+          <button class="controls-btn">IV</button>
+          <button class="controls-btn">III</button>
+          <button class="controls-btn">II</button>
+          <button class="controls-btn">I</button>
         </div>
-        <button class="controls-btn">
-          <i class="material-icons">
-            keyboard_arrow_down
-          </i>
-        </button>
-      </div>
-      <div class="division-controls">
-        <button class="controls-btn">IV</button>
-        <button class="controls-btn">III</button>
-        <button class="controls-btn">II</button>
-        <button class="controls-btn">I</button>
-      </div>
-      <div class="server-queue-controls">
-        <div class="server">
-          <h5>Server<span class="red"> *</span></h5>
-          <!--  -->
-          <select name="servers" id="servers">
-            <option value="">EU West</option>
-          </select>
-        </div>
-        <div class="queue">
-          <h5>Queue</h5>
-          <!--  -->
-          <select name="" id="">
-            <option value="">Solo Queue</option>
-          </select>
+        <div class="leaguepoints-controls" fxLayout="row wrap">
+          <button class="controls-btn">0 - 29 LP</button>
+          <button class="controls-btn">30 - 59 LP</button>
+          <button class="controls-btn">60 - 100 LP</button>
         </div>
       </div>
     </div>
     <div class="menu-item">
-      <h2>3. Summoner Spells (optional)</h2>
-      <p>Here you can choose wich keys you normally use for usummoner spells.</p>
-      <div class="summoner-spell">
-        <div class="keybind">D</div>
-        <img src="" alt="summoner-spell-keybind-D">
+      <div class="display">
+        <h2>2. Desired Rank<span class="red"> *</span></h2>
+        <p>Select your Desired Rank below.</p>
         <!--  -->
-        <select name="summoner-spell" id="">
-          <option value="">Flash</option>
-        </select>
+        <img src="../../assets/rank-images/platinum_4.png" alt="" />
       </div>
-      <div class="summoner-spell">
-        <div class="keybind">F</div>
-        <img src="" alt="summoner-spell-keybind-F">
-        <select name="" id="">
-          <option value="">Ignite</option>
-        </select>
+      <div class="controls desired" fxLayout="column" fxLayoutGap="1.5rem">
+        <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
+          <button class="controls-btn">
+            <i class="material-icons">
+              keyboard_arrow_down
+            </i>
+          </button>
+          <div class="rank">
+            <span>Platinum</span>
+            <ul class="dropdown-menu">
+              <li>Iron</li>
+              <li>Bronze</li>
+              <li>Silver</li>
+              <li>Gold</li>
+              <li>Platinum</li>
+              <li>Diamond</li>
+              <li>Master</li>
+              <li>Grandmaster</li>
+            </ul>
+          </div>
+          <button class="controls-btn">
+            <i class="material-icons">
+              keyboard_arrow_up
+            </i>
+          </button>
+        </div>
+        <div class="division-controls">
+          <button class="controls-btn">IV</button>
+          <button class="controls-btn">III</button>
+          <button class="controls-btn">II</button>
+          <button class="controls-btn">I</button>
+        </div>
+        <div class="server-queue-controls" fxLayout="row">
+          <div class="server">
+            <h5 class="heading-label">Server<span class="red"> *</span></h5>
+            <div class="select">
+              <span>EU West</span>
+              <ul class="dropdown-menu">
+                <li>EU West</li>
+                <li>EU Nordic and East</li>
+                <li>NA</li>
+                <li>LAN</li>
+                <li>OCE</li>
+                <li>SEA</li>
+                <li>TR</li>
+                <li>Russia</li>
+                <li>Brazil</li>
+              </ul>
+            </div>
+          </div>
+          <div class="queue">
+            <h5 class="heading-label">Queue</h5>
+            <div class="select">
+              <span>Solo Queue</span>
+              <ul class="dropdown-menu">
+                <li>Solo Queue</li>
+                <li>Flex Queue</li>
+                <li>3v3 Queue</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="menu-item">
-      <h2>4. Roles (optional)</h2>
-      <p>You can choose your primary and secondary roles.</p>
-      <div class="role">
-        <h4>Primary Role</h4>
-        <img src="" alt="">
-        <select name="" id="">
-          <option value="">Middle</option>
-        </select>
+      <div class="display">
+        <h2>3. Summoner Spells</h2>
+        <p>
+          Here you can choose wich keys you normally use for usummoner spells.
+          (optional)
+        </p>
       </div>
-      <div class="role">
-        <h4>Secondary Role</h4>
-        <img src="" alt="">
-        <select name="" id="">
-          <option value="">Bottom</option>
-        </select>
+      <div
+        class="summoner-spells"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
+        fxLayoutGap="2.5rem"
+      >
+        <div
+          class="summoner-spell"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
+          <div class="keybind">D</div>
+          <img
+            src="../../assets/summoner-spells/flash.jpg"
+            alt="summoner-spell-img-D"
+          />
+          <div class="select">
+            <span>Flash</span>
+            <ul class="dropdown-menu">
+              <li>Any</li>
+              <li>Flash</li>
+              <li>Ignite</li>
+              <li>Heal</li>
+              <li>Smite</li>
+              <li>Teleport</li>
+              <li>Exhaust</li>
+              <li>Cleanse</li>
+              <li>Barrier</li>
+              <li>Ghost</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="summoner-spell"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
+          <div class="keybind">F</div>
+          <img
+            src="../../assets/summoner-spells/ignite.jpg"
+            alt="summoner-spell-img-F"
+          />
+          <div class="select">
+            <span>Ignite</span>
+            <ul class="dropdown-menu">
+              <li>Any</li>
+              <li>Flash</li>
+              <li>Ignite</li>
+              <li>Heal</li>
+              <li>Smite</li>
+              <li>Teleport</li>
+              <li>Exhaust</li>
+              <li>Cleanse</li>
+              <li>Barrier</li>
+              <li>Ghost</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="display">
+        <h2>4. Roles</h2>
+        <p>You can choose your primary and secondary roles. (optional)</p>
+      </div>
+      <div
+        class="roles"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
+        fxLayoutGap="2.5rem"
+      >
+        <div
+          class="role"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
+          <h4>Primary Role</h4>
+          <img src="../../assets/role-positions/middle.png" alt="" />
+          <div class="select">
+            <span>Any</span>
+            <ul class="dropdown-menu">
+              <li>Top</li>
+              <li>Jungle</li>
+              <li>Middle</li>
+              <li>Bottom</li>
+              <li>Support</li>
+              <li>Any</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="role"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
+          <h4>Secondary Role</h4>
+          <img src="../../assets/role-positions/bottom.png" alt="" />
+          <div class="select">
+            <span>Any</span>
+            <ul class="dropdown-menu">
+              <li>Top</li>
+              <li>Jungle</li>
+              <li>Middle</li>
+              <li>Bottom</li>
+              <li>Support</li>
+              <li>Any</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

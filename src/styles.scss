@@ -2,9 +2,29 @@ $background-color: #141917;
 
 body {
   background-color: $background-color;
-  font-family: Montserrat, 'Segoe UI', Geneva, Verdana, sans-serif;
+  font-family: Montserrat, "Segoe UI", Geneva, Verdana, sans-serif;
   color: #fff;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px lighten($color: $background-color, $amount: 10%);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: lighten($color: $background-color, $amount: 10%);
+  outline: 1px solid rgb(72, 81, 90);
+  border-radius: 0.9rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
 }
 
 select {
@@ -18,7 +38,7 @@ select {
 }
 
 .primaryButton {
-  background-color: #00AF69;
+  background-color: #00af69;
   border-radius: 0.8rem;
   border-style: none;
   width: 15rem;
@@ -30,7 +50,7 @@ select {
 }
 
 button {
-  font-family: Tahoma;
+  font-family: inherit;
   border-style: none;
   color: #fff;
 }
@@ -44,7 +64,7 @@ a {
   padding: 0.8rem 1rem;
   text-align: center;
   font-weight: 600;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   margin: 1rem 0;
 }
 
@@ -65,8 +85,8 @@ a {
 // header
 
 .header {
-  background-image: url('./assets/design/Group\ 493.png');
-  background-color: rgba(0, 0, 0, 0.50);
+  background-image: url("./assets/design/Group\ 493.png");
+  background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
@@ -116,7 +136,7 @@ a {
 
 // Order Menu
 .order-menu {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .order-menu {
@@ -130,17 +150,17 @@ a {
         border-width: 1px;
         // border-color: $border-color;
         border-color: grey;
-        padding: .5rem;
+        padding: 0.5rem;
       }
 
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
 
       &:last-child {
         margin: 0;
       }
 
       h6 {
-        margin-bottom: .2rem;
+        margin-bottom: 0.2rem;
       }
     }
 
@@ -157,4 +177,12 @@ a {
       width: 100%;
     }
   }
+}
+
+.red {
+  color: red;
+}
+
+.heading-label {
+  margin: 0 0 0.3rem 0.2rem;
 }

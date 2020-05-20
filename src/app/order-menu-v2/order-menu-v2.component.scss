@@ -1,3 +1,270 @@
-// .red {
-//   color:red;
-// }
+$menu-background: #1f2023;
+$green: #15ac09;
+$blue: #2b52c5;
+$button-color: #17181a;
+$border-color: #2d2f34;
+
+// on .rank -  dropdown is active
+// border-bottom-left-radius: 0;
+// border-bottom: 2px solid black;
+// border-bottom-right-radius: 0
+
+// dropdown
+// border-top-right-radius: 0;
+// top: 43px;
+// border-top-left-radius: 0;
+
+.select {
+  cursor: pointer;
+  position: relative;
+  background-color: $button-color;
+  padding: 0.5rem;
+  width: 150px;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 10%;
+    width: 0;
+    height: 0;
+    border-top: 0.4rem solid;
+    border-right: 0.4rem solid transparent;
+    border-bottom: 0;
+    border-left: 0.4rem solid transparent;
+  }
+  &:hover {
+    cursor: pointer;
+    .dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: scaleY(1) translate(0, 0);
+      transition: 0.3s;
+    }
+  }
+}
+
+// ?
+//  .dropdown-menu .active{
+//  }
+
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 37px; // !
+  // padding: 0;
+  // margin: 0;
+  list-style: none;
+  background-color: $button-color;
+  border: 1px solid $border-color; // !
+  border-radius: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transform-origin: 100% 0;
+  transform: scaleY(0.2) translate(0, -5px);
+  transition: 0.3s;
+}
+
+.dropdown-menu * {
+  padding: 0.5rem;
+
+  &:first-child {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  &:last-child {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  &:hover {
+    background-color: lighten($color: $button-color, $amount: 5%);
+  }
+}
+.controls-btn:active {
+  background-color: $green;
+}
+
+.controls-btn {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: $button-color;
+  border: 1px solid $border-color;
+  border-radius: 0.7rem;
+  font-size: 1.2rem;
+  width: 3.9rem;
+  height: 2.8rem;
+}
+
+.order-menu {
+  margin-top: 2rem;
+  background-color: $menu-background;
+  padding: 1rem 0rem;
+
+  .menu-item {
+    margin-bottom: 2rem;
+
+    .display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      img {
+        max-width: 140px;
+      }
+
+      p {
+        margin-top: 0.5rem;
+        opacity: 0.5;
+        text-align: center;
+        max-width: 80%;
+      }
+    }
+
+    .controls {
+      align-items: center;
+      justify-content: center;
+
+      .rank-controls {
+        .rank {
+          position: relative;
+          background-color: $green;
+          text-align: center;
+          display: flex;
+          width: 210px;
+          justify-content: center;
+          align-items: center;
+          height: 43px;
+          border-radius: 0.9rem;
+          font-size: 1.1rem;
+          &::after {
+            content: "";
+            position: absolute;
+            right: 10%;
+            width: 0;
+            height: 0;
+            border-top: 0.4rem solid;
+            border-right: 0.4rem solid transparent;
+            border-bottom: 0;
+            border-left: 0.4rem solid transparent;
+          }
+          .dropdown-menu {
+            background-color: $green;
+            border: none;
+            top: 44px;
+            border-radius: 0.9rem;
+          }
+          .dropdown-menu * {
+            &:first-child {
+              border-top-left-radius: 0.9rem;
+              border-top-right-radius: 0.9rem;
+            }
+
+            &:last-child {
+              border-bottom-left-radius: 0.9rem;
+              border-bottom-right-radius: 0.9rem;
+            }
+            &:hover {
+              background-color: darken($color: $green, $amount: 5%);
+            }
+          }
+          //TODO change
+          &:hover {
+            cursor: pointer;
+
+            .dropdown-menu {
+              opacity: 1;
+              pointer-events: all;
+              transform: scaleY(1) translate(0, 0);
+              transition: 0.3s;
+            }
+          }
+        }
+      }
+    }
+
+    .desired {
+      .controls-btn:active {
+        background-color: $blue;
+      }
+      .rank-controls {
+        .rank {
+          background-color: $blue;
+          .dropdown-menu {
+            background-color: $blue;
+          }
+          .dropdown-menu * {
+            &:hover {
+              background-color: darken($color: $blue, $amount: 5%);
+            }
+          }
+        }
+      }
+    }
+
+    .division-controls {
+      button {
+        padding: 0.5rem 1rem;
+        margin-right: 2rem;
+      }
+
+      button:last-child {
+        margin: 0;
+      }
+    }
+
+    .leaguepoints-controls {
+      button {
+        width: 6.5rem;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        margin-right: 1rem;
+      }
+
+      button:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .server-queue-controls {
+    .server {
+      margin-right: 2.5rem;
+    }
+  }
+
+  .summoner-spells {
+    margin-top: 1.5rem;
+
+    .summoner-spell {
+      .keybind {
+        background-color: $button-color;
+        text-align: center;
+        border-radius: 0.8rem;
+        padding: 1rem 1.3rem;
+        font-weight: 600;
+      }
+
+      img {
+        max-width: 70px;
+      }
+    }
+  }
+
+  .role {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+
+    img {
+      max-width: 60px;
+    }
+  }
+}
