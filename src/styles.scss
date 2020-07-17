@@ -5,6 +5,7 @@ body {
   font-family: Montserrat, "Segoe UI", Geneva, Verdana, sans-serif;
   color: #fff;
 }
+
 body::-webkit-scrollbar {
   width: 8px;
 }
@@ -18,6 +19,7 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid rgb(72, 81, 90);
   border-radius: 0.9rem;
 }
+
 h1,
 h2,
 h3,
@@ -60,12 +62,14 @@ a {
 }
 
 .secondaryButton {
-  background-color: green;
-  padding: 0.8rem 1rem;
+  background-color: #0ba100;
+  // padding: 0.8rem 1rem;
+  padding: 1rem;
   text-align: center;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 0.4rem;
-  margin: 1rem 0;
+  cursor: pointer;
 }
 
 .username {
@@ -125,6 +129,13 @@ a {
 }
 
 // end of header
+.content {
+  padding: 0 0.5rem;
+}
+
+.content-heading {
+  margin: 1rem 0 .5rem 0;
+}
 
 // .content {
 //   padding: 0 1rem;
@@ -185,4 +196,17 @@ a {
 
 .heading-label {
   margin: 0 0 0.3rem 0.2rem;
+}
+
+
+// username line for user and staff - dashboard and track order
+
+.username {
+  width: 100%;
+  opacity: 0.9;
+  background-color: #0ba100;
+}
+
+.staff {
+  background-color: #1e42a9;
 }

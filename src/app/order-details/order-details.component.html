@@ -1,23 +1,29 @@
 <section class="header">
   <app-navigation></app-navigation>
-  <h2>Track Your Order</h2>
-  <p>
-    Here you can track your order and chat with the booster. Check the other
-    options below.
-  </p>
+  <div class="header-content">
+    <h1>Track Your Order</h1>
+    <p>
+      Here you can track your order and chat with the booster. Check the other
+      options below.
+    </p>
+  </div>
+  <div class="username">
+    <!-- <ng-container *ngIf="user$ | async as user; else userTemplate"> -->
+    <!-- <h2>{{ user.displayName }}</h2> -->
+    <h2>User</h2>
+    <!-- </ng-container> -->
+  </div>
 </section>
 <!-- <ng-container *ngIf="order$ | async as o; else Loading"> -->
 <ng-container *ngIf="orders$ | async as order">
-  <div class="username">
-    <h3>{{ order.orderUsername }}</h3>
-  </div>
+
   <div class="content">
-    <h4 class="content-heading">Order Details</h4>
-    <div class="content-box" fxLayout.lt-sm="row">
-      <div class="order-details" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="5px" fxFlex="50">
+    <h3 class="content-heading">Order Details</h3>
+    <div class="content-box" fxLayout.lt-sm="row" style="padding-right:0;">
+      <div class="order-details" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px" fxFlex="50">
         <div class="detail" fxLayout="column">
-          <h5>Order Id</h5>
-          <span>{{ orderId }}</span>
+          <h5>Order ID</h5>
+          <span>Q528342FF</span>
         </div>
         <div class="detail" fxLayout="column">
           <h5>Target</h5>
@@ -33,28 +39,28 @@
         </div>
       </div>
       <div class="order-status" fxLayout="column" fxLayoutAlign.lt-sm="center center" fxFlex="50">
-        <h4>Order Status</h4>
+        <h4>Status</h4>
         <span>{{ order.orderStatus }}</span>
       </div>
     </div>
-    <h4 class="content-heading">Boost Progress</h4>
+    <h3 class="content-heading">Boost Progress</h3>
     <div class="content-box">
       <div class="rank-progress" fxLayout.lt-sm="row wrap">
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Start</h5>
-          <img src="" alt="" />
+          <img src="../../assets/rank-images/gold_4.png" alt="" />
           <!-- <span> {{ order.orderStartingRank }} </span> -->
-          <span>Bronze III</span>
+          <span>Gold IV</span>
         </div>
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Current</h5>
-          <img src="" alt="" />
+          <img src="../../assets/rank-images/gold_4.png" alt="" />
           <!-- <span>{{ order.orderCurrentRank }} </span> -->
-          <span>Silver IV</span>
+          <span>Gold III</span>
         </div>
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Target</h5>
-          <img src="" alt="" />
+          <img src="../../assets/rank-images/platinum_4.png" alt="" />
           <!-- <span>{{ order.orderTargetRank }} </span> -->
           <span>Gold II</span>
         </div>
@@ -64,31 +70,38 @@
         <span>Progress bar</span>
         <!-- Progress bar logic -->
       </div>
-    </div>
-    <div class="pause-button" fxLayoutAlign="center center">
-      <button class="secondaryButton pauseButton">Pause Order</button>
+      <div class="pause-button" fxLayout="row" fxLayoutAlign="center center">
+        <button class="secondaryButton pauseButton">Pause Order</button>
+      </div>
     </div>
     <app-chat [orderId]="orderId"></app-chat>
-    <div class="content-tip">
-      <h4 class="content-heading">Tip Booster</h4>
+    <div class="content-small-box content-box">
+      <h3 class="content-heading">Tip Booster</h3>
       <p>
         If you want, you can tip your booster directly if you're satisfied with
         his results. It will motivate him and keep him going strong!
       </p>
       <!-- select -->
-      <button class="secondaryButton">Send Tip</button>
+      <div class="pause-button" fxLayoutAlign="center center">
+        <button class="secondaryButton">Send Tip</button>
+      </div>
     </div>
-    <div class="content-extend">
-      <h4 class="content-heading">Extend Order</h4>
+    <div class="content-small-box content-box">
+      <h3 class="content-heading">Extend Order</h3>
       <p>
         If you wish to keep your current booster and extend your order you can
         do it here. The target will be updated.
       </p>
-      <button class="secondaryButton">Extend Order</button>
+      <div class="extend-button" fxLayoutAlign="center center">
+        <button class="secondaryButton">Extend Order</button>
+      </div>
     </div>
   </div>
 </ng-container>
 <app-help-contact></app-help-contact>
 <ng-template #Loading>
   <!-- insert loading -->
+</ng-template>
+<ng-template #userTemplate>
+  <h2>User</h2>
 </ng-template>

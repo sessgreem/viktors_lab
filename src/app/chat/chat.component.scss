@@ -40,6 +40,7 @@ $box-color: #1F2023;
           padding: .6rem 1.2rem .6rem .6rem;
           text-align: left;
           max-width: 80%;
+          border-radius: .2rem;
         }
 
         .message-timestamp {
@@ -48,7 +49,7 @@ $box-color: #1F2023;
         }
       }
 
-      .staff {
+      .staff-message {
         .display-name {
           font-weight: $display-name-fweight;
           margin-bottom: .2rem;
@@ -59,6 +60,7 @@ $box-color: #1F2023;
           padding: .6rem .6rem .6rem 1.2rem;
           max-width: 80%;
           text-align: left;
+          border-radius: .2rem;
         }
 
         .message-timestamp {

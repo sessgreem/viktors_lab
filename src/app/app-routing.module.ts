@@ -34,9 +34,9 @@ const routes: Routes = [
   // },
   { path: "login", component: UserFormComponent },
   {
-    path: "orders/:id",
+    path: "oldorders/:id",
     component: OrderChatComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "staff/signup",
@@ -61,7 +61,7 @@ const routes: Routes = [
     component: IntroductionComponent,
   },
   {
-    path: "orderv2/:id",
+    path: "order/:id",
     component: OrderDetailsComponent,
   },
 ];
