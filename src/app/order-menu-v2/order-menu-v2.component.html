@@ -15,30 +15,32 @@
       <div class="display">
         <h2>1. Current Rank<span class="red"> *</span></h2>
         <p>Select your Current Rank below.</p>
-        <!--  -->
+        <!-- dynamic -->
         <img src="../../assets/rank-images/gold_4.png" alt="" />
       </div>
       <div class="controls" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
-          <button class="controls-btn">
+          <button class="controls-btn" (click)="reduceCurrentRank()">
             <i class="material-icons">
               keyboard_arrow_down
             </i>
           </button>
-          <div class="rank">
-            <!-- {{}} -->
-            <span>Gold</span>
-            <ul class="dropdown-menu">
-              <li>Iron</li>
-              <li>Bronze</li>
-              <li>Silver</li>
-              <li>Gold</li>
-              <li>Platinum</li>
-              <li>Diamond</li>
-              <li>Master</li>
+          <div
+            class="rank"
+            (click)="toggleCurrentRankMenu()"
+            (clickOutside)="clickOutsideCurrentRank($event)"
+          >
+            <span>{{ currentRank.name }}</span>
+            <ul class="dropdown-menu" [class.open]="currentRankOpened">
+              <li
+                *ngFor="let league of leagues | slice: 1:leagues.length - 1"
+                (click)="selectCurrentRank(league.id)"
+              >
+                {{ league.name }}
+              </li>
             </ul>
           </div>
-          <button class="controls-btn">
+          <button class="controls-btn" (click)="increaseCurrentRank()">
             <i class="material-icons">
               keyboard_arrow_up
             </i>
@@ -61,30 +63,32 @@
       <div class="display">
         <h2>2. Desired Rank<span class="red"> *</span></h2>
         <p>Select your Desired Rank below.</p>
-        <!--  -->
+        <!-- dynamic -->
         <img src="../../assets/rank-images/platinum_4.png" alt="" />
       </div>
       <div class="controls desired" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
-          <button class="controls-btn">
+          <button class="controls-btn" (click)="reduceDesiredRank()">
             <i class="material-icons">
               keyboard_arrow_down
             </i>
           </button>
-          <div class="rank">
-            <span>Platinum</span>
-            <ul class="dropdown-menu">
-              <li>Iron</li>
-              <li>Bronze</li>
-              <li>Silver</li>
-              <li>Gold</li>
-              <li>Platinum</li>
-              <li>Diamond</li>
-              <li>Master</li>
-              <li>Grandmaster</li>
+          <div
+            class="rank"
+            (clickOutside)="clickOutsideDesiredRank($event)"
+            (click)="toggleDesiredRankMenu()"
+          >
+            <span>{{ desiredRank.name }}</span>
+            <ul class="dropdown-menu" [class.open]="desiredRankOpened">
+              <li
+                *ngFor="let league of leagues"
+                (click)="selectDesiredRank(league.id)"
+              >
+                {{ league.name }}
+              </li>
             </ul>
           </div>
-          <button class="controls-btn">
+          <button class="controls-btn" (click)="increaseDesiredRank()">
             <i class="material-icons">
               keyboard_arrow_up
             </i>
@@ -99,29 +103,37 @@
         <div class="server-queue-controls" fxLayout="row">
           <div class="server">
             <h5 class="heading-label">Server<span class="red"> *</span></h5>
-            <div class="select">
-              <span>EU West</span>
-              <ul class="dropdown-menu">
-                <li>EU West</li>
-                <li>EU Nordic and East</li>
-                <li>NA</li>
-                <li>LAN</li>
-                <li>OCE</li>
-                <li>SEA</li>
-                <li>TR</li>
-                <li>Russia</li>
-                <li>Brazil</li>
+            <div
+              class="select"
+              (click)="toggleServerMenu()"
+              (clickOutside)="clickOutsideServer($event)"
+            >
+              <span>{{ server.name }}</span>
+              <ul class="dropdown-menu" [class.open]="serverDropdownOpened">
+                <li
+                  *ngFor="let server of servers"
+                  (click)="selectServer(server.id)"
+                >
+                  {{ server.name }}
+                </li>
               </ul>
             </div>
           </div>
           <div class="queue">
             <h5 class="heading-label">Queue</h5>
-            <div class="select">
-              <span>Solo Queue</span>
-              <ul class="dropdown-menu">
-                <li>Solo Queue</li>
-                <li>Flex Queue</li>
-                <li>3v3 Queue</li>
+            <div
+              class="select"
+              (click)="toggleQueueMenu()"
+              (clickOutside)="clickOutsideQueue($event)"
+            >
+              <span>{{ queue.name }}</span>
+              <ul class="dropdown-menu" [class.open]="queueDropdownOpened">
+                <li
+                  *ngFor="let queue of queues"
+                  (click)="selectQueue(queue.id)"
+                >
+                  {{ queue.name }}
+                </li>
               </ul>
             </div>
           </div>
@@ -136,42 +148,63 @@
           (optional)
         </p>
       </div>
-      <div class="summoner-spells" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2.5rem">
-        <div class="summoner-spell" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
+      <div
+        class="summoner-spells"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
+        fxLayoutGap="2.5rem"
+      >
+        <div
+          class="summoner-spell"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
           <div class="keybind">D</div>
-          <img src="../../assets/summoner-spells/flash.jpg" alt="summoner-spell-img-D" />
-          <div class="select">
-            <span>Flash</span>
-            <ul class="dropdown-menu">
-              <li>Any</li>
-              <li>Flash</li>
-              <li>Ignite</li>
-              <li>Heal</li>
-              <li>Smite</li>
-              <li>Teleport</li>
-              <li>Exhaust</li>
-              <li>Cleanse</li>
-              <li>Barrier</li>
-              <li>Ghost</li>
+          <img
+            src="../../assets/summoner-spells/flash.jpg"
+            alt="summoner-spell-img-D"
+          />
+          <div
+            class="select"
+            (click)="toggleSummonerKeyDMenu()"
+            (clickOutside)="clickOutsideSummonerKeyD($event)"
+          >
+            <span>{{ summonerKeyD.name }} </span>
+            <ul class="dropdown-menu" [class.open]="DsummonerDropdownOpened">
+              <li
+                *ngFor="let summonerSpell of summoners"
+                (click)="selectSummonerKeyD(summonerSpell.id)"
+              >
+                {{ summonerSpell.name }}
+              </li>
             </ul>
           </div>
         </div>
-        <div class="summoner-spell" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
+        <div
+          class="summoner-spell"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
           <div class="keybind">F</div>
-          <img src="../../assets/summoner-spells/ignite.jpg" alt="summoner-spell-img-F" />
-          <div class="select">
-            <span>Ignite</span>
-            <ul class="dropdown-menu">
-              <li>Any</li>
-              <li>Flash</li>
-              <li>Ignite</li>
-              <li>Heal</li>
-              <li>Smite</li>
-              <li>Teleport</li>
-              <li>Exhaust</li>
-              <li>Cleanse</li>
-              <li>Barrier</li>
-              <li>Ghost</li>
+          <img
+            src="../../assets/summoner-spells/ignite.jpg"
+            alt="summoner-spell-img-F"
+          />
+          <div
+            class="select"
+            (click)="toggleSummonerKeyFMenu()"
+            (clickOutside)="clickOutsideSummonerKeyF($event)"
+          >
+            <span>{{ summonerKeyF.name }} </span>
+            <ul class="dropdown-menu" [class.open]="FsummonerDropdownOpened">
+              <li
+                *ngFor="let summonerSpell of summoners"
+                (click)="selectSummonerKeyF(summonerSpell.id)"
+              >
+                {{ summonerSpell.name }}
+              </li>
             </ul>
           </div>
         </div>
@@ -182,34 +215,60 @@
         <h2>4. Roles</h2>
         <p>You can choose your primary and secondary roles. (optional)</p>
       </div>
-      <div class="roles" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2.5rem">
-        <div class="role" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
+      <div
+        class="roles"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
+        fxLayoutGap="2.5rem"
+      >
+        <div
+          class="role"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
           <h4>Primary Role</h4>
           <img src="../../assets/role-positions/middle.png" alt="" />
-          <div class="select">
-            <span>Any</span>
-            <ul class="dropdown-menu">
-              <li>Top</li>
-              <li>Jungle</li>
-              <li>Middle</li>
-              <li>Bottom</li>
-              <li>Support</li>
-              <li>Any</li>
+          <div
+            class="select"
+            (click)="togglePrimaryRoleMenu()"
+            (clickOutside)="clickOutsidePrimaryRole($event)"
+          >
+            <span>{{ primaryRole.name }}</span>
+            <ul class="dropdown-menu" [class.open]="primaryRoleDropdownOpened">
+              <li
+                *ngFor="let role of roles"
+                (click)="selectPrimaryRole(role.id)"
+              >
+                {{ role.name }}
+              </li>
             </ul>
           </div>
         </div>
-        <div class="role" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
+        <div
+          class="role"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="1.5rem"
+        >
           <h4>Secondary Role</h4>
           <img src="../../assets/role-positions/bottom.png" alt="" />
-          <div class="select">
-            <span>Any</span>
-            <ul class="dropdown-menu">
-              <li>Top</li>
-              <li>Jungle</li>
-              <li>Middle</li>
-              <li>Bottom</li>
-              <li>Support</li>
-              <li>Any</li>
+          <div
+            class="select"
+            (click)="toggleSecondaryRoleMenu()"
+            (clickOutside)="clickOutsideSecondaryRole($event)"
+          >
+            <span>{{ secondaryRole.name }} </span>
+            <ul
+              class="dropdown-menu"
+              [class.open]="secondaryRoleDropdownOpened"
+            >
+              <li
+                *ngFor="let role of roles"
+                (click)="selectSecondaryRole(role.id)"
+              >
+                {{ role.name }}
+              </li>
             </ul>
           </div>
         </div>

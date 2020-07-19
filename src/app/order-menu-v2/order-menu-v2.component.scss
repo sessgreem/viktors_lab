@@ -23,6 +23,7 @@ $border-color: #2d2f34;
   border: 1px solid $border-color;
   border-radius: 0.5rem;
   font-size: 1rem;
+
   &::after {
     content: "";
     position: absolute;
@@ -35,20 +36,15 @@ $border-color: #2d2f34;
     border-bottom: 0;
     border-left: 0.4rem solid transparent;
   }
-  &:hover {
-    cursor: pointer;
-    .dropdown-menu {
-      opacity: 1;
-      pointer-events: all;
-      transform: scaleY(1) translate(0, 0);
-      transition: 0.3s;
-    }
-  }
-}
 
-// ?
-//  .dropdown-menu .active{
-//  }
+  // &:hover {
+  //   .dropdown-menu {
+  //     opacity: 1;
+  //     pointer-events: all;
+  //     transform: scaleY(1) translate(0, 0);
+  //     transition: 0.3s;
+  //   }
+}
 
 .dropdown-menu {
   position: absolute;
@@ -76,6 +72,7 @@ $border-color: #2d2f34;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
   }
+
   &:last-child {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -85,6 +82,15 @@ $border-color: #2d2f34;
     background-color: lighten($color: $button-color, $amount: 5%);
   }
 }
+
+.dropdown-menu.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: scaleY(1) translate(0, 0);
+  transition: 0.3s;
+}
+
+//TODO change
 .controls-btn:active {
   background-color: $green;
 }
@@ -132,6 +138,7 @@ $border-color: #2d2f34;
 
       .rank-controls {
         .rank {
+          cursor: pointer;
           position: relative;
           background-color: $green;
           text-align: center;
@@ -142,6 +149,7 @@ $border-color: #2d2f34;
           height: 43px;
           border-radius: 0.9rem;
           font-size: 1.1rem;
+
           &::after {
             content: "";
             position: absolute;
@@ -153,12 +161,14 @@ $border-color: #2d2f34;
             border-bottom: 0;
             border-left: 0.4rem solid transparent;
           }
+
           .dropdown-menu {
             background-color: $green;
             border: none;
             top: 44px;
             border-radius: 0.9rem;
           }
+
           .dropdown-menu * {
             &:first-child {
               border-top-left-radius: 0.9rem;
@@ -169,21 +179,12 @@ $border-color: #2d2f34;
               border-bottom-left-radius: 0.9rem;
               border-bottom-right-radius: 0.9rem;
             }
+
             &:hover {
               background-color: darken($color: $green, $amount: 5%);
             }
           }
-          //TODO change
-          &:hover {
-            cursor: pointer;
 
-            .dropdown-menu {
-              opacity: 1;
-              pointer-events: all;
-              transform: scaleY(1) translate(0, 0);
-              transition: 0.3s;
-            }
-          }
         }
       }
     }
@@ -192,12 +193,15 @@ $border-color: #2d2f34;
       .controls-btn:active {
         background-color: $blue;
       }
+
       .rank-controls {
         .rank {
           background-color: $blue;
+
           .dropdown-menu {
             background-color: $blue;
           }
+
           .dropdown-menu * {
             &:hover {
               background-color: darken($color: $blue, $amount: 5%);
