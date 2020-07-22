@@ -90,12 +90,12 @@ $border-color: #2d2f34;
   transition: 0.3s;
 }
 
-//TODO change
-.controls-btn:active {
+.controls-btn.selected {
   background-color: $green;
 }
 
 .controls-btn {
+  cursor: pointer;
   padding: 0.5rem;
   text-align: center;
   background-color: $button-color;
@@ -190,7 +190,7 @@ $border-color: #2d2f34;
     }
 
     .desired {
-      .controls-btn:active {
+      .controls-btn.selected {
         background-color: $blue;
       }
 
@@ -212,25 +212,26 @@ $border-color: #2d2f34;
     }
 
     .division-controls {
-      button {
+      li {
         padding: 0.5rem 1rem;
         margin-right: 2rem;
       }
 
-      button:last-child {
+      li:last-child {
         margin: 0;
       }
     }
 
     .leaguepoints-controls {
-      button {
+
+      li {
         width: 6.5rem;
         font-size: 0.9rem;
         padding: 0.5rem;
         margin-right: 1rem;
       }
 
-      button:last-child {
+      li:last-child {
         margin: 0;
       }
     }

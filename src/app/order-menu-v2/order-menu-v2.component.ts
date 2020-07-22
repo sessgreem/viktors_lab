@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { VirtualTimeScheduler } from "rxjs";
 
 @Component({
   selector: "app-order-menu-v2",
@@ -75,6 +76,23 @@ export class OrderMenuV2Component implements OnInit {
 
   primaryRole = this.roles[0];
   secondaryRole = this.roles[0];
+
+  divisions: any[] = [
+    { id: 0, name: "IV" },
+    { id: 1, name: "III" },
+    { id: 2, name: "II" },
+    { id: 3, name: "I" },
+  ];
+
+  currentDivision = this.divisions[0];
+  desiredDivision = this.divisions[this.currentDivision.id + 1];
+
+  leaguePoints: any[] = [
+    { id: 0, name: "0-29LP" },
+    { id: 1, name: "30-59LP" },
+    { id: 2, name: "60-100LP" },
+  ];
+  currentLP = this.leaguePoints[0];
 
   constructor() {}
   selectPrimaryRole(id: number) {
@@ -169,5 +187,14 @@ export class OrderMenuV2Component implements OnInit {
   }
   toggleSecondaryRoleMenu() {
     this.secondaryRoleDropdownOpened = !this.secondaryRoleDropdownOpened;
+  }
+  selectDesiredDivision(id: number) {
+    this.desiredDivision = this.divisions[id];
+  }
+  selectCurrentDivision(id: number) {
+    this.currentDivision = this.divisions[id];
+  }
+  selectLeaguePoints(id: number) {
+    this.currentLP = this.leaguePoints[id];
   }
 }

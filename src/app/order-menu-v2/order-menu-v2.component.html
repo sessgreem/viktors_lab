@@ -46,16 +46,30 @@
             </i>
           </button>
         </div>
-        <div class="division-controls" fxLayout="row wrap">
-          <button class="controls-btn">IV</button>
-          <button class="controls-btn">III</button>
-          <button class="controls-btn">II</button>
-          <button class="controls-btn">I</button>
+        <div class="division-controls">
+          <ul fxLayout="row wrap">
+            <li
+              *ngFor="let division of divisions"
+              class="controls-btn"
+              (click)="selectCurrentDivision(division.id)"
+              [class.selected]="division.id === currentDivision.id"
+            >
+              {{ division.name }}
+            </li>
+          </ul>
         </div>
-        <div class="leaguepoints-controls" fxLayout="row wrap">
-          <button class="controls-btn">0 - 29 LP</button>
-          <button class="controls-btn">30 - 59 LP</button>
-          <button class="controls-btn">60 - 100 LP</button>
+        <div class="leaguepoints-controls">
+          <ul fxLayout="row wrap">
+            <li
+              *ngFor="let lp of leaguePoints"
+              (click)="selectLeaguePoints(lp.id)"
+              [class.selected]="lp.id === currentLP.id"
+              class="controls-btn"
+              fxLayoutAlign="center center"
+            >
+              {{ lp.name }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -95,10 +109,16 @@
           </button>
         </div>
         <div class="division-controls">
-          <button class="controls-btn">IV</button>
-          <button class="controls-btn">III</button>
-          <button class="controls-btn">II</button>
-          <button class="controls-btn">I</button>
+          <ul fxLayout="row wrap">
+            <li
+              *ngFor="let division of divisions"
+              (click)="selectDesiredDivision(division.id)"
+              class="controls-btn"
+              [class.selected]="desiredDivision.id === division.id"
+            >
+              <span>{{ division.name }}</span>
+            </li>
+          </ul>
         </div>
         <div class="server-queue-controls" fxLayout="row">
           <div class="server">
