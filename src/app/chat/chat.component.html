@@ -19,7 +19,6 @@
             <div class="message-timestamp">
               <span>now</span>
             </div>
-            <!-- <img [src]="msg.user?.photoURL" alt=""/> -->
           </div>
         </ng-container>
         <ng-template #staff>
@@ -34,28 +33,18 @@
               <span>now</span>
             </div>
           </div>
-          <!-- <img [src]="msg.staff?.photoURL" alt="" style="max-width: 100px;" /> -->
         </ng-template>
       </div>
     </div>
     <div class="msg-form">
-      <!-- <div class="input"> -->
       <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" type="text" name="message" id="message-input"
         placeholder="Type a message">
-      <!-- </div> -->
-      <!-- <div class="send"> -->
       <button (click)="submit(chat.id)">></button>
-      <!-- </div> -->
     </div>
   </div>
-  <!-- <div class="form">
-    <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" />
-    <button (click)="submit(chat.id)">Send</button>
-  </div> -->
 </ng-container>
 <ng-template #template>
   <div class="top">
-    <!-- span loading -->
     <h4>Waiting for Booster</h4>
   </div>
 </ng-template>
