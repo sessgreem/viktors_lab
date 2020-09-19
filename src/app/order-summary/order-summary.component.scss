@@ -5,13 +5,13 @@
   background: rgb(56, 85, 159);
   background: linear-gradient(180deg, rgba(56, 85, 159, 1) 0%, rgba(32, 35, 43, 1) 100%);
   // change
-  max-width: 100vw;
+  max-width: 375px;
   // border
   border: 1px solid #3D4251;
   border-radius: 0.8rem;
 
   h3 {
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
   }
 
   .headings {
@@ -55,14 +55,9 @@
   .extras {
     margin-bottom: 1rem;
 
-    // remove
     .checkbox {
       display: inline-block;
-      background-color: yellowgreen;
-      width: 50px;
-      height: 15px;
       margin-right: 1rem;
-      border: 1px solid black;
     }
 
     span:last-of-type {
@@ -121,8 +116,10 @@
   }
 
   .total-price {
+    margin-bottom: 15px;
+
     h3 {
-      margin-bottom: .5rem;
+      margin-bottom: .7rem;
       font-size: 1.3rem;
     }
 
@@ -153,6 +150,8 @@
   }
 
   .new-price {
+    margin-bottom: 10px;
+
     h3 {
       font-size: 1.6rem;
       margin: 0;
@@ -176,9 +175,10 @@
 
     button {
       padding: .7rem;
-      background-color: yellow;
+      background: rgb(255, 255, 0);
+      background: linear-gradient(90deg, rgba(255, 255, 0, 1) 50%, rgba(168, 168, 26, 1) 100%);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 800;
       font-size: 1.1rem;
       width: 100%;
       color: black;

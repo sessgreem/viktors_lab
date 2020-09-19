@@ -36,7 +36,9 @@ import { ServicesMenuComponent } from "./shared/services-menu/services-menu.comp
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
 import { OrderMenuV2Component } from "./order-menu-v2/order-menu-v2.component";
 import { ClickOutsideModule } from "ng-click-outside";
-import { FooterComponent } from './shared/footer/footer.component';
+import { FooterComponent } from "./shared/footer/footer.component";
+import { AngSlideToggleModule } from "ang-slide-toggle";
+import { CommonModule } from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +75,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     RatingModule,
     FlexLayoutModule,
     ClickOutsideModule,
+    AngSlideToggleModule,
+    CommonModule,
   ],
   providers: [{ provide: REGION, useValue: "europe-west1" }],
   bootstrap: [AppComponent],
