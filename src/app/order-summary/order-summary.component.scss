@@ -2,10 +2,8 @@
   // change ?
   margin: 2rem auto;
   padding: 1rem 1.2rem;
-  // gradient
-  // background: rgb(94, 102, 123);
-  // background: linear-gradient(180deg, rgba(94, 102, 123, 1) 0%, rgba(32, 35, 43, 1) 100%);
-  background: #1F2023;
+  background: rgb(56, 85, 159);
+  background: linear-gradient(180deg, rgba(56, 85, 159, 1) 0%, rgba(32, 35, 43, 1) 100%);
   // change
   max-width: 100vw;
   // border
@@ -17,14 +15,41 @@
   }
 
   .headings {
-    h3:first-child {
+    text-align: center;
+
+    &:first-child {
       margin-bottom: 1.2rem;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
     }
 
-    margin-bottom: 1rem;
-    text-align: center;
-    font-size: 1rem;
+    .details-headings {
+      background-color: #142B6D;
+      margin-left: -1.2rem;
+      margin-right: -1.2rem;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+
+      em {
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      h4 {
+        font-weight: 500;
+        margin-bottom: .7rem;
+        font-size: 1rem;
+
+        .target {
+          font-weight: 700;
+        }
+
+        &:last-child {
+          margin: 0;
+          opacity: .9;
+          font-size: .9rem;
+        }
+      }
+    }
   }
 
   .extras {
@@ -50,7 +75,7 @@
     margin-bottom: 1rem;
 
     .feature {
-      margin-bottom: .3rem;
+      margin-bottom: .7rem;
     }
 
     .icon {
