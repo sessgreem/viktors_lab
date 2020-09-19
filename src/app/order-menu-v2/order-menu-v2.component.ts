@@ -15,6 +15,7 @@ export class OrderMenuV2Component implements OnInit {
   FsummonerDropdownOpened = false;
   primaryRoleDropdownOpened = false;
   secondaryRoleDropdownOpened = false;
+
   // put in a separate file
   leagues: any[] = [
     { id: 0, name: "Iron" },

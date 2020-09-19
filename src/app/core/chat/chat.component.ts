@@ -8,7 +8,7 @@ import {
   AfterContentChecked,
 } from "@angular/core";
 import { Observable } from "rxjs";
-import { ChatService } from "../core/services/chat.service";
+import { ChatService } from "../services/chat.service";
 
 @Component({
   selector: "app-chat",
@@ -33,9 +33,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
   }
 
-  ngAfterContentChecked() {
-    // this.scrollToBottom();
-  }
+  // ngAfterContentChecked() {
+  //   // this.scrollToBottom();
+  // }
 
   // When looping over real-time array in Angular - trackBy method is needed - tells Angular to only re-render items that have changed
   trackByCreated(i, msg) {
@@ -54,8 +54,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   // }
 
   onScroll() {
-    let element = this.scrollContainer.nativeElement;
-    let atBottom =
+    const element = this.scrollContainer.nativeElement;
+    const atBottom =
       element.scrollHeight - element.scrollTop === element.clientHeight;
     console.log(
       ` scrollHeight ${element.scrollHeight} and scrollTop ${element.scrollTop} and element clientHeight ${element.clientHeight}`

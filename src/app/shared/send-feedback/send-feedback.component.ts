@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FeedbackService } from "../core/services/feedback.service";
+import { FeedbackService } from "../../core/services/feedback.service";
 
 @Component({
   selector: "app-send-feedback",
