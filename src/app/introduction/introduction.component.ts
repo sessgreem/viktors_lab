@@ -20,16 +20,21 @@ export class IntroductionComponent implements OnInit {
       toolDesc: "Firebase",
     },
     {
-      toolUrl: "../../assets/tools-images/google-cloud-functions-seeklogo.com.svg",
+      toolUrl:
+        "../../assets/tools-images/google-cloud-functions-seeklogo.com.svg",
       toolDesc: "Cloud Functions",
     },
     {
       toolUrl: "../../assets/tools-images/HTML5_logo_and_wordmark.svg",
       toolDesc: "HTML",
     },
+    // {
+    //   toolUrl: "../../assets/tools-images/CSS.3.svg",
+    //   toolDesc: "CSS",
+    // },
     {
-      toolUrl: "../../assets/tools-images/CSS.3.svg",
-      toolDesc: "CSS",
+      toolUrl: "../../assets/tools-images/sass-1.svg",
+      toolDesc: "SCSS",
     },
     {
       toolUrl: "../../assets/tools-images/nodejs.svg",

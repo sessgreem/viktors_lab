@@ -36,6 +36,7 @@ import { ServicesMenuComponent } from "./shared/services-menu/services-menu.comp
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
 import { OrderMenuV2Component } from "./order-menu-v2/order-menu-v2.component";
 import { ClickOutsideModule } from "ng-click-outside";
+import { FooterComponent } from './shared/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { ClickOutsideModule } from "ng-click-outside";
     ServicesMenuComponent,
     OrderSummaryComponent,
     OrderMenuV2Component,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
