@@ -4,8 +4,18 @@ $blue: #2b52c5;
 $button-color: #17181a;
 $border-color: #2d2f34;
 
+@mixin greenGradientBackground {
+  background: rgb(18, 150, 7);
+  background: linear-gradient(90deg, rgba(18, 150, 7, 1) 0%, rgba(26, 186, 13, 1) 50%, rgba(18, 150, 7, 1) 100%);
+}
+
+@mixin blueGradientBackground {
+  background: rgb(27, 52, 129);
+  background: linear-gradient(90deg, rgba(27, 52, 129, 1) 0%, rgba(43, 82, 197, 1) 50%, rgba(27, 52, 129, 1) 100%);
+}
 
 .select {
+
   cursor: pointer;
   position: relative;
   background-color: $button-color;
@@ -82,7 +92,7 @@ $border-color: #2d2f34;
 }
 
 .controls-btn.selected {
-  background-color: $green;
+  @include greenGradientBackground();
 }
 
 .controls-btn {
@@ -132,7 +142,7 @@ $border-color: #2d2f34;
         .rank {
           cursor: pointer;
           position: relative;
-          background-color: $green;
+          @include greenGradientBackground();
           text-align: center;
           display: flex;
           width: 210px;
@@ -155,7 +165,7 @@ $border-color: #2d2f34;
           }
 
           .dropdown-menu {
-            background-color: $green;
+            @include greenGradientBackground();
             border: none;
             top: 44px;
             border-radius: 0.9rem;
@@ -183,15 +193,15 @@ $border-color: #2d2f34;
 
     .desired {
       .controls-btn.selected {
-        background-color: $blue;
+        @include blueGradientBackground();
       }
 
       .rank-controls {
         .rank {
-          background-color: $blue;
+          @include blueGradientBackground();
 
           .dropdown-menu {
-            background-color: $blue;
+            @include blueGradientBackground();
           }
 
           .dropdown-menu * {
