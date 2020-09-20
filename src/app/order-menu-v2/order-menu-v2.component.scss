@@ -112,6 +112,7 @@ $border-color: #2d2f34;
       flex-direction: column;
 
       img {
+        margin: 20px 0 20px 0;
         max-width: 140px;
       }
 
@@ -247,7 +248,7 @@ $border-color: #2d2f34;
       }
 
       img {
-        max-width: 70px;
+        max-width: 55px;
       }
     }
   }
@@ -260,7 +261,7 @@ $border-color: #2d2f34;
     margin-top: 1.5rem;
 
     img {
-      max-width: 60px;
+      max-width: 55px;
     }
   }
 }

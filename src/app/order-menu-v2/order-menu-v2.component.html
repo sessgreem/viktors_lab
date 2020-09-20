@@ -16,7 +16,7 @@
         <h2>1. Current Rank<span class="red"> *</span></h2>
         <p>Select your Current Rank below.</p>
         <!-- dynamic -->
-        <img src="../../assets/rank-images/gold_4.png" alt="" />
+        <img [src]="currentRank.imgURL" alt="Current Rank Image" />
       </div>
       <div class="controls" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
@@ -62,7 +62,7 @@
         <h2>2. Desired Rank<span class="red"> *</span></h2>
         <p>Select your Desired Rank below.</p>
         <!-- dynamic -->
-        <img src="../../assets/rank-images/platinum_4.png" alt="" />
+        <img [src]="desiredRank.imgURL" alt="Desired Rank Image" />
       </div>
       <div class="controls desired" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
@@ -130,7 +130,7 @@
       <div class="summoner-spells" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2.5rem">
         <div class="summoner-spell" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <div class="keybind">D</div>
-          <img src="../../assets/summoner-spells/flash.jpg" alt="summoner-spell-img-D" />
+          <img [src]="summonerKeyD.imgURL" alt="summoner-spell-img-D" />
           <div class="select" (click)="toggleSummonerKeyDMenu()" (clickOutside)="clickOutsideSummonerKeyD($event)">
             <span>{{ summonerKeyD.name }} </span>
             <ul class="dropdown-menu" [class.open]="DsummonerDropdownOpened">
@@ -142,7 +142,7 @@
         </div>
         <div class="summoner-spell" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <div class="keybind">F</div>
-          <img src="../../assets/summoner-spells/ignite.jpg" alt="summoner-spell-img-F" />
+          <img [src]="summonerKeyF.imgURL" alt="summoner-spell-img-F" />
           <div class="select" (click)="toggleSummonerKeyFMenu()" (clickOutside)="clickOutsideSummonerKeyF($event)">
             <span>{{ summonerKeyF.name }} </span>
             <ul class="dropdown-menu" [class.open]="FsummonerDropdownOpened">
@@ -162,7 +162,7 @@
       <div class="roles" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2.5rem">
         <div class="role" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <h4>Primary Role</h4>
-          <img src="../../assets/role-positions/middle.png" alt="" />
+          <img [src]="primaryRole.imgURL" alt="Primary Role" />
           <div class="select" (click)="togglePrimaryRoleMenu()" (clickOutside)="clickOutsidePrimaryRole($event)">
             <span>{{ primaryRole.name }}</span>
             <ul class="dropdown-menu" [class.open]="primaryRoleDropdownOpened">
@@ -174,7 +174,7 @@
         </div>
         <div class="role" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <h4>Secondary Role</h4>
-          <img src="../../assets/role-positions/bottom.png" alt="" />
+          <img [src]="secondaryRole.imgURL" alt="Secondary Role" />
           <div class="select" (click)="toggleSecondaryRoleMenu()" (clickOutside)="clickOutsideSecondaryRole($event)">
             <span>{{ secondaryRole.name }} </span>
             <ul class="dropdown-menu" [class.open]="secondaryRoleDropdownOpened">

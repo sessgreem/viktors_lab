@@ -75,16 +75,19 @@
 
     .icon {
       display: inline-block;
-      background-color: white;
-      width: 10px;
-      height: 10px;
-      margin-right: .5rem;
+      width: 18px;
+      height: 18px;
+      margin-right: .6rem;
+      position: relative;
+      top: 3px;
     }
 
     span:last-of-type {
       float: right;
       font-weight: 600;
       color: greenyellow;
+      position: relative;
+      top: 6px;
     }
 
   }

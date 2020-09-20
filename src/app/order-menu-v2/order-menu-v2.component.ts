@@ -18,15 +18,27 @@ export class OrderMenuV2Component implements OnInit {
 
   // put in a separate file
   leagues: any[] = [
-    { id: 0, name: "Iron" },
-    { id: 1, name: "Bronze" },
-    { id: 2, name: "Silver" },
-    { id: 3, name: "Gold" },
-    { id: 4, name: "Platinium" },
-    { id: 5, name: "Diamond" },
-    { id: 6, name: "Master" },
-    { id: 7, name: "GrandMaster" },
-    { id: 8, name: "Challenger" },
+    { id: 0, name: "Iron", imgURL: "../../assets/ranks-images/Iron.png" },
+    { id: 1, name: "Bronze", imgURL: "../../assets/ranks-images/Bronze.png" },
+    { id: 2, name: "Silver", imgURL: "../../assets/ranks-images/Silver.png" },
+    { id: 3, name: "Gold", imgURL: "../../assets/ranks-images/Gold.png" },
+    {
+      id: 4,
+      name: "Platinum",
+      imgURL: "../../assets/ranks-images/Platinum.png",
+    },
+    { id: 5, name: "Diamond", imgURL: "../../assets/ranks-images/Diamond.png" },
+    { id: 6, name: "Master", imgURL: "../../assets/ranks-images/Master.png" },
+    {
+      id: 7,
+      name: "GrandMaster",
+      imgURL: "../../assets/ranks-images/Grandmaster.png",
+    },
+    {
+      id: 8,
+      name: "Challenger",
+      imgURL: "../../assets/ranks-images/Challenger.png",
+    },
   ];
   currentRank = this.leagues[3];
   desiredRank = this.leagues[this.currentRank.id + 1];
@@ -52,27 +64,91 @@ export class OrderMenuV2Component implements OnInit {
   queue = this.queues[0];
 
   summoners: any[] = [
-    { id: 0, name: "Any" },
-    { id: 1, name: "Flash" },
-    { id: 2, name: "Ignite" },
-    { id: 3, name: "Heal" },
-    { id: 4, name: "Smite" },
-    { id: 5, name: "Teleport" },
-    { id: 6, name: "Exhaust" },
-    { id: 7, name: "Cleanse" },
-    { id: 8, name: "Barrier" },
-    { id: 9, name: "Ghost" },
+    {
+      id: 0,
+      name: "Any",
+      imgURL: "../../assets/role_positions-images/fill.png",
+    },
+    {
+      id: 1,
+      name: "Flash",
+      imgURL: "../../assets/summoner_spells-images/Flash.png",
+    },
+    {
+      id: 2,
+      name: "Ignite",
+      imgURL: "../../assets/summoner_spells-images/Ignite.png",
+    },
+    {
+      id: 3,
+      name: "Heal",
+      imgURL: "../../assets/summoner_spells-images/Heal.png",
+    },
+    {
+      id: 4,
+      name: "Smite",
+      imgURL: "../../assets/summoner_spells-images/Smite.png",
+    },
+    {
+      id: 5,
+      name: "Teleport",
+      imgURL: "../../assets/summoner_spells-images/Teleport.png",
+    },
+    {
+      id: 6,
+      name: "Exhaust",
+      imgURL: "../../assets/summoner_spells-images/Exhaust.png",
+    },
+    {
+      id: 7,
+      name: "Cleanse",
+      imgURL: "../../assets/summoner_spells-images/Cleanse.png",
+    },
+    {
+      id: 8,
+      name: "Barrier",
+      imgURL: "../../assets/summoner_spells-images/Barrier.png",
+    },
+    {
+      id: 9,
+      name: "Ghost",
+      imgURL: "../../assets/summoner_spells-images/Ghost.png",
+    },
   ];
   summonerKeyD = this.summoners[0];
   summonerKeyF = this.summoners[0];
 
   roles: any[] = [
-    { id: 0, name: "Any" },
-    { id: 1, name: "Top" },
-    { id: 2, name: "Jungle" },
-    { id: 3, name: "Middle" },
-    { id: 4, name: "Bottom" },
-    { id: 5, name: "Support" },
+    {
+      id: 0,
+      name: "Any",
+      imgURL: "../../assets/role_positions-images/fill.png",
+    },
+    {
+      id: 1,
+      name: "Top",
+      imgURL: "../../assets/role_positions-images/top.png",
+    },
+    {
+      id: 2,
+      name: "Jungle",
+      imgURL: "../../assets/role_positions-images/jungle.png",
+    },
+    {
+      id: 3,
+      name: "Middle",
+      imgURL: "../../assets/role_positions-images/middle.png",
+    },
+    {
+      id: 4,
+      name: "Bottom",
+      imgURL: "../../assets/role_positions-images/bottom.png",
+    },
+    {
+      id: 5,
+      name: "Support",
+      imgURL: "../../assets/role_positions-images/support.png",
+    },
   ];
 
   primaryRole = this.roles[0];

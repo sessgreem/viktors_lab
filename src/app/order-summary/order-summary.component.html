@@ -13,14 +13,8 @@
       <!-- opacity line -->
       <!-- custom checkbox -->
       <div class="checkbox">
-        <ang-slide-toggle
-          barCheckedBgColor="#beebe9"
-          sliderCheckedColor="#3fc5f0"
-          barUncheckedBgColor="#ded5d5"
-          sliderUncheckedColor="#bdbdbd"
-          [checked]="false"
-          [disabled]="false"
-        >
+        <ang-slide-toggle barCheckedBgColor="#beebe9" sliderCheckedColor="#3fc5f0" barUncheckedBgColor="#ded5d5"
+          sliderUncheckedColor="#bdbdbd" [checked]="false" [disabled]="false">
         </ang-slide-toggle>
       </div>
       <span>Priority order</span><span>(+20% cost)</span>
@@ -29,22 +23,22 @@
   <div class="features" fxLayout="column">
     <h3>Features</h3>
     <div class="feature">
-      <div class="icon"></div>
+      <img class="icon" src="../../assets/icons/chat_bubble_outline-white-18dp.svg" alt="chat-icon">
       <span>Chat with a booster</span>
       <span>Free</span>
     </div>
     <div class="feature">
-      <div class="icon"></div>
+      <img class="icon" src="../../assets/icons/pause_circle_outline-white-18dp.svg" alt="pause-icon">
       <span>Pause chat</span>
       <span>Free</span>
     </div>
     <div class="feature">
-      <div class="icon"></div>
+      <img class="icon" src="../../assets/icons/schedule-white-18dp.svg" alt="schedule-icon">
       <span>Schedule order</span>
       <span>Free</span>
     </div>
     <div class="feature">
-      <div class="icon"></div>
+      <img class="icon" src="../../assets/icons/vpn_lock-white-18dp.svg" alt="vpn-icon">
       <span>VPN secured</span>
       <span>Free</span>
     </div>
@@ -55,11 +49,7 @@
     <h5>Add Code</h5>
     <input type="text" />
   </div>
-  <div
-    class="total-price"
-    fxLayout.lt-sm="column"
-    fxLayoutAlign.lt-sm="center center"
-  >
+  <div class="total-price" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center center">
     <!-- if  -->
     <h3>Total Price</h3>
     <div>
@@ -68,11 +58,7 @@
       <span>(-20%)</span>
     </div>
   </div>
-  <div
-    class="new-price"
-    fxLayout.lt-sm="column"
-    fxLayoutAlign.lt-sm="center center"
-  >
+  <div class="new-price" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center center">
     <h3>New Price</h3>
     <h3 class="new-price-currency">€23.60</h3>
   </div>
