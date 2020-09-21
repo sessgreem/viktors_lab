@@ -39,6 +39,7 @@ import { ClickOutsideModule } from "ng-click-outside";
 import { FooterComponent } from "./shared/footer/footer.component";
 import { AngSlideToggleModule } from "ang-slide-toggle";
 import { CommonModule } from "@angular/common";
+import { ProgressBarModule } from "angular-progress-bar";
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { CommonModule } from "@angular/common";
     ClickOutsideModule,
     AngSlideToggleModule,
     CommonModule,
+    ProgressBarModule,
   ],
   providers: [{ provide: REGION, useValue: "europe-west1" }],
   bootstrap: [AppComponent],

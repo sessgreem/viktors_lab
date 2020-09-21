@@ -10,17 +10,16 @@
   <div class="username">
     <!-- <ng-container *ngIf="user$ | async as user; else userTemplate"> -->
     <!-- <h2>{{ user.displayName }}</h2> -->
-    <h2>User</h2>
+    <h2>Demo</h2>
     <!-- </ng-container> -->
   </div>
 </section>
 <!-- <ng-container *ngIf="order$ | async as o; else Loading"> -->
 <ng-container *ngIf="orders$ | async as order">
-
   <div class="content">
     <!-- Order Details Section -->
     <h3 class="content-heading">Order Details</h3>
-    <div class="content-box" fxLayout.lt-sm="row" style="padding-right:0;">
+    <div class="content-box" fxLayout.lt-sm="row" style="padding-right: 0">
       <div class="order-details" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="15px" fxFlex="50">
         <div class="detail" fxLayout="column">
           <h5>Order ID</h5>
@@ -28,7 +27,11 @@
         </div>
         <div class="detail" fxLayout="column">
           <h5>Target</h5>
-          <span>{{ leagues[order.orderDesiredRank].name + " " + divisions[order.orderDesiredDivision].name }}</span>
+          <span>{{
+            leagues[order.orderDesiredRank].name +
+              " " +
+              divisions[order.orderDesiredDivision].name
+          }}</span>
         </div>
         <div class="detail" fxLayout="column">
           <h5>Queue</h5>
@@ -51,27 +54,41 @@
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Start</h5>
           <img [src]="leagues[order.orderStartRank].imgURL" alt="Starting Rank" />
-          <span> {{ leagues[order.orderStartRank].name + " " + divisions[order.orderStartDivision].name }} </span>
+          <span>
+            {{
+              leagues[order.orderStartRank].name +
+                " " +
+                divisions[order.orderStartDivision].name
+            }}
+          </span>
         </div>
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Current</h5>
           <img [src]="leagues[order.orderCurrentRank].imgURL" alt="Current Rank" />
-          <span>{{ leagues[order.orderCurrentRank].name + " " + divisions[order.orderCurrentDivision].name }} </span>
-          <!-- <span>Gold III</span> -->
+          <span>{{
+              leagues[order.orderCurrentRank].name +
+                " " +
+                divisions[order.orderCurrentDivision].name
+            }}
+          </span>
         </div>
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Target</h5>
           <img [src]="leagues[order.orderDesiredRank].imgURL" alt="Target Rank" />
-          <span>{{ leagues[order.orderDesiredRank].name + " " + divisions[order.orderDesiredDivision].name }} </span>
+          <span>{{
+              leagues[order.orderDesiredRank].name +
+                " " +
+                divisions[order.orderDesiredDivision].name
+            }}
+          </span>
         </div>
       </div>
       <div class="bar-progress">
         <h5>Progress</h5>
-        <span>Progress bar</span>
-        <!-- Progress bar logic - angular-progress-bar -->
+        <progress-bar [progress]="90" [color]="'rgb(18, 150, 7)'"></progress-bar>
       </div>
       <div class="pause-button" fxLayout="row" fxLayoutAlign="center center">
-        <button class="secondaryButton pauseButton">Pause Order</button>
+        <button class="primaryButton pauseButton">Pause Order</button>
       </div>
     </div>
     <app-chat [orderId]="orderId"></app-chat>

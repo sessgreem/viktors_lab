@@ -3,15 +3,7 @@
   font-weight: 500;
 }
 
-.order-rank img {
-  max-width: 90px;
-  /* max-height: 100px; */
-  margin: 5px;
-}
 
-.order-rank {
-  align-items: center;
-}
 
 .bar-progress {
   margin-top: .5rem;
@@ -19,6 +11,9 @@
 
 .pauseButton {
   padding: .6rem;
+  margin-top: 15px;
+  background-color: #595252;
+  opacity: .95;
 }
 
 .content-small-box {
@@ -40,7 +35,7 @@
 
   .extend-button {
     button {
-      background-color: #2b52c5;
+      background-color: #1E42A9;
     }
   }
 }
@@ -54,6 +49,24 @@
   border-radius: 0.8rem;
   margin-bottom: 1.5rem;
   padding: .8rem;
+
+  .rank-progress {
+    margin-bottom: 20px;
+
+    .order-rank {
+      align-items: center;
+
+      img {
+        max-width: 90px;
+        /* max-height: 100px; */
+        margin: 5px;
+      }
+
+      span {
+        font-size: .9rem;
+      }
+    }
+  }
 
   .order-details {
     .detail {

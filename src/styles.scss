@@ -1,4 +1,6 @@
 $background-color: #141917;
+// $green: #00aa3f;
+$green: rgb(18, 150, 7);
 
 body {
   background-color: $background-color;
@@ -62,9 +64,9 @@ a {
 }
 
 .secondaryButton {
-  background-color: #0ba100;
+  background-color: $green;
   // padding: 0.8rem 1rem;
-  padding: 1rem;
+  padding: .8rem;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -74,7 +76,6 @@ a {
 
 .username {
   text-align: center;
-  background-color: #0ba100;
   padding: 1rem 0 1rem 0;
   font-size: 1.2rem;
 }
@@ -203,8 +204,7 @@ a {
 
 .username {
   width: 100%;
-  opacity: 0.9;
-  background-color: #0ba100;
+  background-color: rgb(18, 150, 7, 60%);
 }
 
 .staff {
