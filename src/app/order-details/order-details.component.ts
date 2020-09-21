@@ -2,6 +2,7 @@ import { OrderService } from "./../core/services/order.service";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
+import { leagues, divisions } from "../shared/variables";
 
 @Component({
   selector: "app-order-details",
@@ -12,7 +13,8 @@ export class OrderDetailsComponent implements OnInit {
   orders$: Observable<any>;
   orderId: string;
   accPassword = "viktor";
-
+  leagues = leagues;
+  divisions = divisions;
   constructor(
     private route: ActivatedRoute,
     private orderService: OrderService

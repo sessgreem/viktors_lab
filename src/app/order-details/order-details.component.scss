@@ -6,6 +6,7 @@
 .order-rank img {
   max-width: 90px;
   /* max-height: 100px; */
+  margin: 5px;
 }
 
 .order-rank {
@@ -17,7 +18,7 @@
 }
 
 .pauseButton {
-  padding: 1rem;
+  padding: .6rem;
 }
 
 .content-small-box {
@@ -34,7 +35,7 @@
   }
 
   p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .extend-button {
@@ -51,7 +52,7 @@
   background-color: #1f2023;
   border: 1px solid #2d2f34;
   border-radius: 0.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   padding: .8rem;
 
   .order-details {

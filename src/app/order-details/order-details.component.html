@@ -18,16 +18,17 @@
 <ng-container *ngIf="orders$ | async as order">
 
   <div class="content">
+    <!-- Order Details Section -->
     <h3 class="content-heading">Order Details</h3>
     <div class="content-box" fxLayout.lt-sm="row" style="padding-right:0;">
-      <div class="order-details" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px" fxFlex="50">
+      <div class="order-details" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="15px" fxFlex="50">
         <div class="detail" fxLayout="column">
           <h5>Order ID</h5>
           <span>Q528342FF</span>
         </div>
         <div class="detail" fxLayout="column">
           <h5>Target</h5>
-          <span>{{ order.orderDesiredRank }}</span>
+          <span>{{ leagues[order.orderDesiredRank].name + " " + divisions[order.orderDesiredDivision].name }}</span>
         </div>
         <div class="detail" fxLayout="column">
           <h5>Queue</h5>
@@ -43,32 +44,31 @@
         <span>{{ order.orderStatus }}</span>
       </div>
     </div>
+    <!-- Boost Progress Section -->
     <h3 class="content-heading">Boost Progress</h3>
     <div class="content-box">
       <div class="rank-progress" fxLayout.lt-sm="row wrap">
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Start</h5>
-          <img src="../../assets/rank-images/gold_4.png" alt="" />
-          <!-- <span> {{ order.orderStartingRank }} </span> -->
-          <span>Gold IV</span>
+          <img [src]="leagues[order.orderStartRank].imgURL" alt="Starting Rank" />
+          <span> {{ leagues[order.orderStartRank].name + " " + divisions[order.orderStartDivision].name }} </span>
         </div>
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Current</h5>
-          <img src="../../assets/rank-images/gold_4.png" alt="" />
-          <!-- <span>{{ order.orderCurrentRank }} </span> -->
-          <span>Gold III</span>
+          <img [src]="leagues[order.orderCurrentRank].imgURL" alt="Current Rank" />
+          <span>{{ leagues[order.orderCurrentRank].name + " " + divisions[order.orderCurrentDivision].name }} </span>
+          <!-- <span>Gold III</span> -->
         </div>
         <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
           <h5>Target</h5>
-          <img src="../../assets/rank-images/platinum_4.png" alt="" />
-          <!-- <span>{{ order.orderTargetRank }} </span> -->
-          <span>Gold II</span>
+          <img [src]="leagues[order.orderDesiredRank].imgURL" alt="Target Rank" />
+          <span>{{ leagues[order.orderDesiredRank].name + " " + divisions[order.orderDesiredDivision].name }} </span>
         </div>
       </div>
       <div class="bar-progress">
         <h5>Progress</h5>
         <span>Progress bar</span>
-        <!-- Progress bar logic -->
+        <!-- Progress bar logic - angular-progress-bar -->
       </div>
       <div class="pause-button" fxLayout="row" fxLayoutAlign="center center">
         <button class="secondaryButton pauseButton">Pause Order</button>
@@ -97,10 +97,11 @@
       </div>
     </div>
   </div>
+  <app-help-contact></app-help-contact>
+  <app-footer></app-footer>
 </ng-container>
-<app-help-contact></app-help-contact>
 <ng-template #Loading>
-  <!-- insert loading -->
+  <!-- insert loading - ngx-spinner -->
 </ng-template>
 <ng-template #userTemplate>
   <h2>User</h2>

@@ -4,6 +4,7 @@
 
 -- Overall Project --
     implement payment system
+DONE restructure components
 
 -- Firebase Security --
     problem with persistance when user refreshes order (permissions) (auth.guard.ts:44) - isOrdererOrStaff function (maybe should be left like that for security)
@@ -29,7 +30,19 @@
     create colors
 
 -- Experience Design --
-     desing footer
+DONE desing footer
 DONE Redesigned order menu for mobile and desktop
-     Redesigned staff available orders
-     Initial design for user controls in track order
+DONE Redesigned staff available orders
+DONE Initial design for user controls in track order
+      Design payment due in order
+      Design mobile navigation from burger
+      Desing user login form
+      Design staff login form
+
+-- UI Compontents --
+    Payment due component
+    Mobile navigation from burger
+    Options component
+
+-- Database --
+    in createOrder we need fields for orderStartRank, orderStartDivision, orderDesiredDivision
