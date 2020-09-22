@@ -1,9 +1,30 @@
-<div class="navigation" fxLayout="row" fxLayoutAlign="space-between center">
-  <div class="burger-menu">
-    <!--  and ul -->
-    <i class="material-icons">menu</i>
-  </div>
+<nav fxLayout="row" fxLayoutAlign="space-between center">
   <div class="logo">
     <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo">
   </div>
-</div>
+  <div class="navbar-wrapper" [class.open]="open">
+    <div class="exit-bar">
+      <span (click)="this.open = false">X</span>
+    </div>
+    <ul class="navbar">
+      <li class="nav-item">
+        <a routerLink="/">Introduction</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/lol-boost">Boosting</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/demo-order">Demo Order</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/signup">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+  <div class="burger-menu" (click)="this.open = true">
+    <i class="material-icons">menu</i>
+  </div>
+</nav>
