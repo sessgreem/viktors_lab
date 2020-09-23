@@ -1,10 +1,15 @@
 <nav fxLayout="row" fxLayoutAlign="space-between center">
   <div class="logo">
-    <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo">
+    <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo" />
   </div>
-  <div class="navbar-wrapper" [class.open]="open">
+  <div
+    class="navbar-wrapper"
+    [class.open]="open"
+    (clickOutside)="closeSideNav($event)"
+    [clickOutsideEnabled]="this.outsideEnabled"
+  >
     <div class="exit-bar">
-      <span (click)="this.open = false">X</span>
+      <span (click)="this.outsideEnabled = false; this.open = false">X</span>
     </div>
     <ul class="navbar">
       <li class="nav-item">
@@ -24,7 +29,7 @@
       </li>
     </ul>
   </div>
-  <div class="burger-menu" (click)="this.open = true">
+  <div class="burger-menu" (click)="openSideNav()">
     <i class="material-icons">menu</i>
   </div>
 </nav>

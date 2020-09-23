@@ -33,11 +33,6 @@ const routes: Routes = [
   //   canActivate: [FireguardGuard]
   // },
   { path: "login", component: UserFormComponent },
-  // {
-  //   path: "oldorders/:id",
-  //   component: OrderChatComponent,
-  //   // canActivate: [AuthGuard],
-  // },
   {
     path: "staff/signup",
     component: SignupComponent,
@@ -52,10 +47,10 @@ const routes: Routes = [
     path: "staff/login",
     component: LoginComponent,
   },
-  // {
-  //   path: "**",
-  //   redirectTo: "/", // create a 404 page with timeout redirect
-  // },
+  {
+    path: "**",
+    redirectTo: "/", // create a 404 page with timeout redirect
+  },
   {
     path: "",
     component: IntroductionComponent,
@@ -67,7 +62,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: "enabled",
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
