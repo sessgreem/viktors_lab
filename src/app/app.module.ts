@@ -40,15 +40,12 @@ import { FooterComponent } from "./shared/footer/footer.component";
 import { AngSlideToggleModule } from "ang-slide-toggle";
 import { CommonModule } from "@angular/common";
 import { ProgressBarModule } from "angular-progress-bar";
+import { ModalLoginComponent } from "./shared/modals/modal-login/modal-login.component";
+import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.component";
 @NgModule({
   declarations: [
     AppComponent,
-    // ChatComponent,
-    // HomeComponent,
     UserFormComponent,
-    // PanelComponent,
-    // OrderMenuComponent,
-    // OrderChatComponent,
     SignupComponent,
     DashboardComponent,
     LoginComponent,
@@ -64,6 +61,8 @@ import { ProgressBarModule } from "angular-progress-bar";
     OrderSummaryComponent,
     OrderMenuV2Component,
     FooterComponent,
+    ModalLoginComponent,
+    ModalSignupComponent,
   ],
   imports: [
     BrowserModule,
