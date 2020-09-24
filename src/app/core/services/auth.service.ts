@@ -54,6 +54,7 @@ export class AuthService {
   emailSignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
+      .then((res) => console.log(res))
       .catch((error) => console.log(error));
   }
 

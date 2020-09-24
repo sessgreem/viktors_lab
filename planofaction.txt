@@ -24,6 +24,7 @@ DONE restructure components
 -- Logic --
      rethink order id
      implement a better uid and staffId awaits - change logic completely make it so that staff affects orders in a different component
+     rethink authentication logic - was able to login with staffauth - doesnt care about database - maybe make roles: "staff" instead
 
 -- Global Styling --
     create buttons
@@ -46,3 +47,4 @@ DONE Initial design for user controls in track order
 
 -- Database --
     in createOrder we need fields for orderStartRank, orderStartDivision, orderDesiredDivision
+

@@ -1,0 +1,100 @@
+@mixin cardGreenGradient {
+  // background: rgb(15, 165, 3);
+  // background: linear-gradient(311deg, rgba(15, 165, 3, 1) 0%, rgba(35, 214, 21, 1) 40%);
+
+  background: rgb(35, 217, 21);
+  background: linear-gradient(170deg, rgba(35, 217, 21, 1) 0%, rgba(21, 172, 9, 1) 69%);
+}
+
+@mixin cardBlueGreenGradient {
+  background: rgb(43, 82, 197);
+  background: linear-gradient(151deg, rgba(43, 82, 197, 1) 0%, rgba(0, 175, 105, 1) 100%);
+}
+
+@mixin inputWhiteGradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(107deg, rgba(255, 255, 255, 1) 0%, rgba(249, 249, 249, 1) 100%);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: block;
+  overflow: hidden;
+}
+
+.modal-content {
+  max-width: 300px;
+  margin: 20px auto;
+
+  .modal-card {
+    // @include cardGreenGradient();
+    @include cardBlueGreenGradient();
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: .5rem;
+
+    .modal-header {
+      text-align: center;
+
+      img {
+        max-width: 220px;
+        padding: 40px 0px 20px 0px;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+
+      label {
+        font-size: .85rem;
+        font-weight: 500;
+      }
+
+      input {
+        padding: .6rem;
+        margin-bottom: 15px;
+        @include inputWhiteGradient();
+        font-weight: 500;
+        border: none;
+        border-radius: .4rem;
+        font-size: 1em;
+      }
+
+      input:last-of-type {
+        margin: 0;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        background-color: #272727; // put gradient?
+        border-radius: .5rem;
+        width: 100%;
+        margin: 25px auto 25px auto;
+      }
+
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+
+      a {
+        font-size: .9rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
     return this.auth
       .emailSignIn(this.email.value, this.password.value)
       .then((res) => {
-        console.log("Login successful - redirecting to dashboard...");
+        console.log(res);
+        console.log("Received - redirecting to dashboard...");
         this.router.navigate(["staff/dashboard"]);
       });
   }

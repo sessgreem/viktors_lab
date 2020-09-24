@@ -30,7 +30,8 @@ export class ModalLoginComponent implements OnInit {
     return this.auth
       .emailSignIn(this.email.value, this.password.value)
       .then((res) => {
-        console.log("Login successful.");
+        console.log(res);
+        console.log("Login complete.");
       });
   }
 }

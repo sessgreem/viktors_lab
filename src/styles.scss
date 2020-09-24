@@ -59,6 +59,7 @@ button {
   font-family: inherit;
   border-style: none;
   color: #fff;
+  cursor: pointer;
 }
 
 a {
@@ -216,4 +217,14 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+// input {
+input {
+  font-family: Montserrat,
+    "Segoe UI",
+    Geneva,
+    Verdana,
+    sans-serif;
+  ;
 }
