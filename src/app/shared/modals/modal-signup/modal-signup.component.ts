@@ -1,6 +1,6 @@
 import { Validators, FormGroup, FormBuilder } from "@angular/forms";
 import { AuthService } from "src/app/core/services/auth.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
   selector: "app-modal-signup",
@@ -9,6 +9,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ModalSignupComponent implements OnInit {
   signUpForm: FormGroup;
+
+  @Output() openLoginForm = new EventEmitter<boolean>();
+
+  loginFormEmit() {
+    this.openLoginForm.emit(false);
+  }
 
   constructor(private fb: FormBuilder, private auth: AuthService) {}
 
