@@ -1,3 +1,4 @@
+import { ModalService } from "./../../../core/services/modal.service";
 import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
@@ -7,14 +8,24 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class ModalCardComponent implements OnInit {
   signUpOpened = true;
-
+  // outsideEnabled = false;
   openLoginForm(event) {
     this.signUpOpened = event; // should be false
   }
   openSignUpForm(event) {
     this.signUpOpened = event; // should be true
   }
-  constructor() {}
+
+  constructor(public modalService: ModalService) {}
+
+  // closeModal(event) {
+  //   console.log(event);
+  //   // tslint:disable-next-line: curly
+  //   if (this.outsideEnabled === false) this.outsideEnabled = true;
+  //   // setTimeout(() => (this.outsideEnabled = true), 1000);
+  //   // tslint:disable-next-line: curly
+  //   else this.modalService.closeModal();
+  // }
 
   ngOnInit(): void {}
 }

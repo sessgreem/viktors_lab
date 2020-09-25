@@ -2,12 +2,8 @@
   <div class="logo">
     <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo" />
   </div>
-  <div
-    class="navbar-wrapper"
-    [class.open]="open"
-    (clickOutside)="closeSideNav($event)"
-    [clickOutsideEnabled]="this.outsideEnabled"
-  >
+  <div class="navbar-wrapper" [class.open]="open" (clickOutside)="closeSideNav($event)"
+    [clickOutsideEnabled]="this.outsideEnabled">
     <div class="exit-bar">
       <span (click)="this.outsideEnabled = false; this.open = false">X</span>
     </div>
@@ -22,10 +18,10 @@
         <a routerLink="/demo-order">Demo Order</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/login">Login</a>
+        <a (click)="openLoginForm()">Login</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/signup">Sign Up</a>
+        <a (click)="openSignUpForm()">Sign Up</a>
       </li>
     </ul>
   </div>

@@ -11,7 +11,8 @@
   <button type="submit" (click)="emailSignIn()">Login</button>
 </form>
 <div class="options">
-  <a (click)="signUpFormEmit()">Create Account</a>
+  <!-- <a (click)="signUpFormEmit()">Create Account</a> -->
+  <a (click)="this.modalService.openSignUpForm()">Create Account</a>
   <a href="/reset/request">
     Reset Password</a>
 </div>

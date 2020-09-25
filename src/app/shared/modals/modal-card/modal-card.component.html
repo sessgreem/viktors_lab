@@ -1,11 +1,13 @@
-<div class="modal" role="dialog">
+<div class="modal" [class.open]="this.modalService.modalOpened" role="dialog">
   <div class="modal-content">
     <div class="modal-card">
       <div class="modal-header">
         <img src="../../../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo">
       </div>
-      <app-modal-login *ngIf="!signUpOpened" (openSignUpForm)="openSignUpForm($event)"></app-modal-login>
-      <app-modal-signup *ngIf="signUpOpened" (openLoginForm)="openLoginForm($event)"></app-modal-signup>
+      <!-- <app-modal-login *ngIf="!signUpOpened" (openSignUpForm)="openSignUpForm($event)"></app-modal-login> -->
+      <app-modal-login *ngIf="!this.modalService.signUpOpened"></app-modal-login>
+      <!-- <app-modal-signup *ngIf="signUpOpened" (openLoginForm)="openLoginForm($event)"></app-modal-signup> -->
+      <app-modal-signup *ngIf="this.modalService.signUpOpened"></app-modal-signup>
     </div>
   </div>
 </div>
