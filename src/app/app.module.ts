@@ -42,6 +42,7 @@ import { CommonModule } from "@angular/common";
 import { ProgressBarModule } from "angular-progress-bar";
 import { ModalLoginComponent } from "./shared/modals/modal-login/modal-login.component";
 import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.component";
+import { ModalCardComponent } from './shared/modals/modal-card/modal-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.
     FooterComponent,
     ModalLoginComponent,
     ModalSignupComponent,
+    ModalCardComponent,
   ],
   imports: [
     BrowserModule,

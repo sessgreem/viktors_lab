@@ -57,10 +57,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     const element = this.scrollContainer.nativeElement;
     const atBottom =
       element.scrollHeight - element.scrollTop === element.clientHeight;
-    console.log(
-      ` scrollHeight ${element.scrollHeight} and scrollTop ${element.scrollTop} and element clientHeight ${element.clientHeight}`
-    );
-    console.log(atBottom);
+    // console.log(
+    //   ` scrollHeight ${element.scrollHeight} and scrollTop ${element.scrollTop} and element clientHeight ${element.clientHeight}`
+    // );
+    // console.log(atBottom);
     if (atBottom) {
       this.disableScrollDown = false;
     } else {

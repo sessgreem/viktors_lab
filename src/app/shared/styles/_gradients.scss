@@ -1,0 +1,14 @@
+@mixin modalCardGreenGradient {
+  background: rgb(35, 217, 21);
+  background: linear-gradient(170deg, rgba(35, 217, 21, 1) 0%, rgba(21, 172, 9, 1) 69%);
+}
+
+@mixin modalCardBlueGreenGradient {
+  background: rgb(43, 82, 197);
+  background: linear-gradient(151deg, rgba(43, 82, 197, 1) 0%, rgba(0, 175, 105, 1) 100%);
+}
+
+@mixin inputWhiteGradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(107deg, rgba(255, 255, 255, 1) 0%, rgba(249, 249, 249, 1) 100%);
+}

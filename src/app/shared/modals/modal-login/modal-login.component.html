@@ -1,25 +1,17 @@
-<div class="modal" id="modal-login" role="dialog">
-  <div class="modal-content">
-    <div class="modal-card">
-      <div class="modal-header">
-        <img src="../../../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo">
-      </div>
-      <form action="/login" [formGroup]="signInForm">
-        <label for="email">Email</label>
-        <input type="email" formControlName="email">
-
-        <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div>
-
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" name="password" required>
-
-        <button type="submit" (click)="emailSignIn()">Login</button>
-      </form>
-      <div class="options">
-        <a href="/register">Create Account</a>
-        <a href="/reset/request">
-          Reset Password</a>
-      </div>
-    </div>
+<form action="/login" [formGroup]="signInForm">
+  <div class="input-field">
+    <label for="email">Email</label>
+    <input type="email" formControlName="email">
+    <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div>
   </div>
+  <div class="input-field">
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" name="password" required>
+  </div>
+  <button type="submit" (click)="emailSignIn()">Login</button>
+</form>
+<div class="options">
+  <a href="/register">Create Account</a>
+  <a href="/reset/request">
+    Reset Password</a>
 </div>

@@ -1,5 +1,4 @@
-import { FormBuilder, Validators } from "@angular/forms";
-import { FormGroup } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/core/services/auth.service";
 
@@ -27,11 +26,6 @@ export class ModalLoginComponent implements OnInit {
     return this.signInForm.get("password");
   }
   emailSignIn() {
-    return this.auth
-      .emailSignIn(this.email.value, this.password.value)
-      .then((res) => {
-        console.log(res);
-        console.log("Login complete.");
-      });
+    return this.auth.emailSignIn(this.email.value, this.password.value);
   }
 }
