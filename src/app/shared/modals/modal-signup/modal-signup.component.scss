@@ -1,0 +1,31 @@
+@use "../modal-login/modal-login.component.scss";
+
+
+.terms {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  .checkbox {
+    // change
+    width: 60px;
+    height: 15px;
+    top: 2px;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    margin-right: 15px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .terms-text {
+    // line-height: 1.2rem;
+    font-size: .9rem;
+    // text-align: left;
+
+  }
+}
+
+.input-field:nth-of-type(3) {
+  margin: 0 !important;
+}

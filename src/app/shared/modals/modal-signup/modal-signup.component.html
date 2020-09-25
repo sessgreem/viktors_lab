@@ -1,1 +1,32 @@
-<p>modal-signup works!</p>
+<form action="/register" [formGroup]="signUpForm">
+  <div class="input-field">
+    <label for="email">Email</label>
+    <input type="email" formControlName="email" required>
+    <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div>
+  </div>
+  <div class="input-field">
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" required>
+  </div>
+  <div class="input-field">
+    <label for="repeat-password">Repeat Password</label>
+    <input type="password" name="repeatPassword" formControlName="repeatPassword">
+  </div>
+  <div class="terms">
+    <div class="checkbox"></div>
+    <div class="terms-text">
+      <p>By purchasing on Viktor's Lab you are agreeing to our <a href=""><em><u>Terms of Service</u></em></a>, <a
+          href="">
+          <em><u>
+              Privacy Policy</u></em>
+        </a> and
+        <a href=""><em><u>Refund Policy</u></em>
+        </a>.</p>
+    </div>
+  </div>
+  <button type="submit" (click)="emailSignUp()">Sign Up</button>
+</form>
+<div class="options">
+  <a href="">Login</a>
+  <a href="">Reset Password</a>
+</div>

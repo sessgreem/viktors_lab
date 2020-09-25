@@ -1,7 +1,7 @@
 <form action="/login" [formGroup]="signInForm">
   <div class="input-field">
     <label for="email">Email</label>
-    <input type="email" formControlName="email">
+    <input type="email" formControlName="email" required>
     <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div>
   </div>
   <div class="input-field">
