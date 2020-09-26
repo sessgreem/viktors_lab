@@ -1,6 +1,7 @@
 <div class="modal" [class.open]="this.modalService.modalOpened" role="dialog">
   <div class="modal-content">
     <div class="modal-card">
+      <!-- (clickOutside)="closeModal()" -->
       <div class="modal-header">
         <div class="close">
           <button (click)="this.modalService.closeModal()"><img src="../../../../assets/icons/close-white-18dp.svg"

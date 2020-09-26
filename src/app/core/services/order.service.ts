@@ -1,3 +1,4 @@
+import { leaguePoints, queues } from "./../../shared/variables";
 import { StaffauthService } from "./staffauth.service";
 import { AuthService } from "./auth.service";
 import {
@@ -98,29 +99,36 @@ export class OrderService {
     );
   }
   // this should be cloud function
-  async setOrder(object) {
+  async setOrder(orderDetails) {
     // ? make this idempotent
     const id = this.afs.createId();
     const orderRef = this.getReference(id);
     const { uid } = await this.auth.getUser();
-    const status = "Waiting for booster";
-    const boostedRank = object.currentRank;
+    const status = "Waiting For Booster";
+    // const boostedRank = orderDetails.currentRank;
+    const currentRank = orderDetails.startRank;
+    const currentDivision = orderDetails.startDivision;
     const data = {
-      orderUid: uid,
+      orderStartRank: orderDetails.startRank,
+      orderStartDivision: orderDetails.startDivision,
+      orderDesiredRank: orderDetails.desiredRank,
+      orderDesiredDivision: orderDetails.desiredDivision,
+      orderLP: orderDetails.leaguePoints,
+      orderServer: orderDetails.server,
+      orderQueue: orderDetails.queues,
+      orderServiceType: orderDetails.serviceType,
+      orderCurrentRank: currentRank,
+      orderCurrentDivision: currentDivision,
+      // orderBoostedRank: boostedRank,
       orderStatus: status,
-      orderServiceType: object.serviceType,
-      orderCurrentRank: object.currentRank,
-      orderCurrentDivision: object.currentDivision,
-      orderDesiredRank: object.desiredRank,
-      orderBoostedRank: boostedRank,
-      orderServer: object.server,
-      orderPriority: object.priority,
-      orderPrice: object.price,
+      orderPriority: orderDetails.priority,
+      orderPrice: orderDetails.price,
       orderUsername: "",
       orderPassword: "",
-      orderAssigned: "unassigned",
+      orderAssigned: "unassigned", // avoid magic strings
       orderFeedback: false,
       orderCompleted: false,
+      orderUid: uid,
     };
 
     return orderRef.set(data);

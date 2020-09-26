@@ -66,6 +66,7 @@ export class StaffauthService {
     return staffRef.set(data, { merge: true });
   }
 
+  // auth service does the same
   emailSignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)

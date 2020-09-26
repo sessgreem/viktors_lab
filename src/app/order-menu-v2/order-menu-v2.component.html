@@ -15,24 +15,24 @@
       <div class="display">
         <h2>1. Current Rank<span class="red"> *</span></h2>
         <p>Select your Current Rank below.</p>
-        <img [src]="currentRank.imgURL" alt="Current Rank Image" />
+        <img [src]="startRank.imgURL" alt="Current Rank Image" />
       </div>
       <div class="controls" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
-          <button class="controls-btn" (click)="reduceCurrentRank()">
+          <button class="controls-btn" (click)="reduceStartRank()">
             <i class="material-icons">
               keyboard_arrow_down
             </i>
           </button>
-          <div class="rank" (click)="toggleCurrentRankMenu()" (clickOutside)="clickOutsideCurrentRank($event)">
-            <span>{{ currentRank.name }}</span>
-            <ul class="dropdown-menu" [class.open]="currentRankOpened">
-              <li *ngFor="let league of leagues | slice: 0:leagues.length - 1" (click)="selectCurrentRank(league.id)">
+          <div class="rank" (click)="toggleStartRankMenu()" (clickOutside)="clickOutsideStartRank($event)">
+            <span>{{ startRank.name }}</span>
+            <ul class="dropdown-menu" [class.open]="startRankOpened">
+              <li *ngFor="let league of leagues | slice: 0:leagues.length - 1" (click)="selectStartRank(league.id)">
                 {{ league.name }}
               </li>
             </ul>
           </div>
-          <button class="controls-btn" (click)="increaseCurrentRank()">
+          <button class="controls-btn" (click)="increaseStartRank()">
             <i class="material-icons">
               keyboard_arrow_up
             </i>
@@ -40,8 +40,8 @@
         </div>
         <div class="division-controls">
           <ul fxLayout="row wrap">
-            <li *ngFor="let division of divisions" class="controls-btn" (click)="selectCurrentDivision(division.id)"
-              [class.selected]="division.id === currentDivision.id">
+            <li *ngFor="let division of divisions" class="controls-btn" (click)="selectStartDivision(division.id)"
+              [class.selected]="division.id === startDivision.id">
               {{ division.name }}
             </li>
           </ul>
@@ -186,7 +186,8 @@
       </div>
     </div>
   </div>
-  <app-order-summary></app-order-summary>
+  <!-- need to send the data to the order summary -->
+  <app-order-summary [orderDetails]="this.orderDetails"></app-order-summary>
   <app-footer></app-footer>
   <app-modal-card></app-modal-card>
 </div>

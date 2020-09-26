@@ -42,7 +42,6 @@
 //   }
 
 //   render(event) {
-//     // console.log(this.totalDivisions); // returned undefined
 //     if (
 //       this.desiredRank < this.currentRank ||
 //       (this.desiredRank === this.currentRank &&
@@ -62,7 +61,6 @@
 //   }
 
 //   createOrder() {
-//     //  console.log(this.chargeAmount);
 //     this.object = {
 //       desiredRank: this.desiredRank,
 //       desiredDivision: this.desiredDiv,

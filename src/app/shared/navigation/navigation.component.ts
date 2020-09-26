@@ -16,7 +16,6 @@ export class NavigationComponent implements OnInit {
   closeSideNav(event) {
     this.outsideEnabled = false;
     this.open = false;
-    console.log(event);
   }
 
   openSideNav() {
