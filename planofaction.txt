@@ -1,6 +1,6 @@
 -- Routing --
     unmatched to a 404 page
-    make it so that /orders/ is unaccessible
+    make it so that /order/ is unaccessible
 
 -- Overall Project --
     implement payment system
@@ -27,8 +27,9 @@ DONE restructure components
      rethink authentication logic - was able to login with staffauth - doesnt care about database - maybe make roles: "staff" instead
 
 -- Global Styling --
-    create buttons
-    create colors
+    create buttons partial file
+    create colors partial file
+    fix outline on all elements - especially button
 
 -- Experience Design --
 DONE desing footer
@@ -36,9 +37,8 @@ DONE Redesigned order menu for mobile and desktop
 DONE Redesigned staff available orders
 DONE Initial design for user controls in track order
       Design payment due in order
-      Design mobile navigation from burger
-      Desing user login form
-      Design staff login form
+DONE  Design mobile navigation from burger
+DONE  Desing user login + signup form
 
 -- UI Compontents --
     Payment due component

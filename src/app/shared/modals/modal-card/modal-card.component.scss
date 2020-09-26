@@ -34,10 +34,27 @@
     .modal-header {
       text-align: center;
 
-      img {
+      .close {
+        display: inline-block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        button {
+          background: none;
+        }
+
+        img {
+          width: 25px;
+        }
+
+      }
+
+      .logo-modal {
         max-width: 220px;
         padding: 40px 0px 20px 0px;
       }
+
     }
   }
 }

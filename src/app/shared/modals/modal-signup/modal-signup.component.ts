@@ -46,4 +46,8 @@ export class ModalSignupComponent implements OnInit {
       return this.auth.emailSignUp(this.email.value, this.password.value);
     }
   }
+  openLogin(event) {
+    event.preventDefault();
+    this.modalService.openLoginForm();
+  }
 }

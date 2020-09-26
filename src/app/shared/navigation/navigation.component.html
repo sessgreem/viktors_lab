@@ -18,10 +18,10 @@
         <a routerLink="/demo-order">Demo Order</a>
       </li>
       <li class="nav-item">
-        <a (click)="openLoginForm()">Login</a>
+        <a href="/login" (click)="openLoginForm($event)">Login</a>
       </li>
       <li class="nav-item">
-        <a (click)="openSignUpForm()">Sign Up</a>
+        <a href="/register" (click)="openSignUpForm($event)">Sign Up</a>
       </li>
     </ul>
   </div>

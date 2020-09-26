@@ -24,12 +24,14 @@ export class NavigationComponent implements OnInit {
     setTimeout(() => (this.outsideEnabled = true), 700);
   }
 
-  openLoginForm() {
+  openLoginForm(event) {
+    event.preventDefault();
     this.modalService.openModal();
     this.modalService.openLoginForm();
   }
 
-  openSignUpForm() {
+  openSignUpForm(event) {
+    event.preventDefault();
     this.modalService.openModal();
     this.modalService.openSignUpForm();
   }
