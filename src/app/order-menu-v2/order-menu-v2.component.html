@@ -15,7 +15,7 @@
       <div class="display">
         <h2>1. Current Rank<span class="red"> *</span></h2>
         <p>Select your Current Rank below.</p>
-        <img [src]="startRank.imgURL" alt="Current Rank Image" />
+        <img [src]="orderDetails.startRank.imgURL" alt="Current Rank Image" />
       </div>
       <div class="controls" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
@@ -25,7 +25,7 @@
             </i>
           </button>
           <div class="rank" (click)="toggleStartRankMenu()" (clickOutside)="clickOutsideStartRank($event)">
-            <span>{{ startRank.name }}</span>
+            <span>{{ orderDetails.startRank.name }}</span>
             <ul class="dropdown-menu" [class.open]="startRankOpened">
               <li *ngFor="let league of leagues | slice: 0:leagues.length - 1" (click)="selectStartRank(league.id)">
                 {{ league.name }}
@@ -41,7 +41,7 @@
         <div class="division-controls">
           <ul fxLayout="row wrap">
             <li *ngFor="let division of divisions" class="controls-btn" (click)="selectStartDivision(division.id)"
-              [class.selected]="division.id === startDivision.id">
+              [class.selected]="division.id === orderDetails.startDivision.id">
               {{ division.name }}
             </li>
           </ul>
@@ -49,7 +49,8 @@
         <div class="leaguepoints-controls">
           <ul fxLayout="row wrap">
             <li *ngFor="let lp of leaguePoints" (click)="selectLeaguePoints(lp.id)"
-              [class.selected]="lp.id === currentLP.id" class="controls-btn" fxLayoutAlign="center center">
+              [class.selected]="lp.id === orderDetails.leaguePoints.id" class="controls-btn"
+              fxLayoutAlign="center center">
               {{ lp.name }}
             </li>
           </ul>
@@ -60,8 +61,7 @@
       <div class="display">
         <h2>2. Desired Rank<span class="red"> *</span></h2>
         <p>Select your Desired Rank below.</p>
-        <!-- dynamic -->
-        <img [src]="desiredRank.imgURL" alt="Desired Rank Image" />
+        <img [src]="orderDetails.desiredRank.imgURL" alt="Desired Rank Image" />
       </div>
       <div class="controls desired" fxLayout="column" fxLayoutGap="1.5rem">
         <div class="rank-controls" fxLayout="row" fxLayoutGap="5px">
@@ -71,7 +71,7 @@
             </i>
           </button>
           <div class="rank" (clickOutside)="clickOutsideDesiredRank($event)" (click)="toggleDesiredRankMenu()">
-            <span>{{ desiredRank.name }}</span>
+            <span>{{ orderDetails.desiredRank.name }}</span>
             <ul class="dropdown-menu" [class.open]="desiredRankOpened">
               <li *ngFor="let league of leagues" (click)="selectDesiredRank(league.id)">
                 {{ league.name }}
@@ -87,7 +87,7 @@
         <div class="division-controls">
           <ul fxLayout="row wrap">
             <li *ngFor="let division of divisions" (click)="selectDesiredDivision(division.id)" class="controls-btn"
-              [class.selected]="desiredDivision.id === division.id">
+              [class.selected]="orderDetails.desiredDivision.id === division.id">
               <span>{{ division.name }}</span>
             </li>
           </ul>
@@ -96,7 +96,7 @@
           <div class="server">
             <h5 class="heading-label">Server<span class="red"> *</span></h5>
             <div class="select" (click)="toggleServerMenu()" (clickOutside)="clickOutsideServer($event)">
-              <span>{{ server.name }}</span>
+              <span>{{ orderDetails.server.name }}</span>
               <ul class="dropdown-menu" [class.open]="serverDropdownOpened">
                 <li *ngFor="let server of servers" (click)="selectServer(server.id)">
                   {{ server.name }}
@@ -107,7 +107,7 @@
           <div class="queue">
             <h5 class="heading-label">Queue</h5>
             <div class="select" (click)="toggleQueueMenu()" (clickOutside)="clickOutsideQueue($event)">
-              <span>{{ queue.name }}</span>
+              <span>{{ orderDetails.queue.name }}</span>
               <ul class="dropdown-menu" [class.open]="queueDropdownOpened">
                 <li *ngFor="let queue of queues" (click)="selectQueue(queue.id)">
                   {{ queue.name }}
@@ -129,9 +129,9 @@
       <div class="summoner-spells" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2.5rem">
         <div class="summoner-spell" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <div class="keybind">D</div>
-          <img [src]="summonerKeyD.imgURL" alt="summoner-spell-img-D" />
+          <img [src]="orderDetails.summonerSpell_1.imgURL" alt="Summoner Spell Icon on D" />
           <div class="select" (click)="toggleSummonerKeyDMenu()" (clickOutside)="clickOutsideSummonerKeyD($event)">
-            <span>{{ summonerKeyD.name }} </span>
+            <span>{{ orderDetails.summonerSpell_1.name }} </span>
             <ul class="dropdown-menu" [class.open]="DsummonerDropdownOpened">
               <li *ngFor="let summonerSpell of summoners" (click)="selectSummonerKeyD(summonerSpell.id)">
                 {{ summonerSpell.name }}
@@ -141,9 +141,9 @@
         </div>
         <div class="summoner-spell" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <div class="keybind">F</div>
-          <img [src]="summonerKeyF.imgURL" alt="summoner-spell-img-F" />
+          <img [src]="orderDetails.summonerSpell_2.imgURL" alt="Summoner Spell Icon on F" />
           <div class="select" (click)="toggleSummonerKeyFMenu()" (clickOutside)="clickOutsideSummonerKeyF($event)">
-            <span>{{ summonerKeyF.name }} </span>
+            <span>{{ orderDetails.summonerSpell_2.name }} </span>
             <ul class="dropdown-menu" [class.open]="FsummonerDropdownOpened">
               <li *ngFor="let summonerSpell of summoners" (click)="selectSummonerKeyF(summonerSpell.id)">
                 {{ summonerSpell.name }}
@@ -161,9 +161,9 @@
       <div class="roles" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2.5rem">
         <div class="role" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <h4>Primary Role</h4>
-          <img [src]="primaryRole.imgURL" alt="Primary Role" />
+          <img [src]="orderDetails.primaryRole.imgURL" alt="Primary Role" />
           <div class="select" (click)="togglePrimaryRoleMenu()" (clickOutside)="clickOutsidePrimaryRole($event)">
-            <span>{{ primaryRole.name }}</span>
+            <span>{{ orderDetails.primaryRole.name }}</span>
             <ul class="dropdown-menu" [class.open]="primaryRoleDropdownOpened">
               <li *ngFor="let role of roles" (click)="selectPrimaryRole(role.id)">
                 {{ role.name }}
@@ -173,9 +173,9 @@
         </div>
         <div class="role" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem">
           <h4>Secondary Role</h4>
-          <img [src]="secondaryRole.imgURL" alt="Secondary Role" />
+          <img [src]="orderDetails.secondaryRole.imgURL" alt="Secondary Role" />
           <div class="select" (click)="toggleSecondaryRoleMenu()" (clickOutside)="clickOutsideSecondaryRole($event)">
-            <span>{{ secondaryRole.name }} </span>
+            <span>{{ orderDetails.secondaryRole.name }} </span>
             <ul class="dropdown-menu" [class.open]="secondaryRoleDropdownOpened">
               <li *ngFor="let role of roles" (click)="selectSecondaryRole(role.id)">
                 {{ role.name }}
@@ -186,8 +186,7 @@
       </div>
     </div>
   </div>
-  <!-- need to send the data to the order summary -->
-  <app-order-summary [orderDetails]="this.orderDetails"></app-order-summary>
+  <app-order-summary [orderDetails]="orderDetails"></app-order-summary>
   <app-footer></app-footer>
   <app-modal-card></app-modal-card>
 </div>

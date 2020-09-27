@@ -1,4 +1,3 @@
-import { leaguePoints, queues } from "./../../shared/variables";
 import { StaffauthService } from "./staffauth.service";
 import { AuthService } from "./auth.service";
 import {
@@ -104,7 +103,7 @@ export class OrderService {
     const id = this.afs.createId();
     const orderRef = this.getReference(id);
     const { uid } = await this.auth.getUser();
-    const status = "Waiting For Booster";
+    const status = "Waiting for booster";
     // const boostedRank = orderDetails.currentRank;
     const currentRank = orderDetails.startRank;
     const currentDivision = orderDetails.startDivision;
@@ -115,10 +114,14 @@ export class OrderService {
       orderDesiredDivision: orderDetails.desiredDivision,
       orderLP: orderDetails.leaguePoints,
       orderServer: orderDetails.server,
-      orderQueue: orderDetails.queues,
+      orderQueue: orderDetails.queue,
       orderServiceType: orderDetails.serviceType,
       orderCurrentRank: currentRank,
       orderCurrentDivision: currentDivision,
+      orderSummonerSpell_1: orderDetails.summonerSpell_1,
+      orderSummonerSpell_2: orderDetails.summonerSpell_2,
+      orderPrimaryRole: orderDetails.primaryRole,
+      orderSecondaryRole: orderDetails.secondaryRole,
       // orderBoostedRank: boostedRank,
       orderStatus: status,
       orderPriority: orderDetails.priority,
@@ -131,7 +134,14 @@ export class OrderService {
       orderUid: uid,
     };
 
-    return orderRef.set(data);
+    return orderRef
+      .set(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   getOrder(orderId) {

@@ -64,24 +64,142 @@ export class OrderMenuV2Component implements OnInit {
     queue: this.queue,
     summonerSpell_1: this.summonerKeyD,
     summonerSpell_2: this.summonerKeyF,
-    role_primary: this.primaryRole,
-    role_secondary: this.secondaryRole,
+    primaryRole: this.primaryRole,
+    secondaryRole: this.secondaryRole,
     serviceType: this.serviceType,
-    // priority: false // ? what to do here?
-    // price: null // ? what to do here?
+    // priority: false,
+    // price: 0,
   };
+
   ngOnInit(): void {}
-  selectPrimaryRole(id: number) {
-    if (id === this.secondaryRole.id) {
-      this.secondaryRole = this.roles[0];
+
+  selectStartRank(id: number) {
+    // this.startRank = this.leagues[id];
+    this.orderDetails.startRank = this.leagues[id];
+  }
+  selectStartDivision(id: number) {
+    // this.startDivision = this.divisions[id];
+    this.orderDetails.startDivision = this.divisions[id];
+  }
+  selectLeaguePoints(id: number) {
+    // this.currentLP = this.leaguePoints[id];
+    this.orderDetails.leaguePoints = this.leaguePoints[id];
+  }
+  increaseStartRank() {
+    if (this.startRank.id < 7) {
+      // this.startRank = this.leagues[this.startRank.id + 1];
+      this.orderDetails.startRank = this.leagues[
+        this.orderDetails.startRank.id + 1
+      ];
     }
-    this.primaryRole = this.roles[id];
+  }
+  reduceStartRank() {
+    if (this.startRank.id > 0) {
+      // this.startRank = this.leagues[this.startRank.id - 1];
+      this.orderDetails.startRank = this.leagues[
+        this.orderDetails.startRank.id - 1
+      ];
+    }
+  }
+  selectDesiredRank(id: number) {
+    // this.desiredRank = this.leagues[id];
+    this.orderDetails.desiredRank = this.leagues[id];
+  }
+  selectDesiredDivision(id: number) {
+    // this.desiredDivision = this.divisions[id];
+    this.orderDetails.desiredDivision = this.divisions[id];
+  }
+  increaseDesiredRank() {
+    if (this.desiredRank.id < 8) {
+      // this.desiredRank = this.leagues[this.desiredRank.id + 1];
+      this.orderDetails.desiredRank = this.leagues[
+        this.orderDetails.desiredRank.id + 1
+      ];
+    }
+  }
+  reduceDesiredRank() {
+    if (this.desiredRank.id > 0) {
+      // this.desiredRank = this.leagues[this.desiredRank.id - 1];
+      this.orderDetails.desiredRank = this.leagues[
+        this.orderDetails.desiredRank.id - 1
+      ];
+    }
+  }
+  selectServer(id: number) {
+    // this.server = this.servers[id];
+    this.orderDetails.server = this.servers[id];
+  }
+  selectQueue(id: number) {
+    // this.queue = this.queues[id];
+    this.orderDetails.queue = this.queues[id];
+  }
+  selectSummonerKeyD(id: number) {
+    if (id === this.orderDetails.summonerSpell_2.id) {
+      // this.summonerKeyF = this.summoners[0];
+      this.orderDetails.summonerSpell_2 = this.summoners[0];
+    }
+    // this.summonerKeyD = this.summoners[id];
+    this.orderDetails.summonerSpell_1 = this.summoners[id];
+  }
+  selectSummonerKeyF(id: number) {
+    // if (id === this.summonerKeyD.id) {
+    if (id === this.orderDetails.summonerSpell_1.id) {
+      // this.summonerKeyD = this.summoners[0];
+      this.orderDetails.summonerSpell_1 = this.summoners[0];
+    }
+    // this.summonerKeyF = this.summoners[id];
+    this.orderDetails.summonerSpell_2 = this.summoners[id];
+  }
+  selectPrimaryRole(id: number) {
+    // if (id === this.secondaryRole.id) {
+    if (id === this.orderDetails.secondaryRole.id) {
+      // this.secondaryRole = this.roles[0];
+      this.orderDetails.secondaryRole = this.roles[0];
+    }
+    // this.primaryRole = this.roles[id];
+    this.orderDetails.primaryRole = this.roles[id];
   }
   selectSecondaryRole(id: number) {
-    if (id === this.primaryRole.id) {
-      this.primaryRole = this.roles[0];
+    if (id === this.orderDetails.primaryRole.id) {
+      // this.primaryRole = this.roles[0];
+      this.orderDetails.primaryRole = this.roles[0];
     }
-    this.secondaryRole = this.roles[id];
+    // this.secondaryRole = this.roles[id];
+    this.orderDetails.secondaryRole = this.roles[id];
+  }
+
+  // Toggle dropdowns functions
+  toggleStartRankMenu() {
+    this.startRankOpened = !this.startRankOpened;
+  }
+  toggleDesiredRankMenu() {
+    this.desiredRankOpened = !this.desiredRankOpened;
+  }
+  toggleServerMenu() {
+    this.serverDropdownOpened = !this.serverDropdownOpened;
+  }
+  toggleQueueMenu() {
+    this.queueDropdownOpened = !this.queueDropdownOpened;
+  }
+  toggleSummonerKeyDMenu() {
+    this.DsummonerDropdownOpened = !this.DsummonerDropdownOpened;
+  }
+  toggleSummonerKeyFMenu() {
+    this.FsummonerDropdownOpened = !this.FsummonerDropdownOpened;
+  }
+  togglePrimaryRoleMenu() {
+    this.primaryRoleDropdownOpened = !this.primaryRoleDropdownOpened;
+  }
+  toggleSecondaryRoleMenu() {
+    this.secondaryRoleDropdownOpened = !this.secondaryRoleDropdownOpened;
+  }
+
+  // clickOutside directive functions
+  clickOutsideSummonerKeyF($event) {
+    this.FsummonerDropdownOpened = false;
+  }
+  clickOutsideSummonerKeyD($event) {
+    this.DsummonerDropdownOpened = false;
   }
   clickOutsidePrimaryRole($event) {
     this.primaryRoleDropdownOpened = false;
@@ -100,88 +218,5 @@ export class OrderMenuV2Component implements OnInit {
   }
   clickOutsideQueue($event) {
     this.queueDropdownOpened = false;
-  }
-  reduceStartRank() {
-    if (this.startRank.id > 0) {
-      this.startRank = this.leagues[this.startRank.id - 1];
-    }
-  }
-  increaseStartRank() {
-    if (this.startRank.id < 7) {
-      this.startRank = this.leagues[this.startRank.id + 1];
-    }
-  }
-  toggleStartRankMenu() {
-    this.startRankOpened = !this.startRankOpened;
-  }
-  toggleDesiredRankMenu() {
-    this.desiredRankOpened = !this.desiredRankOpened;
-  }
-  reduceDesiredRank() {
-    if (this.desiredRank.id > 0) {
-      this.desiredRank = this.leagues[this.desiredRank.id - 1];
-    }
-  }
-  increaseDesiredRank() {
-    if (this.desiredRank.id < 8) {
-      this.desiredRank = this.leagues[this.desiredRank.id + 1];
-    }
-  }
-  selectStartRank(id: number) {
-    this.startRank = this.leagues[id];
-  }
-  selectDesiredRank(id: number) {
-    this.desiredRank = this.leagues[id];
-  }
-  toggleServerMenu() {
-    this.serverDropdownOpened = !this.serverDropdownOpened;
-  }
-  toggleQueueMenu() {
-    this.queueDropdownOpened = !this.queueDropdownOpened;
-  }
-  selectServer(id: number) {
-    this.server = this.servers[id];
-  }
-  selectQueue(id: number) {
-    this.queue = this.queues[id];
-  }
-  selectSummonerKeyD(id: number) {
-    if (id === this.summonerKeyF.id) {
-      this.summonerKeyF = this.summoners[0];
-    }
-    this.summonerKeyD = this.summoners[id];
-  }
-  selectSummonerKeyF(id: number) {
-    if (id === this.summonerKeyD.id) {
-      this.summonerKeyD = this.summoners[0];
-    }
-    this.summonerKeyF = this.summoners[id];
-  }
-  toggleSummonerKeyDMenu() {
-    this.DsummonerDropdownOpened = !this.DsummonerDropdownOpened;
-  }
-  toggleSummonerKeyFMenu() {
-    this.FsummonerDropdownOpened = !this.FsummonerDropdownOpened;
-  }
-  clickOutsideSummonerKeyF($event) {
-    this.FsummonerDropdownOpened = false;
-  }
-  clickOutsideSummonerKeyD($event) {
-    this.DsummonerDropdownOpened = false;
-  }
-  togglePrimaryRoleMenu() {
-    this.primaryRoleDropdownOpened = !this.primaryRoleDropdownOpened;
-  }
-  toggleSecondaryRoleMenu() {
-    this.secondaryRoleDropdownOpened = !this.secondaryRoleDropdownOpened;
-  }
-  selectDesiredDivision(id: number) {
-    this.desiredDivision = this.divisions[id];
-  }
-  selectStartDivision(id: number) {
-    this.startDivision = this.divisions[id];
-  }
-  selectLeaguePoints(id: number) {
-    this.currentLP = this.leaguePoints[id];
   }
 }

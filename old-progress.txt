@@ -1,22 +1,24 @@
--- order service --
+-- Order Service --
 DONE make it so that only the og-user can change password
 DONE set data function to be adding assignedSID
 DONE user needs to be able to pause the order
 DONE when a booster is assigned the orderStatus needs to change
 
--- adjust the authguard --
+-- Authguard --
 DONE - make it so that only the og-user can enter the order details
 DONE or if the user is staff
 DONE staff can enter assigned orders
 
--- routing --
+-- Routing --
 DONE make unmatched routes home
+    unmatched to a 404 page
+    make it so that /order/ is unaccessible
 
--- overall project --
+-- Overall Project --
 DONE restructure directories
      reduce the amount of snapshot listeners / connections (refresh to assignedorders?)
 
--- staff --
+-- Staff logic --
 DONE created staffauth.service with email/pass functions
 DONE sign up
 DONE make the booster be able to update displayName
@@ -27,30 +29,43 @@ DONE to be able to see all available orders
 DONE and to be able to join orders and see messages
 DONE to be able to self-assign
 DONE mark a job as completed
-    update current rank
+     update current rank
 
--- user --
+-- User --
 DONE complete order
 DONE and provide feedback
 
--- chat service --
+-- Chat Service --
 DONE figure out why it doesnt create new chat with new order
 DONE make is so that assigned staff and og-user can chat
 DONE needs to be able to chat with user
 DONE fix icons to show; make distinct user and staff
 DONE fix joinusers function
 
--- firebase rules --
+-- Firebase Security --
 DONE created basic firebase rules
     problem with persistance when user refreshes order (permissions) (auth.guard.ts:44) - isOrdererOrStaff function (maybe should be left like that for security)
     full firebase rules revisit
 
--- firebase cloud functions --
+-- Cloud Functions --
 DONE setup cloud functions in project
 DONE fix the region of the cloud function
 DONE check why is it starting twice - [its normal because the browser and some CORS options configuration]
+     fix cloud function not to update the orderStatus
+     create a createOrder function
 
 -- DRY --
     implement a better uid and staffuid awaits - create a global function?
     add order status interface (active, paused)
     make a function to set/update orderRef
+
+-- Experience Design --
+DONE desing footer
+DONE Redesigned order menu for mobile and desktop
+DONE Redesigned staff available orders
+DONE Initial design for user controls in track order
+DONE  Design mobile navigation from burger
+DONE  Desing user login + signup form
+
+-- Database --
+DONE in createOrder we need fields for orderStartRank,      orderStartDivision, orderDesiredDivision

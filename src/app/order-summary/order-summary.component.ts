@@ -9,14 +9,19 @@ import { OrderService } from "../core/services/order.service";
 export class OrderSummaryComponent implements OnInit {
   @Input() orderDetails: any;
   priority = false;
-  price: number;
-  // ? need to find a way to add priority and  price to orderDetails before sending it to the service
-  // need to change the HMTL file
+  price = 0;
   constructor(private orderService: OrderService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.orderDetails.priority = this.priority;
+    this.orderDetails.price = this.price;
+  }
 
-  createOrder() {
+  sendOrderDetails() {
     this.orderService.setOrder(this.orderDetails);
+  }
+  togglePriority() {
+    this.orderDetails.priority = !this.priority;
+    this.priority = !this.priority;
   }
 }

@@ -3,7 +3,8 @@
   <div class="headings">
     <h3>Order Summary</h3>
     <div class="details-headings">
-      <h4 class="target">Gold IV <em>to</em> Platinum IV</h4>
+      <h4 class="target">{{ orderDetails.startRank.name }} {{ orderDetails.startDivision.name }} <em>to</em>
+        {{ orderDetails.desiredRank.name }} {{ orderDetails.desiredDivision.name }}</h4>
       <h4>Approximate completion time: 12 hours</h4>
     </div>
   </div>
@@ -11,10 +12,9 @@
     <h3>Extras</h3>
     <div class="extra">
       <!-- opacity line -->
-      <!-- custom checkbox -->
       <div class="checkbox">
-        <ang-slide-toggle barCheckedBgColor="#beebe9" sliderCheckedColor="#3fc5f0" barUncheckedBgColor="#ded5d5"
-          sliderUncheckedColor="#bdbdbd" [checked]="false" [disabled]="false">
+        <ang-slide-toggle (click)="togglePriority()" barCheckedBgColor="#beebe9" sliderCheckedColor="#3fc5f0"
+          barUncheckedBgColor="#ded5d5" sliderUncheckedColor="#bdbdbd" [checked]="false" [disabled]="false">
         </ang-slide-toggle>
       </div>
       <span>Priority order</span><span>(+20% cost)</span>
@@ -63,8 +63,7 @@
     <h3 class="new-price-currency">€23.60</h3>
   </div>
   <div class="checkout-button">
-    <!-- button -->
-    <button>Checkout</button>
+    <button (click)="sendOrderDetails()">Checkout</button>
   </div>
   <div class="payment-providers">
     <!-- payment providers icons -->

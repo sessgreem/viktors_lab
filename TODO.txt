@@ -1,0 +1,43 @@
+-- Modal --
+    when user clicks login or sign up there should be an indicator that something is happening and it should
+    close when its done.
+    clickoutside in my modal doesnt work
+
+-- Track Order --
+    rename order-details component into track order
+    make pause order button in track order work
+    need to fix progress bar % - maybe a calculation something with divisions  (boostedDivisions / totalDivisions) * 100.
+    chat when empty is good to have a placeholder text - (here you can chat with the booster)
+    change order id into something pleasant for the user
+    orderStatus in track order needs to have better colors and padding for different statuses
+    look into chat timestamping
+
+-- Style and Layout --
+    create buttons partial file
+    create colors partial file
+    fix outline on all elements - especially button
+    make the project responsive
+
+-- Overall Project --
+    implement payment system
+    need to add my code from my PC at home - validation logic in order menu
+
+-- Problems --
+FIXED navigation is broken
+    staff login - tries to go to dashboard in even if log in details not correct
+
+-- Logic --
+     implement a better uid and staffId awaits - change logic completely make it so that staff affects orders in a different component
+     rethink authentication logic - was able to login with staffauth - doesnt care about database - maybe make roles: "staff" instead
+     make so that nonauthenticated users can make orders and later be able to make an account.
+
+-- Experience Design --
+    Design payment due in order
+
+-- UI Components --
+    Payment due component
+DONE Mobile navigation from burger
+    Options component
+
+-- Other --
+    make My Orders so that the user can see his order
