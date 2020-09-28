@@ -12,17 +12,26 @@
         <a routerLink="/">Introduction</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/lol-boost">Boosting</a>
+        <a routerLink="/lol-boost">League Boosting</a>
       </li>
-      <li class="nav-item">
-        <a routerLink="/demo-order">Demo Order</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" (click)="openLoginForm($event)">Login</a>
-      </li>
-      <li class="nav-item">
-        <a href="/register" (click)="openSignUpForm($event)">Sign Up</a>
-      </li>
+      <!-- user observable ngif -->
+      <ng-container *ngIf="user$ | async as user; else noUserLogged">
+        <li class="nav-item"><a routerLink="/profile">{{ user.displayName }}</a></li>
+        <li class="nav-item"><a routerLink="/orders">My Orders</a></li>
+        <li class="nav-item" (click)="userLogout($event)"><a href="/logout">Logout</a></li>
+      </ng-container>
+      <ng-template #noUserLogged>
+        <li class="nav-item">
+          <a routerLink="/demo-order">Demo Order</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" (click)="openLoginForm($event)">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="/register" (click)="openSignUpForm($event)">Sign Up</a>
+        </li>
+      </ng-template>
+
     </ul>
   </div>
   <div class="burger-menu" (click)="openSideNav()">

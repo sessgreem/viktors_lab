@@ -1,3 +1,5 @@
+import { Observable } from "rxjs";
+import { AuthService } from "src/app/core/services/auth.service";
 import { ModalService } from "./../../core/services/modal.service";
 import { Component, OnInit } from "@angular/core";
 
@@ -7,9 +9,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./navigation.component.scss"],
 })
 export class NavigationComponent implements OnInit {
+  user$: Observable<any>;
   open = false;
   outsideEnabled = false;
-  constructor(public modalService: ModalService) {}
+  constructor(public modalService: ModalService, private auth: AuthService) {
+    this.user$ = this.auth.user$;
+  }
 
   ngOnInit(): void {}
 
@@ -33,5 +38,9 @@ export class NavigationComponent implements OnInit {
     event.preventDefault();
     this.modalService.openModal();
     this.modalService.openSignUpForm();
+  }
+  userLogout(event) {
+    event.preventDefault();
+    this.auth.signOut();
   }
 }

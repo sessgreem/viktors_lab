@@ -45,9 +45,6 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((credential) => {
         return this.setUserDoc(credential.user);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 
@@ -94,9 +91,12 @@ export class AuthService {
       `users/${user.uid}`
     );
     console.log(user);
+    const displayName = user.email.split("@")[0];
     const data = {
       uid: user.uid,
       email: user.email,
+      // tslint:disable-next-line: object-literal-shorthand
+      displayName: displayName,
     };
 
     return userRef.set(data, { merge: true });
@@ -104,6 +104,6 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.signOut();
-    return this.router.navigate(["/"]);
+    return this.router.navigate(["/lol-boost"]);
   }
 }

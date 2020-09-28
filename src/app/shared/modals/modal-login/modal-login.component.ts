@@ -37,7 +37,9 @@ export class ModalLoginComponent implements OnInit {
     return this.signInForm.get("password");
   }
   emailSignIn() {
-    return this.auth.emailSignIn(this.email.value, this.password.value);
+    return this.auth
+      .emailSignIn(this.email.value, this.password.value)
+      .then(() => this.modalService.closeModal());
   }
   openSignUp(event) {
     event.preventDefault();

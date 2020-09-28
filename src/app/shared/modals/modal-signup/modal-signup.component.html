@@ -1,8 +1,8 @@
-<form action="/register" [formGroup]="signUpForm">
+<form ngNativeValidate method="POST" action="/register" [formGroup]="signUpForm">
   <div class="input-field">
     <label for="email">Email</label>
     <input type="email" formControlName="email" required>
-    <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div>
+    <!-- <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div> -->
   </div>
   <div class="input-field">
     <label for="password">Password</label>
@@ -10,7 +10,7 @@
   </div>
   <div class="input-field">
     <label for="repeat-password">Repeat Password</label>
-    <input type="password" name="repeatPassword" formControlName="repeatPassword">
+    <input type="password" name="repeatPassword" formControlName="repeatPassword" required>
   </div>
   <div class="terms">
     <div class="checkbox"></div>
