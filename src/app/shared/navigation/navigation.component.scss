@@ -1,72 +1,124 @@
 //  $exit-bar:
+@use "../styles/gradients";
 
-nav {
-  padding: 0.5rem 1rem;
+.wrapper {
   background-color: rgb(0, 0, 0, 0.7);
-  height: 15vh;
 
-  .logo {
-    img {
-      height: 80px;
+  nav {
+    padding: 0.5rem 1rem;
 
-    }
-  }
+    height: 15vh;
 
-  .navbar-wrapper {
-    position: fixed;
-    right: 0;
-    height: 100%;
-    top: 0;
-    background-color: black; // put gradient here
-    display: flex;
-    flex-direction: column;
-    z-index: 3;
-    // width: 60%; // overflow visible
-    width: 280px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in;
-
-    .exit-bar {
-      span {
-        display: block;
-        float: right;
-        font-size: 2rem;
-        font-weight: 500;
-        text-align: right;
-        margin: 35px 1.4rem 40px 40px;
-        cursor: pointer;
+    .logo {
+      img {
+        height: 80px;
       }
     }
 
-    .navbar {
+    .navbar-wrapper {
+      position: fixed;
+      right: 0;
+      height: 100%;
+      top: 0;
+      background-color: black; // put gradient here
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      padding-right: 1rem;
+      z-index: 3;
+      // width: 60%; // overflow visible
+      width: 280px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in;
 
-      .nav-item {
-        margin-bottom: 15px;
-
-        a {
-          font-size: 1.2rem;
-          font-weight: 600;
+      .exit-bar {
+        span {
+          display: block;
+          float: right;
+          font-size: 2rem;
+          font-weight: 500;
           text-align: right;
+          margin: 35px 1.4rem 40px 40px;
+          cursor: pointer;
+        }
+      }
+
+      .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-right: 1rem;
+
+        .nav-item {
+          margin-bottom: 15px;
+
+          a {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: right;
+          }
+
         }
 
       }
+    }
 
+    .navbar-wrapper.open {
+      transform: translateX(0%);
+    }
+
+    .burger-menu {
+      cursor: pointer;
+
+      i {
+        font-size: 36px;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .wrapper {
+    @include gradients.blackToTransparentGradient();
+
+    nav {
+      padding: 4rem 5rem;
+      max-width: 1400px;
+      margin: auto;
+
+      .logo {
+        img {
+          height: 120px;
+        }
+      }
+
+      .navbar-wrapper {
+        position: relative;
+        height: auto;
+        flex-direction: row;
+        width: 100%;
+        transform: none;
+        align-items: center;
+        justify-content: flex-end;
+        background: none;
+
+        .navbar {
+          flex-direction: row;
+
+          // align-items: flex-end;
+          .nav-item {
+            margin-bottom: 0;
+            margin-right: 2rem;
+
+            a {
+              font-size: 1.3rem;
+              text-align: left;
+            }
+          }
+        }
+
+      }
     }
   }
 
-  .navbar-wrapper.open {
-    transform: translateX(0%);
-  }
 
-  .burger-menu {
-    cursor: pointer;
-
-    i {
-      font-size: 36px;
-    }
-  }
 }

@@ -97,15 +97,13 @@ a {
 // header
 
 .header {
-  background-image: url("./assets/design/Group\ 493.png");
+  // background-image: url("./assets/design/Group\ 493.png");
+  background-image: url("./assets/design/League-of-Legends-Ashe-champion-4k-Wallpaper-images-for-your-desktop-background-scaled.jpg");
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  // up to 500 px vw
-  // background-position-x: -500px;
-  // background-position-y: 30px;
+  background-position-x: -600px;
 }
 
 .header-content {
@@ -130,13 +128,14 @@ a {
     text-align: left;
     font-size: 1.2rem;
     color: lightgrey;
-    width: 80%;
+    width: 95%;
     line-height: 1.5;
     margin-bottom: 5.5rem;
   }
 }
 
 // end of header
+
 .content {
   padding: 0 0.5rem;
 }
@@ -230,4 +229,37 @@ input {
     Verdana,
     sans-serif;
   ;
+}
+
+@media (min-width:425px) {
+  .header {
+    background-position: right;
+  }
+}
+
+@media (min-width:1280px) {
+  .header {
+    background-position: top;
+    background-position-y: -80px;
+  }
+
+  .header-content {
+    h1 {
+      text-align: center;
+      font-size: 1.4rem;
+      /* line-height: 1.5; */
+      padding-top: 2.5rem;
+      font-size: 3rem;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      width: 40%;
+      margin: 2.5rem auto;
+      color: #e6e6e6;
+      line-height: 2;
+      font-size: 1.3rem;
+    }
+  }
 }

@@ -1,40 +1,42 @@
-<nav fxLayout="row" fxLayoutAlign="space-between center">
-  <div class="logo">
-    <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo" />
-  </div>
-  <div class="navbar-wrapper" [class.open]="open" (clickOutside)="closeSideNav($event)"
-    [clickOutsideEnabled]="this.outsideEnabled">
-    <div class="exit-bar">
-      <span (click)="this.outsideEnabled = false; this.open = false">X</span>
+<div class="wrapper">
+  <nav fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="logo">
+      <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo" />
     </div>
-    <ul class="navbar">
-      <li class="nav-item">
-        <a routerLink="/">Introduction</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/lol-boost">League Boosting</a>
-      </li>
-      <!-- user observable ngif -->
-      <ng-container *ngIf="user$ | async as user; else noUserLogged">
-        <li class="nav-item"><a routerLink="/profile">{{ user.displayName }}</a></li>
-        <li class="nav-item"><a routerLink="/orders">My Orders</a></li>
-        <li class="nav-item" (click)="userLogout($event)"><a href="/logout">Logout</a></li>
-      </ng-container>
-      <ng-template #noUserLogged>
+    <div class="navbar-wrapper" [class.open]="open" (clickOutside)="closeSideNav($event)"
+      [clickOutsideEnabled]="this.outsideEnabled">
+      <div fxHide.gt-md class="exit-bar">
+        <span (click)="this.outsideEnabled = false; this.open = false">X</span>
+      </div>
+      <ul class="navbar">
         <li class="nav-item">
-          <a routerLink="/demo-order">Demo Order</a>
+          <a routerLink="/">Introduction</a>
         </li>
         <li class="nav-item">
-          <a href="/login" (click)="openLoginForm($event)">Login</a>
+          <a routerLink="/lol-boost">Boosting</a>
         </li>
-        <li class="nav-item">
-          <a href="/register" (click)="openSignUpForm($event)">Sign Up</a>
-        </li>
-      </ng-template>
+        <!-- user  ngif -->
+        <ng-container *ngIf="user$ | async as user; else noUserLogged">
+          <li class="nav-item"><a routerLink="/profile">{{ user.displayName }}</a></li>
+          <li class="nav-item"><a routerLink="/orders">My Orders</a></li>
+          <li class="nav-item" (click)="userLogout($event)"><a href="/logout">Logout</a></li>
+        </ng-container>
+        <ng-template #noUserLogged>
+          <li class="nav-item">
+            <a routerLink="/demo-order">Demo Order</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" (click)="openLoginForm($event)">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/register" (click)="openSignUpForm($event)">Sign Up</a>
+          </li>
+        </ng-template>
 
-    </ul>
-  </div>
-  <div class="burger-menu" (click)="openSideNav()">
-    <i class="material-icons">menu</i>
-  </div>
-</nav>
+      </ul>
+    </div>
+    <div fxHide.gt-md class="burger-menu" (click)="openSideNav()">
+      <i class="material-icons">menu</i>
+    </div>
+  </nav>
+</div>

@@ -12,3 +12,19 @@
   background: rgb(255, 255, 255);
   background: linear-gradient(107deg, rgba(255, 255, 255, 1) 0%, rgba(249, 249, 249, 1) 100%);
 }
+
+@mixin blackToTransparentGradient {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.670763305322129) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+
+@mixin greenGradientBackground {
+  background: rgb(18, 150, 7);
+  background: linear-gradient(90deg, rgba(18, 150, 7, 1) 0%, rgba(26, 186, 13, 1) 50%, rgba(18, 150, 7, 1) 100%);
+}
+
+@mixin blueGradientBackground {
+  background: rgb(27, 52, 129);
+  background: linear-gradient(90deg, rgba(27, 52, 129, 1) 0%, rgba(43, 82, 197, 1) 50%, rgba(27, 52, 129, 1) 100%);
+}
