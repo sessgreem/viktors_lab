@@ -1,3 +1,4 @@
+import { ToastrService } from "ngx-toastr";
 import { Observable } from "rxjs";
 import { AuthService } from "src/app/core/services/auth.service";
 import { ModalService } from "./../../core/services/modal.service";
@@ -12,7 +13,11 @@ export class NavigationComponent implements OnInit {
   user$: Observable<any>;
   open = false;
   outsideEnabled = false;
-  constructor(public modalService: ModalService, private auth: AuthService) {
+  constructor(
+    public modalService: ModalService,
+    private auth: AuthService,
+    private toastr: ToastrService
+  ) {
     this.user$ = this.auth.user$;
   }
 
@@ -41,6 +46,16 @@ export class NavigationComponent implements OnInit {
   }
   userLogout(event) {
     event.preventDefault();
-    this.auth.signOut();
+    this.auth
+      .signOut()
+      .then(() => {
+        this.logoutSuccessful();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  logoutSuccessful() {
+    this.toastr.info("Logout successful.");
   }
 }

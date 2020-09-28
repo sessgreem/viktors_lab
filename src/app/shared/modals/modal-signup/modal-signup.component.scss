@@ -7,15 +7,20 @@
   margin-top: 20px;
 
   .checkbox {
+
     // change
-    width: 60px;
-    height: 15px;
-    top: 2px;
-    background-color: #fff;
-    border: 1px solid #d3d3d3;
-    margin-right: 15px;
-    position: relative;
-    cursor: pointer;
+    input {
+      -ms-transform: scale(1.5);
+      /* IE */
+      -moz-transform: scale(1.5);
+      /* FF */
+      -webkit-transform: scale(1.5);
+      /* Safari and Chrome */
+      -o-transform: scale(1.5);
+      /* Opera */
+      transform: scale(1.5);
+      margin-right: 15px;
+    }
   }
 
   .terms-text {

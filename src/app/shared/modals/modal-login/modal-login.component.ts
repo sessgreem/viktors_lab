@@ -2,6 +2,7 @@ import { ModalService } from "./../../../core/services/modal.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { AuthService } from "src/app/core/services/auth.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-modal-login",
@@ -20,7 +21,8 @@ export class ModalLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    public modalService: ModalService
+    public modalService: ModalService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -39,10 +41,15 @@ export class ModalLoginComponent implements OnInit {
   emailSignIn() {
     return this.auth
       .emailSignIn(this.email.value, this.password.value)
-      .then(() => this.modalService.closeModal());
+      .then(
+        () => (this.modalService.closeModal(), this.loginSuccessfulToast())
+      );
   }
   openSignUp(event) {
     event.preventDefault();
     this.modalService.openSignUpForm();
+  }
+  loginSuccessfulToast() {
+    this.toastr.success("Login Successful!");
   }
 }

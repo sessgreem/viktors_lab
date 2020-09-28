@@ -1,3 +1,4 @@
+import { ToastrService } from "ngx-toastr";
 import { Validators, FormGroup, FormBuilder } from "@angular/forms";
 import { AuthService } from "src/app/core/services/auth.service";
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
@@ -9,6 +10,7 @@ import { ModalService } from "src/app/core/services/modal.service";
 })
 export class ModalSignupComponent implements OnInit {
   signUpForm: FormGroup;
+  termsAgreed = false;
 
   @Output() openLoginForm = new EventEmitter<boolean>();
 
@@ -19,7 +21,8 @@ export class ModalSignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    public modalService: ModalService
+    public modalService: ModalService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -47,11 +50,13 @@ export class ModalSignupComponent implements OnInit {
       console.log("Password is invalid");
     } else if (this.password.value !== this.repeatPassword.value) {
       console.log("Passwords do not match");
+    } else if (this.termsAgreed === false) {
+      console.log("Terms not agreed");
     } else {
       return this.auth
         .emailSignUp(this.email.value, this.password.value)
         .then(() => {
-          this.modalService.closeModal();
+          this.modalService.closeModal(), this.loginSuccessful();
         })
         .catch((err) => {
           console.log(err);
@@ -64,5 +69,12 @@ export class ModalSignupComponent implements OnInit {
   openLogin(event) {
     event.preventDefault();
     this.modalService.openLoginForm();
+  }
+
+  loginSuccessful() {
+    this.toastr.success("Sign up and Login Succesful", "Welcome!");
+  }
+  toggleTermsAgreed() {
+    this.termsAgreed = !this.termsAgreed;
   }
 }

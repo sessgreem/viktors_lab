@@ -13,7 +13,9 @@
     <input type="password" name="repeatPassword" formControlName="repeatPassword" required>
   </div>
   <div class="terms">
-    <div class="checkbox"></div>
+    <div class="checkbox">
+      <input type="checkbox" (click)="toggleTermsAgreed()" required>
+    </div>
     <div class="terms-text">
       <p>By purchasing on Viktor's Lab you are agreeing to our <a href=""><em><u>Terms of Service</u></em></a>, <a
           href="">

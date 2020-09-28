@@ -42,7 +42,10 @@ import { CommonModule } from "@angular/common";
 import { ProgressBarModule } from "angular-progress-bar";
 import { ModalLoginComponent } from "./shared/modals/modal-login/modal-login.component";
 import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.component";
-import { ModalCardComponent } from './shared/modals/modal-card/modal-card.component';
+import { ModalCardComponent } from "./shared/modals/modal-card/modal-card.component";
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Browser } from "protractor";
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +83,8 @@ import { ModalCardComponent } from './shared/modals/modal-card/modal-card.compon
     AngSlideToggleModule,
     CommonModule,
     ProgressBarModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{ provide: REGION, useValue: "europe-west1" }],
   bootstrap: [AppComponent],
