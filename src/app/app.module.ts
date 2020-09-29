@@ -45,7 +45,7 @@ import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.
 import { ModalCardComponent } from "./shared/modals/modal-card/modal-card.component";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { Browser } from "protractor";
+// import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +68,7 @@ import { Browser } from "protractor";
     ModalLoginComponent,
     ModalSignupComponent,
     ModalCardComponent,
+    //   PerfectScrollbarModule,
   ],
   imports: [
     BrowserModule,

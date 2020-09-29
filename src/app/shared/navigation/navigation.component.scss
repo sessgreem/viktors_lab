@@ -6,8 +6,7 @@
 
   nav {
     padding: 0.5rem 1rem;
-
-    height: 15vh;
+    // height: 15vh;
 
     .logo {
       img {
@@ -81,7 +80,8 @@
     @include gradients.blackToTransparentGradient();
 
     nav {
-      padding: 4rem 5rem;
+      // padding: 4rem 5rem;
+      padding: 1rem 4rem;
       max-width: 1400px;
       margin: auto;
 
