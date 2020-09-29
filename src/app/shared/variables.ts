@@ -28,7 +28,7 @@ export const leagues: any[] = [
 
 export const servers: any[] = [
   { id: 0, name: "EU West" },
-  { id: 1, name: "EU Nordic and East" },
+  { id: 1, name: "EUNE" },
   { id: 2, name: "NA" },
   { id: 3, name: "LAN" },
   { id: 4, name: "OCE" },

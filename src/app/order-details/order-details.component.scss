@@ -1,9 +1,7 @@
 .order-status span {
-  color: rgb(0, 255, 0);
+  color: #94cbff;
   font-weight: 500;
 }
-
-
 
 .bar-progress {
   margin-top: .5rem;
@@ -15,6 +13,21 @@
   background-color: #595252;
   opacity: .95;
 }
+
+.content {
+  max-width: 1400px;
+  margin: 2rem auto;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  // justify-content: center;
+}
+
+.chat {
+  max-width: 700px;
+  width: 100%;
+}
+
 
 .content-small-box {
   margin-top: 1rem;
@@ -41,14 +54,13 @@
 }
 
 
-
-
 .content-box {
   background-color: #1f2023;
   border: 1px solid #2d2f34;
   border-radius: 0.8rem;
   margin-bottom: 1.5rem;
   padding: .8rem;
+  max-width: 400px;
 
   .rank-progress {
     margin-bottom: 20px;
@@ -99,4 +111,10 @@
 
 .bar-progress {
   margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 960px) {
+  .wrapper {
+    margin-right: 40px;
+  }
 }

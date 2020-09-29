@@ -1,55 +1,57 @@
-<h3 class="content-heading">Chat with Booster
-</h3>
-<ng-container *ngIf="chat$ | async as chat; else template">
-  <div class="chat">
+<div class="chat-wrapper">
+  <h3 class="content-heading">Chat with Booster
+  </h3>
+  <ng-container *ngIf="chat$ | async as chat; else template">
+    <div class="chat">
+      <div class="top">
+        <h4>Booster</h4>
+        <span>Online</span>
+      </div>
+      <div class="messages" #Messages (scroll)="onScroll()">
+        <div class="msg" *ngFor="let msg of chat.messages; trackBy: trackByCreated">
+          <ng-container *ngIf="msg.user; else staff">
+            <div class="user" fxLayout="column" fxLayoutAlign="start start">
+              <div class="display-name">
+                <span>{{ msg.user?.displayName }}</span>
+              </div>
+              <div class="message-content">
+                <p>{{ msg.content }}</p>
+              </div>
+              <div class="message-timestamp">
+                <span>now</span>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #staff>
+            <div class="staff-message" fxLayout="column" fxLayoutAlign="start end">
+              <div class="display-name">
+                <span>{{ msg.staff?.displayName }}</span>
+              </div>
+              <div class="message-content">
+                <p>{{msg.content}}</p>
+              </div>
+              <div class="message-timestamp">
+                <span>now</span>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="msg-form" fxLayout="row">
+        <div class="msg-input" fxFlex="80">
+          <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" type="text" name="message" id="message-input"
+            placeholder="Type a message">
+        </div>
+        <div class="msg-send-button" fxFlex="20">
+          <button (click)="submit(chat.id)"><img class="send-icon" src="../../../assets/icons/send-white-18dp.svg"
+              alt="Send"></button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #template>
     <div class="top">
-      <h4>Booster</h4>
-      <span>Online</span>
+      <h4>Waiting for Booster</h4>
     </div>
-    <div class="messages" #Messages (scroll)="onScroll()">
-      <div class="msg" *ngFor="let msg of chat.messages; trackBy: trackByCreated">
-        <ng-container *ngIf="msg.user; else staff">
-          <div class="user" fxLayout="column" fxLayoutAlign="start start">
-            <div class="display-name">
-              <span>{{ msg.user?.displayName }}</span>
-            </div>
-            <div class="message-content">
-              <p>{{ msg.content }}</p>
-            </div>
-            <div class="message-timestamp">
-              <span>now</span>
-            </div>
-          </div>
-        </ng-container>
-        <ng-template #staff>
-          <div class="staff-message" fxLayout="column" fxLayoutAlign="start end">
-            <div class="display-name">
-              <span>{{ msg.staff?.displayName }}</span>
-            </div>
-            <div class="message-content">
-              <p>{{msg.content}}</p>
-            </div>
-            <div class="message-timestamp">
-              <span>now</span>
-            </div>
-          </div>
-        </ng-template>
-      </div>
-    </div>
-    <div class="msg-form" fxLayout="row">
-      <div class="msg-input" fxFlex="80">
-        <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" type="text" name="message" id="message-input"
-          placeholder="Type a message">
-      </div>
-      <div class="msg-send-button" fxFlex="20">
-        <button (click)="submit(chat.id)"><img class="send-icon" src="../../../assets/icons/send-white-18dp.svg"
-            alt="Send"></button>
-      </div>
-    </div>
-  </div>
-</ng-container>
-<ng-template #template>
-  <div class="top">
-    <h4>Waiting for Booster</h4>
-  </div>
-</ng-template>
+  </ng-template>
+</div>

@@ -1,3 +1,4 @@
+import { AuthService } from "src/app/core/services/auth.service";
 import { OrderService } from "./../core/services/order.service";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
@@ -11,14 +12,18 @@ import { leagues, divisions } from "../shared/variables";
 })
 export class OrderDetailsComponent implements OnInit {
   orders$: Observable<any>;
+  user$: Observable<any>;
   orderId: string;
   accPassword = "viktor";
   leagues = leagues;
   divisions = divisions;
   constructor(
     private route: ActivatedRoute,
-    private orderService: OrderService
-  ) {}
+    private orderService: OrderService,
+    private auth: AuthService
+  ) {
+    this.user$ = this.auth.user$;
+  }
 
   ngOnInit(): void {
     this.orderId = this.route.snapshot.paramMap.get("id");

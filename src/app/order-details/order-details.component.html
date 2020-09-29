@@ -8,97 +8,108 @@
     </p>
   </div>
   <div class="username">
-    <!-- <ng-container *ngIf="user$ | async as user; else userTemplate"> -->
-    <!-- <h2>{{ user.displayName }}</h2> -->
-    <h2>Demo</h2>
-    <!-- </ng-container> -->
+    <ng-container *ngIf="user$ | async as user; else userTemplate">
+      <h2>{{ user.displayName }}</h2>
+      <!-- <h2>Demo</h2> -->
+    </ng-container>
   </div>
 </section>
 <!-- <ng-container *ngIf="order$ | async as o; else Loading"> -->
 <ng-container *ngIf="orders$ | async as o">
-  <div class="content">
+  <div class="content" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row wrap"
+    fxLayoutAlign.gt-sm="center start">
     <!-- Order Details Section -->
-    <h3 class="content-heading">Order Details</h3>
-    <div class="content-box" fxLayout.lt-sm="row" style="padding-right: 0">
-      <div class="order-details" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="15px" fxFlex="50">
-        <div class="detail" fxLayout="column">
-          <h5>Order ID</h5>
-          <span>Q528342FF</span>
-        </div>
-        <div class="detail" fxLayout="column">
-          <h5>Target</h5>
-          <span>{{
+    <div class="wrapper">
+      <h3 class="content-heading">Order Details</h3>
+      <div class="content-box" fxLayout="row" style="padding-right: 0">
+        <div class="order-details" fxLayout="column" fxLayoutGap="15px" fxFlex="50">
+          <div class="detail" fxLayout="column">
+            <h5>Order ID</h5>
+            <span>Q528342FF</span>
+          </div>
+          <div class="detail" fxLayout="column">
+            <h5>Target</h5>
+            <span>{{
             leagues[o.orderDesiredRank.id].name +
               " " +
               divisions[o.orderDesiredDivision.id].name
           }}</span>
+          </div>
+          <div class="detail" fxLayout="column">
+            <h5>Queue</h5>
+            <span>{{ o.orderQueue.name }}</span>
+          </div>
+          <div class="detail" fxLayout="column">
+            <h5>Region</h5>
+            <span>{{ o.orderServer.name }}</span>
+          </div>
         </div>
-        <div class="detail" fxLayout="column">
-          <h5>Queue</h5>
-          <span>{{ o.orderQueue.name }}</span>
-        </div>
-        <div class="detail" fxLayout="column">
-          <h5>Region</h5>
-          <span>{{ o.orderServer.name }}</span>
+        <div class="order-status" fxLayout="column" fxLayoutAlign="center center" fxFlex="50">
+          <h4>Status</h4>
+          <span>{{ o.orderStatus }}</span>
         </div>
       </div>
-      <div class="order-status" fxLayout="column" fxLayoutAlign.lt-sm="center center" fxFlex="50">
-        <h4>Status</h4>
-        <span>{{ o.orderStatus }}</span>
-      </div>
-    </div>
-    <!-- Boost Progress Section -->
-    <h3 class="content-heading">Boost Progress</h3>
-    <div class="content-box">
-      <div class="rank-progress" fxLayout.lt-sm="row wrap">
-        <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
-          <h5>Start</h5>
-          <img [src]="leagues[o.orderStartRank.id].imgURL" alt="Starting Rank" />
-          <span>
-            {{
+      <h3 class="content-heading">Boost Progress</h3>
+      <div class="content-box">
+        <div class="rank-progress" fxLayout="row wrap">
+          <div class="order-rank" fxFlex="33" fxLayout="column">
+            <h5>Start</h5>
+            <img [src]="leagues[o.orderStartRank.id].imgURL" alt="Starting Rank" />
+            <span>
+              {{
               leagues[o.orderStartRank.id].name +
                 " " +
                 divisions[o.orderStartDivision.id].name
             }}
-          </span>
-        </div>
-        <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
-          <h5>Current</h5>
-          <img [src]="leagues[o.orderCurrentRank.id].imgURL" alt="Current Rank" />
-          <span>{{
+            </span>
+          </div>
+          <div class="order-rank" fxFlex="33" fxLayout="column">
+            <h5>Current</h5>
+            <img [src]="leagues[o.orderCurrentRank.id].imgURL" alt="Current Rank" />
+            <span>{{
               leagues[o.orderCurrentRank.id].name +
                 " " +
                 divisions[o.orderCurrentDivision.id].name
             }}
-          </span>
-        </div>
-        <div class="order-rank" fxFlex.lt-sm="33" fxLayout.lt-sm="column">
-          <h5>Target</h5>
-          <img [src]="leagues[o.orderDesiredRank.id].imgURL" alt="Target Rank" />
-          <span>{{
+            </span>
+          </div>
+          <div class="order-rank" fxFlex="33" fxLayout="column">
+            <h5>Target</h5>
+            <img [src]="leagues[o.orderDesiredRank.id].imgURL" alt="Target Rank" />
+            <span>{{
               leagues[o.orderDesiredRank.id].name +
                 " " +
                 divisions[o.orderDesiredDivision.id].name
             }}
-          </span>
+            </span>
+          </div>
+        </div>
+        <div class="bar-progress">
+          <h5>Progress</h5>
+          <progress-bar [progress]="90" [color]="'rgb(18, 150, 7)'"></progress-bar>
+        </div>
+        <div class="pause-button" fxLayout="row" fxLayoutAlign="center center">
+          <button class="primaryButton pauseButton">Pause Order</button>
         </div>
       </div>
-      <div class="bar-progress">
-        <h5>Progress</h5>
-        <progress-bar [progress]="90" [color]="'rgb(18, 150, 7)'"></progress-bar>
-      </div>
-      <div class="pause-button" fxLayout="row" fxLayoutAlign="center center">
-        <button class="primaryButton pauseButton">Pause Order</button>
-      </div>
     </div>
-    <app-chat [orderId]="orderId"></app-chat>
-    <div class="content-small-box content-box">
+    <app-chat class="chat" [orderId]="orderId"></app-chat>
+  </div>
+  <app-help-contact></app-help-contact>
+  <app-footer></app-footer>
+</ng-container>
+<ng-template #Loading>
+  <!-- insert loading - ngx-spinner -->
+</ng-template>
+<ng-template #userTemplate>
+  <h2>User</h2>
+</ng-template>
+<!-- <div class="content-small-box content-box">
       <h3 class="content-heading">Tip Booster</h3>
       <p>
         If you want, you can tip your booster directly if you're satisfied with
         his results. It will motivate him and keep him going strong!
       </p>
-      <!-- select -->
       <div class="pause-button" fxLayoutAlign="center center">
         <button class="secondaryButton">Send Tip</button>
       </div>
@@ -112,14 +123,4 @@
       <div class="extend-button" fxLayoutAlign="center center">
         <button class="secondaryButton">Extend Order</button>
       </div>
-    </div>
-  </div>
-  <app-help-contact></app-help-contact>
-  <app-footer></app-footer>
-</ng-container>
-<ng-template #Loading>
-  <!-- insert loading - ngx-spinner -->
-</ng-template>
-<ng-template #userTemplate>
-  <h2>User</h2>
-</ng-template>
+    </div> -->

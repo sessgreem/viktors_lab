@@ -4,93 +4,98 @@ $display-name-fweight: 500;
 $chat-user-color:rgb(18, 150, 7);
 $box-color: #1F2023;
 
-.chat {
-  .top {
-    padding: 1rem;
-    background-color: $chat-top-color;
+.chat-wrapper {
+  max-width: 700px;
+  width: 100%;
 
-    h4 {
-      display: inline;
+  .chat {
+    .top {
+      padding: 1rem;
+      background-color: $chat-top-color;
+
+      h4 {
+        display: inline;
+      }
+
+      span {
+        float: right;
+        font-weight: 500;
+      }
     }
 
-    span {
-      float: right;
-      font-weight: 500;
-    }
-  }
+    .messages {
+      padding: 1rem;
+      background-color: $box-color;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 500px;
+      width: 100%;
 
-  .messages {
-    padding: 1rem;
-    background-color: $box-color;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 500px;
-    width: 100%;
+      .msg {
+        margin-bottom: 1rem;
 
-    .msg {
-      margin-bottom: 1rem;
+        .user {
+          .display-name {
+            font-weight: $display-name-fweight;
+            margin-bottom: .2rem;
+          }
 
-      .user {
-        .display-name {
-          font-weight: $display-name-fweight;
-          margin-bottom: .2rem;
+          .message-content {
+            background-color: $chat-user-color;
+            padding: .6rem 1.2rem .6rem .6rem;
+            text-align: left;
+            max-width: 80%;
+            border-radius: .2rem;
+          }
+
+          .message-timestamp {
+            float: left;
+            opacity: .5;
+          }
         }
 
-        .message-content {
+        .staff-message {
+          .display-name {
+            font-weight: $display-name-fweight;
+            margin-bottom: .2rem;
+          }
+
+          .message-content {
+            background-color: $chat-top-color;
+            padding: .6rem .6rem .6rem 1.2rem;
+            max-width: 80%;
+            text-align: left;
+            border-radius: .2rem;
+          }
+
+          .message-timestamp {
+            float: right;
+            opacity: .5;
+          }
+        }
+      }
+    }
+
+    .msg-form {
+      .msg-input {
+        input {
+          background-color: #1F2023;
+          height: 3rem;
+          color: white;
+          border: none;
+          border-top: 1px solid #3e3e3e;
+          padding: 1rem;
+          width: 100%;
+          font-size: 1rem;
+        }
+      }
+
+      .msg-send-button {
+        button {
+          width: 100%;
+          height: 3rem;
           background-color: $chat-user-color;
-          padding: .6rem 1.2rem .6rem .6rem;
-          text-align: left;
-          max-width: 80%;
-          border-radius: .2rem;
         }
-
-        .message-timestamp {
-          float: left;
-          opacity: .5;
-        }
-      }
-
-      .staff-message {
-        .display-name {
-          font-weight: $display-name-fweight;
-          margin-bottom: .2rem;
-        }
-
-        .message-content {
-          background-color: $chat-top-color;
-          padding: .6rem .6rem .6rem 1.2rem;
-          max-width: 80%;
-          text-align: left;
-          border-radius: .2rem;
-        }
-
-        .message-timestamp {
-          float: right;
-          opacity: .5;
-        }
-      }
-    }
-  }
-
-  .msg-form {
-    .msg-input {
-      input {
-        background-color: #1F2023;
-        height: 3rem;
-        color: white;
-        border: none;
-        border-top: 1px solid #3e3e3e;
-        padding: 1rem;
-        width: 100%;
-        font-size: 1rem;
-      }
-    }
-
-    .msg-send-button {
-      button {
-        width: 100%;
-        height: 3rem;
-        background-color: $chat-user-color;
       }
     }
   }
