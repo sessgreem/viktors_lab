@@ -30,6 +30,7 @@ import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.
 import { ModalCardComponent } from "./shared/modals/modal-card/modal-card.component";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ModalLoginComponent,
     ModalSignupComponent,
     ModalCardComponent,
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,

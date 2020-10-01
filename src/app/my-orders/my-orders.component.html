@@ -1,0 +1,19 @@
+<section class="header">
+  <app-navigation></app-navigation>
+  <div class="header-content">
+    <h1>My Orders</h1>
+    <p>
+      Click on the link to go to your order.
+    </p>
+  </div>
+  <app-services-menu></app-services-menu>
+</section>
+<div class="orders">
+  <h3>Active Orders</h3>
+  <ul>
+    <li *ngFor="let order of userOrders$ | async">
+      <a style="color: skyblue;" [routerLink]="'/order/' + order.id">Order Details - {{ order.id }}
+      </a>
+    </li>
+  </ul>
+</div>

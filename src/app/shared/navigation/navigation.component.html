@@ -18,7 +18,7 @@
         <!-- user  ngif -->
         <ng-container *ngIf="user$ | async as user; else noUserLogged">
           <li class="nav-item"><a routerLink="/profile">{{ user.displayName }}</a></li>
-          <li class="nav-item"><a routerLink="/orders">My Orders</a></li>
+          <li class="nav-item"><a routerLink="/my-orders">My Orders</a></li>
           <li class="nav-item" (click)="userLogout($event)"><a href="/logout">Logout</a></li>
         </ng-container>
         <ng-template #noUserLogged>
