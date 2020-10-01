@@ -26,8 +26,9 @@ $box-color: #1F2023;
     .messages {
       padding: 1rem;
       background-color: $box-color;
-      overflow-y: scroll;
-      overflow-x: hidden;
+      // overflow-y: scroll;
+      // overflow-x: hidden;
+      overflow: auto;
       height: 500px;
       width: 100%;
 

@@ -1,5 +1,4 @@
-<div class="order-summary">
-  <!-- fxLayout="column" fxLayoutAlign="center center" -->
+<div id="order-summary">
   <div class="headings">
     <h3>Order Summary</h3>
     <div class="details-headings">
@@ -45,22 +44,19 @@
   </div>
   <div class="coupon-code" fxLayout="column">
     <h3>Coupon Code</h3>
-
     <h5>Add Code</h5>
     <input type="text" />
   </div>
-  <div class="total-price" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center center">
-    <!-- if  -->
+  <div class="total-price" fxLayout="column" fxLayoutAlign="center center">
     <h3>Total Price</h3>
     <div>
-      <h3 class="total-price-currency discount">€29.50</h3>
-      <!-- if -->
+      <h3 class="total-price-currency discount">€51.90</h3>
       <span>(-20%)</span>
     </div>
   </div>
-  <div class="new-price" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center center">
+  <div class="new-price" fxLayout="column" fxLayoutAlign="center center">
     <h3>New Price</h3>
-    <h3 class="new-price-currency">€23.60</h3>
+    <h3 class="new-price-currency">€43.60</h3>
   </div>
   <div class="checkout-button">
     <button (click)="sendOrderDetails()">Checkout</button>

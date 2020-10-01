@@ -1,26 +1,29 @@
 @use "../../styles/_gradients.scss";
 @use "../modal-login/modal-login.component.scss";
 
-
-
-.modal {
+#modal {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 100;
-  display: none;
   overflow: hidden;
 }
 
-.modal.open {
+#modal.open {
   display: block;
+  // .modal-content {
+  //   transform: translate(0, 0);
+  // }
 }
 
 .modal-content {
   max-width: 300px;
   margin: 20px auto;
+  // transform: translate(0, -35%);
+  // transition: transform .3s ease-out;
 
   .modal-card {
     @include _gradients.modalCardBlueGreenGradient();

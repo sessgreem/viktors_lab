@@ -1,6 +1,6 @@
 $logo_main_color: #8DE2FF;
 
-.footer {
+footer {
   margin-top: 30px;
 
   .footer-heading {
@@ -43,7 +43,7 @@ $logo_main_color: #8DE2FF;
 
   }
 
-  .services {
+  #services {
     display: flex;
     flex-direction: column;
     align-items: center;

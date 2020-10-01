@@ -1,11 +1,11 @@
-.wrapper {
+#wrapper {
   // padding: 0 1.8rem 0.8rem;
-  max-width: 1200px;
+  max-width: 900px;
   margin: auto;
 }
 
 .logo {
-  max-width: 80vw;
+  max-width: 60vw;
 }
 
 .content h3 {
@@ -56,27 +56,28 @@
 @media only screen and (min-width: 960px) {
 
   .content h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .content p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 2.5rem;
   }
 
   .toolLogo {
-    max-width: 5rem;
-    max-height: 4rem;
+    max-width: 2.5rem;
+    max-height: 3rem;
   }
 
   .toolDesc {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: 1rem;
   }
 
   .primaryButton {
-    width: 25rem;
-    font-size: 1.5rem;
+    width: 20rem;
+    max-width: 25rem;
+    font-size: 1.2rem;
     margin-bottom: 3rem;
     margin-top: 3rem;
   }
