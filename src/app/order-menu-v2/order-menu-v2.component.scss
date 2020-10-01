@@ -1,4 +1,4 @@
-@use "../shared/styles/gradients";
+@use "../shared/partials/gradients";
 $menu-background: #1f2023;
 $green: #15ac09;
 $blue: #2b52c5;
@@ -126,7 +126,7 @@ $border-color: #2d2f34;
           margin-top: 0.5rem;
           opacity: 0.5;
           text-align: center;
-          max-width: 60%;
+          max-width: 70%;
         }
       }
 

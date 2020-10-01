@@ -18,7 +18,14 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   sendOrderDetails() {
-    this.orderService.setOrder(this.orderDetails);
+    this.orderService
+      .setOrder(this.orderDetails)
+      .then(() => {
+        alert("Order created. Click on my order");
+      })
+      .catch((err) => {
+        alert("You must log in first :(");
+      });
   }
   togglePriority() {
     this.orderDetails.priority = !this.priority;

@@ -33,10 +33,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
   }
 
-  // ngAfterContentChecked() {
-  //   // this.scrollToBottom();
-  // }
-
   // When looping over real-time array in Angular - trackBy method is needed - tells Angular to only re-render items that have changed
   trackByCreated(i, msg) {
     return msg.createdAt;
@@ -47,20 +43,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.newMsg = "";
   }
 
-  // private scrollToBottom(): void {
-  //   try {
-  //     this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
-  //   } catch (err) {}
-  // }
-
   onScroll() {
     const element = this.scrollContainer.nativeElement;
     const atBottom =
       element.scrollHeight - element.scrollTop === element.clientHeight;
-    // console.log(
-    //   ` scrollHeight ${element.scrollHeight} and scrollTop ${element.scrollTop} and element clientHeight ${element.clientHeight}`
-    // );
-    // console.log(atBottom);
     if (atBottom) {
       this.disableScrollDown = false;
     } else {

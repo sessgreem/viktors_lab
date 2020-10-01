@@ -7,6 +7,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ServicesMenuComponent implements OnInit {
   constructor() {}
-
+  preventDefault(event) {
+    event.preventDefault();
+  }
   ngOnInit(): void {}
 }
