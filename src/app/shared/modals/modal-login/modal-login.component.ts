@@ -42,8 +42,16 @@ export class ModalLoginComponent implements OnInit {
     return this.auth
       .emailSignIn(this.email.value, this.password.value)
       .then(
-        () => (this.modalService.closeModal(), this.loginSuccessfulToast())
-      );
+        (res) => (
+          this.modalService.closeModal(),
+          this.loginSuccessfulToast(),
+          console.log(res)
+        )
+      )
+      .catch((err) => {
+        alert("something went wrong!");
+        console.log(err);
+      });
   }
   openSignUp(event) {
     event.preventDefault();
