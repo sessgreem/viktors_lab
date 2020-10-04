@@ -1,3 +1,7 @@
+# Hosted with Firebase Hosting
+
+https://payments-test-c5f93.firebaseapp.com/
+
 # Viktor's Lab
 
 This is my prototype for a future project and a business idea. My goal as a software developer is to find solutions to real world problems and create new business ventures.
