@@ -1,29 +1,40 @@
 <form ngNativeValidate [formGroup]="signUpForm">
   <div class="input-field">
     <label for="email">Email</label>
-    <input type="email" formControlName="email" required>
+    <input type="email" formControlName="email" required />
     <!-- <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div> -->
   </div>
   <div class="input-field">
     <label for="password">Password</label>
-    <input type="password" formControlName="password" required>
+    <input type="password" formControlName="password" required />
   </div>
   <div class="input-field">
     <label for="repeat-password">Repeat Password</label>
-    <input type="password" name="repeatPassword" formControlName="repeatPassword" required>
+    <input
+      type="password"
+      name="repeatPassword"
+      formControlName="repeatPassword"
+      required
+    />
   </div>
   <div class="terms">
     <div class="checkbox">
-      <input type="checkbox" (click)="toggleTermsAgreed()" required>
+      <input type="checkbox" (click)="toggleTermsAgreed()" required />
     </div>
     <div class="terms-text">
-      <p>By purchasing on Viktor's Lab you are agreeing to our <a href=""><em><u>Terms of Service</u></em></a>, <a
-          href="">
-          <em><u>
-              Privacy Policy</u></em>
-        </a> and
-        <a href=""><em><u>Refund Policy</u></em>
-        </a>.</p>
+      <p>
+        By purchasing on Viktor's Lab you are agreeing to our
+        <a href=""
+          ><em><u>Terms of Service</u></em></a
+        >,
+        <a href="">
+          <em><u> Privacy Policy</u></em>
+        </a>
+        and
+        <a href=""
+          ><em><u>Refund Policy</u></em> </a
+        >.
+      </p>
     </div>
   </div>
   <button type="submit" (click)="emailSignUp()">Sign Up</button>

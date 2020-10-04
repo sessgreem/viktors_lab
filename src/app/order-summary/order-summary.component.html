@@ -2,8 +2,11 @@
   <div class="headings">
     <h3>Order Summary</h3>
     <div class="details-headings">
-      <h4 class="target">{{ orderDetails.startRank.name }} {{ orderDetails.startDivision.name }} <em>to</em>
-        {{ orderDetails.desiredRank.name }} {{ orderDetails.desiredDivision.name }}</h4>
+      <h4 class="target">
+        {{ orderDetails.startRank.name }} {{ orderDetails.startDivision.name }}
+        <em>to</em> {{ orderDetails.desiredRank.name }}
+        {{ orderDetails.desiredDivision.name }}
+      </h4>
       <h4>Approximate completion time: 12 hours</h4>
     </div>
   </div>
@@ -12,8 +15,15 @@
     <div class="extra">
       <!-- opacity line -->
       <div class="checkbox">
-        <ang-slide-toggle (click)="togglePriority()" barCheckedBgColor="#beebe9" sliderCheckedColor="#3fc5f0"
-          barUncheckedBgColor="#ded5d5" sliderUncheckedColor="#bdbdbd" [checked]="false" [disabled]="false">
+        <ang-slide-toggle
+          (click)="togglePriority()"
+          barCheckedBgColor="#beebe9"
+          sliderCheckedColor="#3fc5f0"
+          barUncheckedBgColor="#ded5d5"
+          sliderUncheckedColor="#bdbdbd"
+          [checked]="false"
+          [disabled]="false"
+        >
         </ang-slide-toggle>
       </div>
       <span>Priority order</span><span>(+20% cost)</span>
@@ -22,22 +32,38 @@
   <div class="features" fxLayout="column">
     <h3>Features</h3>
     <div class="feature">
-      <img class="icon" src="../../assets/icons/chat_bubble_outline-white-18dp.svg" alt="chat-icon">
+      <img
+        class="icon"
+        src="../../assets/icons/chat_bubble_outline-white-18dp.svg"
+        alt="chat-icon"
+      />
       <span>Chat with a booster</span>
       <span>Free</span>
     </div>
     <div class="feature">
-      <img class="icon" src="../../assets/icons/pause_circle_outline-white-18dp.svg" alt="pause-icon">
+      <img
+        class="icon"
+        src="../../assets/icons/pause_circle_outline-white-18dp.svg"
+        alt="pause-icon"
+      />
       <span>Pause order</span>
       <span>Free</span>
     </div>
     <div class="feature">
-      <img class="icon" src="../../assets/icons/schedule-white-18dp.svg" alt="schedule-icon">
+      <img
+        class="icon"
+        src="../../assets/icons/schedule-white-18dp.svg"
+        alt="schedule-icon"
+      />
       <span>Schedule order</span>
       <span>Free</span>
     </div>
     <div class="feature">
-      <img class="icon" src="../../assets/icons/vpn_lock-white-18dp.svg" alt="vpn-icon">
+      <img
+        class="icon"
+        src="../../assets/icons/vpn_lock-white-18dp.svg"
+        alt="vpn-icon"
+      />
       <span>VPN secured</span>
       <span>Free</span>
     </div>
@@ -61,7 +87,6 @@
   <div class="checkout-button">
     <button (click)="sendOrderDetails()">Checkout</button>
   </div>
-  <div class="payment-providers">
-    <!-- payment providers icons -->
-  </div>
+  <!-- <div class="payment-providers">
+  </div> -->
 </div>

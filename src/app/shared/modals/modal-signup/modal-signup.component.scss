@@ -1,13 +1,11 @@
 @use "../modal-login/modal-login.component.scss";
 
-
 .terms {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 
   .checkbox {
-
     // change
     input {
       -ms-transform: scale(1.5);
@@ -25,9 +23,8 @@
 
   .terms-text {
     // line-height: 1.2rem;
-    font-size: .9rem;
+    font-size: 0.9rem;
     // text-align: left;
-
   }
 }
 

@@ -1,99 +1,119 @@
- <section class="header">
-   <app-navigation></app-navigation>
-   <div class="header-content">
-     <h1>
-       Available<br />
-       Orders
-     </h1>
-     <p>
-       Dear booster, here you will see assigned orders and other available
-       orders. As well as be able to manage your account.
-     </p>
-   </div>
-   <div class="username staff">
-     <ng-container *ngIf="staff$ | async as staff; else staffTemplate">
-       <h2>{{ staff.displayName }}</h2>
-     </ng-container>
-   </div>
- </section>
+<section class="header">
+  <app-navigation></app-navigation>
+  <div class="header-content">
+    <h1>
+      Available<br />
+      Orders
+    </h1>
+    <p>
+      Dear booster, here you will see assigned orders and other available
+      orders. As well as be able to manage your account.
+    </p>
+  </div>
+  <div class="username staff">
+    <ng-container *ngIf="staff$ | async as staff; else staffTemplate">
+      <h2>{{ staff.displayName }}</h2>
+    </ng-container>
+  </div>
+</section>
 
- <section class="content">
-   <ng-container *ngIf="orders$ | async as orders">
-     <div class="assigned-orders">
-       <h3 class="content-heading">Assigned Orders</h3>
-       <div *ngFor="let order of orders" class="order-box" fxLayout.lt-sm="row">
-         <div class="order-details" fxLayout.lt-sm="column" fxFlex="60" fxLayoutGap="15px">
-           <div class="detail">
-             <h5>Order ID</h5>
-             <span>A23AE</span>
-           </div>
-           <div class="detail">
-             <h5>Target</h5>
-             <span>{{ order.orderDesiredRank.name }}</span>
-           </div>
-           <div class="detail">
-             <h5>Queue</h5>
-             <span>{{ order.orderServiceType }}</span>
-           </div>
-           <div class="detail">
-             <h5>Region</h5>
-             <span>{{ order.orderServer.name }}</span>
-           </div>
-         </div>
-         <div fxLayout="column" fxFlex="40">
-           <div class="order-status" fxLayout="column" fxLayoutAlign.lt-sm="center center" fxFlex="50">
-             <h4>Status</h4>
-             <span>{{ order.orderStatus }}</span>
-           </div>
-           <div fxFlex="50" fxLayoutAlign.lt-sm="center center">
-             <div class="order-button">
-               <a routerLink="/orders/ + order.id">Enter Order</a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </ng-container>
-   <ng-container *ngIf="availableOrders$ | async as avOrders">
-     <h3 class="content-heading">Available Orders</h3>
-     <div *ngFor="let order of avOrders" class="order-box" fxLayout.lt-sm="row">
-       <div class="order-details" fxLayout="column" fxLayoutGap="15px" fxFlex="60">
-         <div class="detail">
-           <h5>Order ID</h5>
-           <span>A23AE</span>
-         </div>
-         <div class="detail">
-           <h5>Target</h5>
-           <span>{{ order.orderDesiredRank.name }}</span>
-         </div>
-         <div class="detail">
-           <h5>Queue</h5>
-           <span>{{ order.orderServiceType }}</span>
-         </div>
-         <div class="detail">
-           <h5>Region</h5>
-           <span>{{ order.orderServer.name }}</span>
-         </div>
-       </div>
-       <div fxLayout="column" fxFlex="40">
-         <div class="order-status available" fxLayout="column" fxLayoutAlign.lt-sm="center center" fxFlex="50">
-           <h4>Status</h4>
-           <span>{{ order.orderStatus }}</span>
-         </div>
-         <div fxFlex="50" fxLayoutAlign.lt-sm="center center">
-           <div class="order-button take-job">
-             <a routerLink="'/orders/' + order.id">Take Job</a>
-           </div>
-         </div>
-       </div>
-     </div>
-   </ng-container>
- </section>
- <app-footer></app-footer>
- <!-- <button [routerLink]="'/orders/'+ o.id">Order: {{o.id}} - From {{ o.orderCurrentRank }} - To {{ o.orderDesiredRank}} -
+<section class="content">
+  <ng-container *ngIf="orders$ | async as orders">
+    <div class="assigned-orders">
+      <h3 class="content-heading">Assigned Orders</h3>
+      <div *ngFor="let order of orders" class="order-box" fxLayout.lt-sm="row">
+        <div
+          class="order-details"
+          fxLayout.lt-sm="column"
+          fxFlex="60"
+          fxLayoutGap="15px"
+        >
+          <div class="detail">
+            <h5>Order ID</h5>
+            <span>A23AE</span>
+          </div>
+          <div class="detail">
+            <h5>Target</h5>
+            <span>{{ order.orderDesiredRank.name }}</span>
+          </div>
+          <div class="detail">
+            <h5>Queue</h5>
+            <span>{{ order.orderServiceType }}</span>
+          </div>
+          <div class="detail">
+            <h5>Region</h5>
+            <span>{{ order.orderServer.name }}</span>
+          </div>
+        </div>
+        <div fxLayout="column" fxFlex="40">
+          <div
+            class="order-status"
+            fxLayout="column"
+            fxLayoutAlign.lt-sm="center center"
+            fxFlex="50"
+          >
+            <h4>Status</h4>
+            <span>{{ order.orderStatus }}</span>
+          </div>
+          <div fxFlex="50" fxLayoutAlign.lt-sm="center center">
+            <div class="order-button">
+              <a routerLink="/orders/ + order.id">Enter Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="availableOrders$ | async as avOrders">
+    <h3 class="content-heading">Available Orders</h3>
+    <div *ngFor="let order of avOrders" class="order-box" fxLayout.lt-sm="row">
+      <div
+        class="order-details"
+        fxLayout="column"
+        fxLayoutGap="15px"
+        fxFlex="60"
+      >
+        <div class="detail">
+          <h5>Order ID</h5>
+          <span>A23AE</span>
+        </div>
+        <div class="detail">
+          <h5>Target</h5>
+          <span>{{ order.orderDesiredRank.name }}</span>
+        </div>
+        <div class="detail">
+          <h5>Queue</h5>
+          <span>{{ order.orderServiceType }}</span>
+        </div>
+        <div class="detail">
+          <h5>Region</h5>
+          <span>{{ order.orderServer.name }}</span>
+        </div>
+      </div>
+      <div fxLayout="column" fxFlex="40">
+        <div
+          class="order-status available"
+          fxLayout="column"
+          fxLayoutAlign.lt-sm="center center"
+          fxFlex="50"
+        >
+          <h4>Status</h4>
+          <span>{{ order.orderStatus }}</span>
+        </div>
+        <div fxFlex="50" fxLayoutAlign.lt-sm="center center">
+          <div class="order-button take-job">
+            <a routerLink="'/orders/' + order.id">Take Job</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+<app-footer></app-footer>
+<!-- <button [routerLink]="'/orders/'+ o.id">Order: {{o.id}} - From {{ o.orderCurrentRank }} - To {{ o.orderDesiredRank}} -
         Username: {{ o.orderUsername }}</button> -->
 
- <!-- <ng-container *ngIf="staff$ | async as staff">
+<!-- <ng-container *ngIf="staff$ | async as staff">
           <h5>Staff Dashboard</h5>
           <label for="email">Your email is</label>
           <div> {{ staff.email }}</div>
@@ -106,6 +126,6 @@
           <input type="text" name="displayName" id="" [(ngModel)]="displayName">
           <button (click)="changeDisplayName()">Change</button>
         </ng-container> -->
- <ng-template #staffTemplate>
-   <h2>Staff</h2>
- </ng-template>
+<ng-template #staffTemplate>
+  <h2>Staff</h2>
+</ng-template>

@@ -10,17 +10,17 @@ form {
     margin-bottom: 15px;
 
     label {
-      font-size: .85rem;
+      font-size: 0.85rem;
       font-weight: 500;
     }
 
     input {
       width: 100%;
-      padding: .6rem;
+      padding: 0.6rem;
       @include _gradients.inputWhiteGradient();
       font-weight: 500;
       border: none;
-      border-radius: .4rem;
+      border-radius: 0.4rem;
       font-size: 1em;
     }
 
@@ -29,17 +29,15 @@ form {
     }
   }
 
-
   button {
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
     font-weight: 700;
     background-color: #272727; // put gradient?
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     width: 100%;
     margin: 25px auto 25px auto;
   }
-
 }
 
 .options {
@@ -48,7 +46,7 @@ form {
   margin-bottom: 20px;
 
   a {
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 600;
   }
 }

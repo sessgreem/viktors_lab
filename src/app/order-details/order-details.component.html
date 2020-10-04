@@ -16,13 +16,23 @@
 </section>
 <!-- <ng-container *ngIf="order$ | async as o; else Loading"> -->
 <ng-container *ngIf="orders$ | async as o">
-  <div class="content" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row wrap"
-    fxLayoutAlign.gt-sm="center start">
+  <div
+    class="content"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayout.gt-sm="row wrap"
+    fxLayoutAlign.gt-sm="center start"
+  >
     <!-- Order Details Section -->
     <div class="wrapper">
       <h3 class="content-heading">Order Details</h3>
       <div class="content-box" fxLayout="row" style="padding-right: 0">
-        <div class="order-details" fxLayout="column" fxLayoutGap="15px" fxFlex="50">
+        <div
+          class="order-details"
+          fxLayout="column"
+          fxLayoutGap="15px"
+          fxFlex="50"
+        >
           <div class="detail" fxLayout="column">
             <h5>Order ID</h5>
             <span>Q528342FF</span>
@@ -30,10 +40,10 @@
           <div class="detail" fxLayout="column">
             <h5>Target</h5>
             <span>{{
-            leagues[o.orderDesiredRank.id].name +
-              " " +
-              divisions[o.orderDesiredDivision.id].name
-          }}</span>
+              leagues[o.orderDesiredRank.id].name +
+                " " +
+                divisions[o.orderDesiredDivision.id].name
+            }}</span>
           </div>
           <div class="detail" fxLayout="column">
             <h5>Queue</h5>
@@ -44,7 +54,12 @@
             <span>{{ o.orderServer.name }}</span>
           </div>
         </div>
-        <div class="order-status" fxLayout="column" fxLayoutAlign="center center" fxFlex="50">
+        <div
+          class="order-status"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxFlex="50"
+        >
           <h4>Status</h4>
           <span>{{ o.orderStatus }}</span>
         </div>
@@ -54,39 +69,50 @@
         <div class="rank-progress" fxLayout="row wrap">
           <div class="order-rank" fxFlex="33" fxLayout="column">
             <h5>Start</h5>
-            <img [src]="leagues[o.orderStartRank.id].imgURL" alt="Starting Rank" />
+            <img
+              [src]="leagues[o.orderStartRank.id].imgURL"
+              alt="Starting Rank"
+            />
             <span>
               {{
-              leagues[o.orderStartRank.id].name +
-                " " +
-                divisions[o.orderStartDivision.id].name
-            }}
+                leagues[o.orderStartRank.id].name +
+                  " " +
+                  divisions[o.orderStartDivision.id].name
+              }}
             </span>
           </div>
           <div class="order-rank" fxFlex="33" fxLayout="column">
             <h5>Current</h5>
-            <img [src]="leagues[o.orderCurrentRank.id].imgURL" alt="Current Rank" />
-            <span>{{
-              leagues[o.orderCurrentRank.id].name +
-                " " +
-                divisions[o.orderCurrentDivision.id].name
-            }}
+            <img
+              [src]="leagues[o.orderCurrentRank.id].imgURL"
+              alt="Current Rank"
+            />
+            <span
+              >{{
+                leagues[o.orderCurrentRank.id].name +
+                  " " +
+                  divisions[o.orderCurrentDivision.id].name
+              }}
             </span>
           </div>
           <div class="order-rank" fxFlex="33" fxLayout="column">
             <h5>Target</h5>
-            <img [src]="leagues[o.orderDesiredRank.id].imgURL" alt="Target Rank" />
-            <span>{{
-              leagues[o.orderDesiredRank.id].name +
-                " " +
-                divisions[o.orderDesiredDivision.id].name
-            }}
+            <img
+              [src]="leagues[o.orderDesiredRank.id].imgURL"
+              alt="Target Rank"
+            />
+            <span
+              >{{
+                leagues[o.orderDesiredRank.id].name +
+                  " " +
+                  divisions[o.orderDesiredDivision.id].name
+              }}
             </span>
           </div>
         </div>
         <div class="bar-progress">
           <h5>Progress</h5>
-          <progress-bar [progress]="12" [color]="'rgb(18, 150, 7)'"></progress-bar>
+          <progress-bar [progress]="32" [color]="'#1E42A9'"></progress-bar>
         </div>
         <div class="pause-button" fxLayout="row" fxLayoutAlign="center center">
           <button class="primaryButton pauseButton">Pause Order</button>

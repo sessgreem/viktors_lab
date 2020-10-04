@@ -5,7 +5,6 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
   Router,
 } from "@angular/router";
 // import { Observable } from "rxjs";
@@ -21,6 +20,7 @@ export class FireguardGuard implements CanActivate {
     private chatService: ChatService,
     private staffauth: StaffauthService
   ) {}
+
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const chatId = next.params.id;
     const uid = await this.auth.getUser().then((res) => {

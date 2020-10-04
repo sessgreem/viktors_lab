@@ -1,3 +1,5 @@
+import { ModalService } from "./../core/services/modal.service";
+import { Router } from "@angular/router";
 import { Component, Input, OnInit } from "@angular/core";
 import { OrderService } from "../core/services/order.service";
 
@@ -10,7 +12,11 @@ export class OrderSummaryComponent implements OnInit {
   @Input() orderDetails: any;
   priority = false;
   price = 0;
-  constructor(private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    private router: Router,
+    private modalService: ModalService
+  ) {}
 
   ngOnInit(): void {
     this.orderDetails.priority = this.priority;
@@ -21,10 +27,10 @@ export class OrderSummaryComponent implements OnInit {
     this.orderService
       .setOrder(this.orderDetails)
       .then(() => {
-        alert("Order created. Click on my order");
+        this.router.navigate(["/my-orders"]);
       })
       .catch((err) => {
-        alert("You must log in first :(");
+        this.modalService.openModal();
       });
   }
   togglePriority() {

@@ -3,7 +3,6 @@ import { AngularFirestoreDocument } from "@angular/fire/firestore/public_api";
 import { StaffauthService } from "./staffauth.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { map, switchMap, first } from "rxjs/operators";
 import { firestore } from "firebase";
@@ -16,7 +15,6 @@ export class ChatService {
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
-    private router: Router,
     private staffauth: StaffauthService,
     private orderService: OrderService
   ) {}
@@ -63,6 +61,7 @@ export class ChatService {
       })
     );
   }
+
   async create(docId) {
     const chatDocRef: AngularFirestoreDocument<any> = this.afs.doc(
       `chats/${docId}`
@@ -91,12 +90,13 @@ export class ChatService {
       }
     }
   }
+
   async sendMessage(chatId, content) {
     const uid = await this.auth.getUser().then((res) => {
       if (res) return res.uid;
       else return res;
     });
-    let staffId;
+    let staffId: any; // string
     if (!uid) {
       staffId = await this.staffauth.getStaff().then((res) => {
         if (res) return res.staffId;
@@ -144,7 +144,6 @@ export class ChatService {
               .map((v) => v.staffId)
           )
         );
-        // console.log(uids + " StaffID: " + staffIds);
         const userDocs = uids.map((uid) =>
           this.afs.doc(`users/${uid}`).valueChanges()
         );

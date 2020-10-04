@@ -3,8 +3,12 @@
     <div class="logo">
       <img src="../../assets/logo/viktorslab_3D.png" alt="Viktor's Lab Logo" />
     </div>
-    <div class="navbar-wrapper" [class.open]="open" (clickOutside)="closeSideNav($event)"
-      [clickOutsideEnabled]="this.outsideEnabled">
+    <div
+      class="navbar-wrapper"
+      [class.open]="open"
+      (clickOutside)="closeSideNav($event)"
+      [clickOutsideEnabled]="this.outsideEnabled"
+    >
       <div fxHide.gt-md class="exit-bar">
         <span (click)="this.outsideEnabled = false; this.open = false">X</span>
       </div>
@@ -17,9 +21,13 @@
         </li>
         <!-- user  ngif -->
         <ng-container *ngIf="user$ | async as user; else noUserLogged">
-          <li class="nav-item"><a routerLink="/lol-boost">{{ user.displayName }}</a></li>
+          <li class="nav-item">
+            <a routerLink="/lol-boost">{{ user.displayName }}</a>
+          </li>
           <li class="nav-item"><a routerLink="/my-orders">My Orders</a></li>
-          <li class="nav-item" (click)="userLogout($event)"><a href="/logout">Logout</a></li>
+          <li class="nav-item" (click)="userLogout($event)">
+            <a href="/logout">Logout</a>
+          </li>
         </ng-container>
         <ng-template #noUserLogged>
           <li class="nav-item">
@@ -32,7 +40,6 @@
             <a href="/register" (click)="openSignUpForm($event)">Sign Up</a>
           </li>
         </ng-template>
-
       </ul>
     </div>
     <div fxHide.gt-md class="burger-menu" (click)="openSideNav()">

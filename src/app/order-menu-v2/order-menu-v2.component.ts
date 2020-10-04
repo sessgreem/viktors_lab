@@ -7,6 +7,7 @@ import {
   roles,
   leaguePoints,
   divisions,
+  services,
 } from "../shared/variables";
 
 @Component({
@@ -49,11 +50,11 @@ export class OrderMenuV2Component implements OnInit {
   leaguePoints = leaguePoints;
   currentLP = this.leaguePoints[0];
 
-  // rethink - put in a separate file
-  serviceType = "League Boost";
+  services = services;
+  serviceType = this.services[0];
+
   constructor() {}
 
-  // need to put everything in an object and send it - serviceType need to come from here i think
   orderDetails = {
     startRank: this.startRank,
     startDivision: this.startDivision,

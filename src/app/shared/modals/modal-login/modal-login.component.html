@@ -1,18 +1,24 @@
 <form [formGroup]="signInForm">
   <div class="input-field">
     <label for="email">Email</label>
-    <input type="email" formControlName="email" required>
-    <div *ngIf="email.invalid && email.dirty">Your email doesn't look right.</div>
+    <input type="email" formControlName="email" required />
+    <div *ngIf="email.invalid && email.dirty">
+      Your email doesn't look right.
+    </div>
   </div>
   <div class="input-field">
     <label for="password">Password</label>
-    <input type="password" formControlName="password" name="password" required>
+    <input
+      type="password"
+      formControlName="password"
+      name="password"
+      required
+    />
   </div>
   <button type="submit" (click)="emailSignIn()">Login</button>
 </form>
 <div class="options">
-  <a href="/register" (click)="openSignUp($event);">Create Account</a>
-  <a href="/reset-password/request">
-    Reset Password</a>
+  <a href="/register" (click)="openSignUp($event)">Create Account</a>
+  <a href="/reset-password/request"> Reset Password</a>
 </div>
 <!-- <a (click)="signUpFormEmit()">Create Account</a> -->

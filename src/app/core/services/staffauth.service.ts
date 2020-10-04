@@ -6,14 +6,14 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
 import { AngularFirestoreDocument } from "@angular/fire/firestore/public_api";
 
-interface Staff {
-  staffId: string;
-  email: string;
-  completedOrders: Array<string>;
-  displayName: string;
-  position: string;
-  photoURL: string;
-}
+// interface Staff {
+//   staffId: string;
+//   email: string;
+//   completedOrders: Array<string>;
+//   displayName: string;
+//   position: string;
+//   photoURL: string;
+// }
 
 @Injectable({
   providedIn: "root",
@@ -66,25 +66,25 @@ export class StaffauthService {
     return staffRef.set(data, { merge: true });
   }
 
-  // auth service does the same
-  emailSignIn(email: string, password: string) {
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // // auth service does the same
+  // emailSignIn(email: string, password: string) {
+  //   return this.afAuth
+  //     .signInWithEmailAndPassword(email, password)
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
-  private updateUser(user: Staff, data: any) {
-    return this.afs.doc(`staff/${user.staffId}`).update(data);
-  }
+  // private updateUser(user: Staff, data: any) {
+  //   return this.afs.doc(`staff/${user.staffId}`).update(data);
+  // }
 
-  async updateDisplayName(name: string) {
+  async updateDisplayName(displayName: string) {
     const { staffId } = await this.getStaff();
     if (staffId) {
       const docRef: AngularFirestoreDocument = this.afs.doc(`staff/${staffId}`);
       const data = {
-        displayName: name,
+        displayName,
       };
       return docRef.update(data);
     } else {

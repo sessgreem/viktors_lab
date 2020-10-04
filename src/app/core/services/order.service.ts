@@ -97,14 +97,13 @@ export class OrderService {
       })
     );
   }
-  // this should be cloud function
+
   async setOrder(orderDetails) {
     // ? make this idempotent
     const id = this.afs.createId();
     const orderRef = this.getReference(id);
     const { uid } = await this.auth.getUser();
     const status = "Waiting for booster";
-    // const boostedRank = orderDetails.currentRank;
     const currentRank = orderDetails.startRank;
     const currentDivision = orderDetails.startDivision;
     const data = {
@@ -122,7 +121,6 @@ export class OrderService {
       orderSummonerSpell_2: orderDetails.summonerSpell_2,
       orderPrimaryRole: orderDetails.primaryRole,
       orderSecondaryRole: orderDetails.secondaryRole,
-      // orderBoostedRank: boostedRank,
       orderStatus: status,
       orderPriority: orderDetails.priority,
       orderPrice: orderDetails.price,

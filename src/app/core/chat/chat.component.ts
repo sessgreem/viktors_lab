@@ -5,7 +5,6 @@ import {
   ViewChild,
   ElementRef,
   AfterViewChecked,
-  AfterContentChecked,
 } from "@angular/core";
 import { Observable } from "rxjs";
 import { ChatService } from "../services/chat.service";
@@ -16,20 +15,22 @@ import { ChatService } from "../services/chat.service";
   styleUrls: ["./chat.component.scss"],
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
+  @Input() orderId: string;
   @ViewChild("Messages") private scrollContainer: ElementRef;
   chat$: Observable<any>;
   newMsg: string;
-  @Input() orderId: string;
   disableScrollDown = false;
-  constructor(public cs: ChatService) {}
+
+  constructor(public chatService: ChatService) {}
 
   ngOnInit(): void {
-    this.cs.create(this.orderId).then(() => {
-      const source = this.cs.get(this.orderId);
-      this.chat$ = this.cs.joinUsers(source);
+    this.chatService.create(this.orderId).then(() => {
+      const source = this.chatService.get(this.orderId);
+      this.chat$ = this.chatService.joinUsers(source);
     });
   }
-  ngAfterViewChecked() {
+
+  ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
 
@@ -38,12 +39,12 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     return msg.createdAt;
   }
 
-  submit(chatId) {
-    this.cs.sendMessage(chatId, this.newMsg);
+  submit(chatId): void {
+    this.chatService.sendMessage(chatId, this.newMsg);
     this.newMsg = "";
   }
 
-  onScroll() {
+  onScroll(): void {
     const element = this.scrollContainer.nativeElement;
     const atBottom =
       element.scrollHeight - element.scrollTop === element.clientHeight;
@@ -53,6 +54,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.disableScrollDown = true;
     }
   }
+
   private scrollToBottom(): void {
     if (this.disableScrollDown) {
       return;

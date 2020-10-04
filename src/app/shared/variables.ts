@@ -142,3 +142,10 @@ export const leaguePoints: any[] = [
   { id: 1, name: "30-59LP" },
   { id: 2, name: "60-100LP" },
 ];
+
+export const services: any[] = [
+  { id: 0, name: "League Boosting" },
+  { id: 1, name: "Duo Boosting" },
+  { id: 2, name: "Placement Matches" },
+  { id: 3, name: "Ranked Wins" },
+];
