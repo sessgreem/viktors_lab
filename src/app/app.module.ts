@@ -19,7 +19,7 @@ import { ChatComponent } from "./core/chat/chat.component";
 import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { ServicesMenuComponent } from "./shared/services-menu/services-menu.component";
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
-import { OrderMenuV2Component } from "./order-menu-v2/order-menu-v2.component";
+import { OrderMenuV2Component } from "./order-menu/order-menu.component";
 import { ClickOutsideModule } from "ng-click-outside";
 import { FooterComponent } from "./shared/footer/footer.component";
 import { AngSlideToggleModule } from "ang-slide-toggle";
@@ -30,7 +30,7 @@ import { ModalSignupComponent } from "./shared/modals/modal-signup/modal-signup.
 import { ModalCardComponent } from "./shared/modals/modal-card/modal-card.component";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { MyOrdersComponent } from "./my-orders/my-orders.component";
 @NgModule({
   declarations: [
     AppComponent,

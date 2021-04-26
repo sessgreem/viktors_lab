@@ -27,8 +27,8 @@ export class ModalLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(6)]],
+      email: ["test@abv.bg", [Validators.required, Validators.email]],
+      password: ["test123", [Validators.required, Validators.minLength(6)]],
     });
   }
 

@@ -1,7 +1,0 @@
-<ng-container *ngIf="feedback$ | async as feedback">
-  <h4>Latest Reviews</h4>
-  <div *ngFor="let f of feedback">
-    {{ f.rating }} Stars
-    "{{ f.text }}"
-  </div>
-</ng-container>

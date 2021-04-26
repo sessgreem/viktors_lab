@@ -1,5 +1,5 @@
 import { MyOrdersComponent } from "./my-orders/my-orders.component";
-import { OrderMenuV2Component } from "./order-menu-v2/order-menu-v2.component";
+import { OrderMenuV2Component } from "./order-menu/order-menu.component";
 import { OrderDetailsComponent } from "./order-details/order-details.component";
 import { IntroductionComponent } from "./introduction/introduction.component";
 import { DashboardComponent } from "./staff/dashboard/dashboard.component";
